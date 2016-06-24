@@ -16,7 +16,9 @@ define(function() {
 		// Needed for: IE7-
 		if (!document.querySelectorAll) {
 			document.querySelectorAll = function(selectors) {
-				var style = document.createElement('style'), elements = [], element;
+				var style = document.createElement('style'),
+					elements = [],
+					element;
 				document.documentElement.firstChild.appendChild(style);
 				document._qsa = [];
 
@@ -45,16 +47,18 @@ define(function() {
 
 		// Document.getElementsByClassName method
 		// Needed for: IE8-
-		if (!document.getElementsByClassName) {
-			document.getElementsByClassName = function(classNames) {
-				classNames = String(classNames).replace(/^|\s+/g, '.');
-				return document.querySelectorAll(classNames);
-			};
-		}
+		// if (!document.getElementsByClassName) {
+		// 	document.getElementsByClassName = function(classNames) {
+		// 		classNames = String(classNames).replace(/^|\s+/g, '.');
+		// 		return document.querySelectorAll(classNames);
+		// 	};
+		// }
 
 		// Node interface constants
 		// Needed for: IE8-
-		global.Node = global.Node || function() { throw TypeError("Illegal constructor"); };
+		global.Node = global.Node || function() {
+				throw TypeError("Illegal constructor");
+			};
 		Node.ELEMENT_NODE = 1;
 		Node.ATTRIBUTE_NODE = 2;
 		Node.TEXT_NODE = 3;
@@ -70,7 +74,9 @@ define(function() {
 
 		// DOMException constants
 		// Needed for: IE8-
-		global.DOMException = global.DOMException || function() { throw TypeError("Illegal constructor"); };
+		global.DOMException = global.DOMException || function() {
+				throw TypeError("Illegal constructor");
+			};
 		DOMException.INDEX_SIZE_ERR = 1;
 		DOMException.DOMSTRING_SIZE_ERR = 2;
 		DOMException.HIERARCHY_REQUEST_ERR = 3;
@@ -89,7 +95,7 @@ define(function() {
 
 		// Event and EventTargets interfaces
 		// Needed for: IE8
-		(function(){
+		(function() {
 			if (!('Element' in global) || Element.prototype.addEventListener || !Object.defineProperty)
 				return;
 
@@ -97,25 +103,40 @@ define(function() {
 
 			// PhaseType (const unsigned short)
 			Event.CAPTURING_PHASE = 1;
-			Event.AT_TARGET       = 2;
-			Event.BUBBLING_PHASE  = 3;
+			Event.AT_TARGET = 2;
+			Event.BUBBLING_PHASE = 3;
 
 			Object.defineProperties(Event.prototype, {
-				CAPTURING_PHASE: { get: function() { return 1; } },
-				AT_TARGET:       { get: function() { return 2; } },
-				BUBBLING_PHASE:   { get: function() { return 3; } },
+				CAPTURING_PHASE: {
+					get: function() {
+						return 1;
+					}
+				},
+				AT_TARGET: {
+					get: function() {
+						return 2;
+					}
+				},
+				BUBBLING_PHASE: {
+					get: function() {
+						return 3;
+					}
+				},
 				target: {
 					get: function() {
 						return this.srcElement;
-					}},
+					}
+				},
 				currentTarget: {
 					get: function() {
 						return this._currentTarget;
-					}},
+					}
+				},
 				eventPhase: {
 					get: function() {
 						return (this.srcElement === this.currentTarget) ? Event.AT_TARGET : Event.BUBBLING_PHASE;
-					}},
+					}
+				},
 				bubbles: {
 					get: function() {
 						switch (this.type) {
@@ -143,7 +164,8 @@ define(function() {
 								return true;
 						}
 						return false;
-					}},
+					}
+				},
 				cancelable: {
 					get: function() {
 						switch (this.type) {
@@ -164,23 +186,28 @@ define(function() {
 								return true;
 						}
 						return false;
-					}},
+					}
+				},
 				timeStamp: {
 					get: function() {
 						return this._timeStamp;
-					}},
+					}
+				},
 				stopPropagation: {
 					value: function() {
 						this.cancelBubble = true;
-					}},
+					}
+				},
 				preventDefault: {
 					value: function() {
 						this.returnValue = false;
-					}},
+					}
+				},
 				defaultPrevented: {
 					get: function() {
 						return this.returnValue === false;
-					}}
+					}
+				}
 			});
 
 			// interface EventTarget
@@ -226,8 +253,12 @@ define(function() {
 				obj[type + fn] = function() {
 					var e = window.event;
 					e.currentTarget = obj;
-					e.preventDefault = function() { e.returnValue = false; };
-					e.stopPropagation = function() { e.cancelBubble = true; };
+					e.preventDefault = function() {
+						e.returnValue = false;
+					};
+					e.stopPropagation = function() {
+						e.cancelBubble = true;
+					};
 					e.target = e.srcElement;
 					e.timeStamp = Date.now();
 					obj["e" + type + fn].call(this, e);
@@ -252,7 +283,9 @@ define(function() {
 		// Use getRelList(elem) instead of elem.relList() if IE7- support is needed
 		(function() {
 			function DOMTokenListShim(o, p) {
-				function split(s) { return s.length ? s.split(/\s+/g) : []; }
+				function split(s) {
+					return s.length ? s.split(/\s+/g) : [];
+				}
 
 				// NOTE: This does not exactly match the spec.
 				function removeTokenFromString(token, string) {
@@ -265,10 +298,11 @@ define(function() {
 				}
 
 				Object.defineProperties(
-					this,
-					{
+					this, {
 						length: {
-							get: function() { return split(o[p]).length; }
+							get: function() {
+								return split(o[p]).length;
+							}
 						},
 
 						item: {
@@ -281,8 +315,12 @@ define(function() {
 						contains: {
 							value: function(token) {
 								token = String(token);
-								if (token.length === 0) { throw SyntaxError(); }
-								if (/\s/.test(token)) { throw Error("InvalidCharacterError"); }
+								if (token.length === 0) {
+									throw SyntaxError();
+								}
+								if (/\s/.test(token)) {
+									throw Error("InvalidCharacterError");
+								}
 								var tokens = split(o[p]);
 
 								return tokens.indexOf(token) !== -1;
@@ -290,19 +328,25 @@ define(function() {
 						},
 
 						add: {
-							value: function(/*tokens...*/) {
+							value: function( /*tokens...*/ ) {
 								var tokens = Array.prototype.slice.call(arguments).map(String);
-								if (tokens.some(function(token) { return token.length === 0; })) {
+								if (tokens.some(function(token) {
+										return token.length === 0;
+									})) {
 									throw SyntaxError();
 								}
-								if (tokens.some(function(token) { return (/\s/).test(token); })) {
+								if (tokens.some(function(token) {
+										return (/\s/).test(token);
+									})) {
 									throw Error("InvalidCharacterError");
 								}
 
 								try {
 									var underlying_string = o[p];
 									var token_list = split(underlying_string);
-									tokens = tokens.filter(function(token) { return token_list.indexOf(token) === -1; });
+									tokens = tokens.filter(function(token) {
+										return token_list.indexOf(token) === -1;
+									});
 									if (tokens.length === 0) {
 										return;
 									}
@@ -313,18 +357,24 @@ define(function() {
 									o[p] = underlying_string;
 								} finally {
 									var length = split(o[p]).length;
-									if (this.length !== length) { this.length = length; }
+									if (this.length !== length) {
+										this.length = length;
+									}
 								}
 							}
 						},
 
 						remove: {
-							value: function(/*tokens...*/) {
+							value: function( /*tokens...*/ ) {
 								var tokens = Array.prototype.slice.call(arguments).map(String);
-								if (tokens.some(function(token) { return token.length === 0; })) {
+								if (tokens.some(function(token) {
+										return token.length === 0;
+									})) {
 									throw SyntaxError();
 								}
-								if (tokens.some(function(token) { return (/\s/).test(token); })) {
+								if (tokens.some(function(token) {
+										return (/\s/).test(token);
+									})) {
 									throw Error("InvalidCharacterError");
 								}
 
@@ -336,7 +386,9 @@ define(function() {
 									o[p] = underlying_string;
 								} finally {
 									var length = split(o[p]).length;
-									if (this.length !== length) { this.length = length; }
+									if (this.length !== length) {
+										this.length = length;
+									}
 								}
 							}
 						},
@@ -345,8 +397,12 @@ define(function() {
 							value: function(token, force) {
 								try {
 									token = String(token);
-									if (token.length === 0) { throw SyntaxError(); }
-									if (/\s/.test(token)) { throw Error("InvalidCharacterError"); }
+									if (token.length === 0) {
+										throw SyntaxError();
+									}
+									if (/\s/.test(token)) {
+										throw Error("InvalidCharacterError");
+									}
 									var tokens = split(o[p]),
 										index = tokens.indexOf(token);
 
@@ -366,7 +422,9 @@ define(function() {
 									return true;
 								} finally {
 									var length = split(o[p]).length;
-									if (this.length !== length) { this.length = length; }
+									if (this.length !== length) {
+										this.length = length;
+									}
 								}
 							}
 						},
@@ -384,7 +442,11 @@ define(function() {
 					// If they are, shim in index getters (up to 100)
 					for (var i = 0; i < 100; ++i) {
 						Object.defineProperty(this, String(i), {
-							get: (function(n) { return function() { return this.item(n); }; }(i))
+							get: (function(n) {
+								return function() {
+									return this.item(n);
+								};
+							}(i))
 						});
 					}
 				}
@@ -392,27 +454,41 @@ define(function() {
 
 			function addToElementPrototype(p, f) {
 				if ('Element' in global && Element.prototype && Object.defineProperty) {
-					Object.defineProperty(Element.prototype, p, { get: f });
+					Object.defineProperty(Element.prototype, p, {
+						get: f
+					});
 				}
 			}
 
 			// HTML - https://html.spec.whatwg.org
 			// Element.classList
 			if ('classList' in document.createElement('span')) {
-				window.getClassList = function(elem) { return elem.classList; };
+				window.getClassList = function(elem) {
+					return elem.classList;
+				};
 			} else {
-				window.getClassList = function(elem) { return new DOMTokenListShim(elem, 'className'); };
-				addToElementPrototype('classList', function() { return new DOMTokenListShim(this, 'className'); } );
+				window.getClassList = function(elem) {
+					return new DOMTokenListShim(elem, 'className');
+				};
+				addToElementPrototype('classList', function() {
+					return new DOMTokenListShim(this, 'className');
+				});
 			}
 
 			// HTML - https://html.spec.whatwg.org
 			// HTMLAnchorElement.relList
 			// HTMLLinkElement.relList
 			if ('relList' in document.createElement('link')) {
-				window.getRelList = function(elem) { return elem.relList; };
+				window.getRelList = function(elem) {
+					return elem.relList;
+				};
 			} else {
-				window.getRelList = function(elem) { return new DOMTokenListShim(elem, 'rel'); };
-				addToElementPrototype('relList', function() { return new DOMTokenListShim(this, 'rel'); } );
+				window.getRelList = function(elem) {
+					return new DOMTokenListShim(elem, 'rel');
+				};
+				addToElementPrototype('relList', function() {
+					return new DOMTokenListShim(this, 'rel');
+				});
 			}
 
 			// DOM - Interface NonDocumentTypeChildNode
@@ -466,10 +542,10 @@ define(function() {
 		}
 	}(self));
 
-	function query(selector) {
+	function DOM(selector, context) {
 		var s = selector,
 			doc = document;
 		return doc.querySelectorAll(s);
 	}
-	return query;
+	return DOM;
 });

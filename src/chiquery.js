@@ -2,10 +2,20 @@ require.config({
 	baseUrl: '.'
 });
 
-// define([
-//], function(chiQuery));
+define([
+	'unit/core'
+], function(chiQuery) {
 
-require(['unit/core/DOM'], function(query) {
-	var els = query('.test');
+	"use strict";
+
+	// Start TEST
+
+	console.log(chiQuery);
+	var els = chiQuery('.test');
 	console.log(els);
+
+	// End TEST
+
+	return (window.chiQuery = window.$ = chiQuery);
+
 });
