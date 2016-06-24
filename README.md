@@ -1,6 +1,6 @@
-# Imitation jQuery
+# chiQuery
 
-> 제이쿼리 만들기 스터디 <del>(짝퉁 제이쿼리)</del>
+> 제이쿼리 만들기 스터디 <del>치커리</del> <del>짝퉁 제이쿼리</del>
 
 ## Installation
 
