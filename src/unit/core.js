@@ -1,6 +1,7 @@
 define([
-	"./core/DOM"
-], function(DOM) {
+	"./core/DOM",
+	"./core/event"
+], function(DOM, event) {
 
 	"use strict";
 
@@ -89,6 +90,7 @@ define([
 
 	chiQuery.extend({
 		DOM: function(selector, context) {
+			return DOM(selector, context);
 		},
 		each: function() {
 			var obj = 'test';
