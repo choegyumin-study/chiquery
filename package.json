@@ -1,0 +1,24 @@
+{
+  "name": "imitation-jquery",
+  "version": "0.1.0",
+  "description": " 제이쿼리 만들기 스터디 (짝퉁 제이쿼리)",
+  "main": "index.js",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-mocha": "^2.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/choi4450-study/imitation-jquery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/choi4450-study/imitation-jquery/issues"
+  },
+  "homepage": "https://github.com/choi4450-study/imitation-jquery#readme"
+}
