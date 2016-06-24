@@ -7,6 +7,7 @@ var fs = require('fs'),
 	del = require('del'),
 	babel = require('gulp-babel'),
 	concat = require('gulp-concat'),
+	connect = require('gulp-connect'),
 	jsdoc = require('gulp-jsdoc3'),
 	mocha = require('gulp-mocha'),
 	gulpsync = require('gulp-sync')(gulp),
@@ -82,12 +83,20 @@ gulp.task('build', function () {
 		.pipe(gulp.dest('dist/'));
 });
 
+// Configure task for create server
+gulp.task('connect', function() {
+	connect.server({
+		port: 1337,
+		root: 'src/'
+	});
+});
+
 gulp.task('watch', gulpsync.sync([
 	['js:watch']
 ]));
 
 gulp.task('serve', gulpsync.sync([
-	'js', ['watch']
+	'js', ['connect', 'watch']
 ]));
 
 gulp.task('default', ['serve']);
