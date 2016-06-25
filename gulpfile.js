@@ -13,7 +13,7 @@ var fs = require('fs'),
 	requirejsOptimize = require('gulp-requirejs-optimize'),
 	gulpsync = require('gulp-sync')(gulp),
 	uglify = require('gulp-uglify'),
-	util = require('gulp-util');
+	gutil = require('gulp-util');
 
 // Get Data of package.json
 //var packageJson = JSON.parse(fs.readFileSync('package.json'));
@@ -90,7 +90,6 @@ gulp.task('build', function() {
 	// 	.pipe(gulp.dest('dist/'));
 });
 
-// Configure task for create server
 gulp.task('connect', function() {
 	connect.server({
 		port: 1337,
