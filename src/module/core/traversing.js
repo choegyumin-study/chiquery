@@ -4,8 +4,6 @@ define(function() {
 		if (!('window' in global && 'document' in global))
 			return;
 
-
-
 	}(self));
 
 	var modules = {};

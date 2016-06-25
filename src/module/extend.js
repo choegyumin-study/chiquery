@@ -5,5 +5,4 @@ define([
 
 	"use strict";
 
-	
 });

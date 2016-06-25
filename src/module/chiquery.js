@@ -8,7 +8,5 @@ define([
 
 	"use strict";
 
-	console.log('chiquery');
-
 	return (window.chiQuery = window.$ = chiQuery);
 });
