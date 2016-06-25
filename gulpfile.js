@@ -62,7 +62,7 @@ var fs = require('fs'),
 // 	}, timer);
 // };
 
-gulp.task('scripts', function () {
+gulp.task('scripts', function() {
 	return gulp.src('src/module/chiquery.js')
 		.pipe(requirejsOptimize({
 			optimize: 'none',
@@ -81,7 +81,7 @@ gulp.task('scripts:watch', function() {
 	return gulp.watch(['src/module/**/*.js'], ['scripts']);
 });
 
-gulp.task('build', function () {
+gulp.task('build', function() {
 	// gulp.src('src/chiquery.js')
 	// 	.pipe(gulp.dest('dist/'));
 	// return gulp.src('src/chiquery.js')
