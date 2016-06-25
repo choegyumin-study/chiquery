@@ -3,7 +3,8 @@
 // });
 
 define([
-	'./core'
+	'./core',
+	'./extend'
 ], function(chiQuery) {
 
 	"use strict";
