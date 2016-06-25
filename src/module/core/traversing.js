@@ -4,11 +4,11 @@ define(function() {
 		if (!('window' in global && 'document' in global))
 			return;
 
-		
+
 
 	}(self));
 
-	var module = {};
+	var modules = {};
 
-	return module;
+	return modules;
 });

@@ -115,11 +115,11 @@ define(function() {
 
 	}(self));
 
-	var module = {};
+	var modules = {};
 
-	module.init = function(selector, context) {
+	modules.init = function(selector, context) {
 		context = context || document;
 		return context.querySelectorAll(selector);
 	}
-	return module;
+	return modules;
 });

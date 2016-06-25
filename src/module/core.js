@@ -1,7 +1,7 @@
 define([
 	"./core/selector",
 	"./core/traversing"
-], function(module_selector, module_traversing) {
+], function(core_selector, core_traversing) {
 
 	"use strict";
 
@@ -91,7 +91,7 @@ define([
 
 	chiQuery.extend({
 		selector: function(selector, context) {
-			return module_selector.init(selector, context);
+			return core_selector.init(selector, context);
 		},
 		each: function(obj, callback) {
 			var length, i = 0;

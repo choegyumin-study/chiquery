@@ -189,8 +189,7 @@ define(function() {
 		};
 	}(self));
 
-	function event() {
-		return;
-	}
-	return event;
+	var modules = {};
+
+	return modules;
 });

@@ -243,7 +243,7 @@ define(function() {
 
 	}(self));
 
-	var module = {};
+	var modules = {};
 
-	return module;
+	return modules;
 });
