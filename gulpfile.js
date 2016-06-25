@@ -63,15 +63,15 @@ var fs = require('fs'),
 // };
 
 gulp.task('scripts', function () {
-	return gulp.src('src/chiquery.js')
+	return gulp.src('src/module/chiquery.js')
 		.pipe(requirejsOptimize())
-		.pipe(gulp.dest('dist'));
+		.pipe(gulp.dest('src/'));
 	// return gulp.src('src/chiquery.js')
 	// 	.pipe(jsdoc('./doc'));
 });
 
 gulp.task('scripts:watch', function() {
-	return gulp.watch(['src/unit/**/*.js'], ['scripts']);
+	return gulp.watch(['src/module/**/*.js'], ['scripts']);
 });
 
 gulp.task('build', function () {
