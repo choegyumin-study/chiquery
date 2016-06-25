@@ -1,7 +1,7 @@
 define([
-	"./core/DOM",
-	"./core/event"
-], function(DOM, event) {
+	"./core/selector",
+	"./core/traversing"
+], function(module_selector, module_traversing) {
 
 	"use strict";
 
@@ -12,7 +12,7 @@ define([
 	chiQuery.fn = chiQuery.prototype = {
 		constructor: chiQuery,
 		init: function(selector, context) {
-			return chiQuery.DOM(selector, context);
+			return chiQuery.selector(selector, context);
 		},
 		each: function(callback) {
 			return chiQuery.each(this, callback);
@@ -89,8 +89,8 @@ define([
 	};
 
 	chiQuery.extend({
-		DOM: function(selector, context) {
-			return DOM(selector, context);
+		selector: function(selector, context) {
+			return module_selector.init(selector, context);
 		},
 		each: function() {
 			var obj = 'test';

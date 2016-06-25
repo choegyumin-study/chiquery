@@ -3,7 +3,7 @@ require.config({
 });
 
 define([
-	'unit/core'
+	'module/core'
 ], function(chiQuery) {
 
 	"use strict";

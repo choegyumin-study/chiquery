@@ -5,15 +5,6 @@
 ### Core
 
 - Selectors
-  - Attribute
-  - Basic
-  - Basic Filter
-  - Child Filter
-  - Content Filter
-  - Form
-  - Hierarchy
-  - jQuery Extensions
-  - Visibility Filter
 - Traversing
   - Filtering
   - Miscellaneous Traversing

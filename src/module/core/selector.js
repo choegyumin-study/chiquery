@@ -351,10 +351,11 @@ define(function() {
 		}
 	}(self));
 
-	function DOM(selector, context) {
-		var s = selector,
-			doc = document;
-		return doc.querySelectorAll(s);
+	var module = {};
+
+	module.init = function(selector, context) {
+		context = context || document;
+		return context.querySelectorAll(selector);
 	}
-	return DOM;
+	return module;
 });
