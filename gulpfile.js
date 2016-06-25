@@ -64,7 +64,10 @@ var fs = require('fs'),
 
 gulp.task('scripts', function () {
 	return gulp.src('src/module/chiquery.js')
-		.pipe(requirejsOptimize())
+		.pipe(requirejsOptimize({
+			optimize: 'none',
+			useStrict: true
+		}))
 		.pipe(gulp.dest('src/'));
 	// return gulp.src('src/chiquery.js')
 	// 	.pipe(jsdoc('./doc'));
