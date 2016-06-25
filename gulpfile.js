@@ -7,7 +7,6 @@ var fs = require('fs'),
 	del = require('del'),
 	Amdclean = require('gulp-amdclean'),
 	babel = require('gulp-babel'),
-	concat = require('gulp-concat'),
 	connect = require('gulp-connect'),
 	jsdoc = require('gulp-jsdoc3'),
 	mocha = require('gulp-mocha'),
@@ -68,12 +67,10 @@ gulp.task('scripts', function () {
 		.pipe(requirejsOptimize({
 			optimize: 'none',
 			useStrict: true,
-			out: 'chiquery-built.js',
-			wrap: true
+			out: 'chiquery-built.js'
 		}))
 		.pipe(Amdclean.gulp({
 			'prefixMode': 'standard'
-			// some other options
 		}))
 		.pipe(gulp.dest('src/'));
 	// return gulp.src('src/chiquery.js')
