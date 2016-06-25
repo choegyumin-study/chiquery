@@ -10,6 +10,7 @@ var fs = require('fs'),
 	connect = require('gulp-connect'),
 	jsdoc = require('gulp-jsdoc3'),
 	mocha = require('gulp-mocha'),
+	requirejsOptimize = require('gulp-requirejs-optimize'),
 	gulpsync = require('gulp-sync')(gulp),
 	uglify = require('gulp-uglify'),
 	util = require('gulp-util');
@@ -61,26 +62,25 @@ var fs = require('fs'),
 // 	}, timer);
 // };
 
-gulp.task('js', function () {
-	return gulp.src('src/unit/*.js')
-		.pipe(uglify())
-		.pipe(concat('imitation-jquery.js'))
-		.pipe(gulp.dest('src/'));
-	// return gulp.src('src/imitation-jquery.js')
+gulp.task('scripts', function () {
+	return gulp.src('src/chiquery.js')
+		.pipe(requirejsOptimize())
+		.pipe(gulp.dest('dist'));
+	// return gulp.src('src/chiquery.js')
 	// 	.pipe(jsdoc('./doc'));
 });
 
-gulp.task('js:watch', function() {
-	return gulp.watch(['src/unit/**/*.js'], ['js']);
+gulp.task('scripts:watch', function() {
+	return gulp.watch(['src/unit/**/*.js'], ['scripts']);
 });
 
 gulp.task('build', function () {
-	gulp.src('src/imitation-jquery.js')
-		.pipe(gulp.dest('dist/'));
-	return gulp.src('src/imitation-jquery.js')
-		.pipe(uglify())
-		.pipe(concat('imitation-jquery.min.js'))
-		.pipe(gulp.dest('dist/'));
+	// gulp.src('src/chiquery.js')
+	// 	.pipe(gulp.dest('dist/'));
+	// return gulp.src('src/chiquery.js')
+	// 	.pipe(uglify())
+	// 	.pipe(concat('chiquery.min.js'))
+	// 	.pipe(gulp.dest('dist/'));
 });
 
 // Configure task for create server
@@ -92,11 +92,11 @@ gulp.task('connect', function() {
 });
 
 gulp.task('watch', gulpsync.sync([
-	['js:watch']
+	['scripts:watch']
 ]));
 
 gulp.task('serve', gulpsync.sync([
-	'js', ['connect', 'watch']
+	'scripts', ['connect', 'watch']
 ]));
 
 gulp.task('default', ['serve']);
