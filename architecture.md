@@ -2,6 +2,26 @@
 
 ## API
 
+### Core
+
+- Selectors
+  - Attribute
+  - Basic
+  - Basic Filter
+  - Child Filter
+  - Content Filter
+  - Form
+  - Hierarchy
+  - jQuery Extensions
+  - Visibility Filter
+- Traversing
+  - Filtering
+  - Miscellaneous Traversing
+  - Tree Traversal
+  - Utilities
+
+### Extend
+
 - Ajax
   - Global Ajax Event Handlers
   - Helper Functions
@@ -50,18 +70,3 @@
   - Properties of jQuery Object Instances
   - Properties of the Global jQuery Object
 - Removed
-- Selectors
-  - Attribute
-  - Basic
-  - Basic Filter
-  - Child Filter
-  - Content Filter
-  - Form
-  - Hierarchy
-  - jQuery Extensions
-  - Visibility Filter
-- Traversing
-  - Filtering
-  - Miscellaneous Traversing
-  - Tree Traversal
-  - Utilities
