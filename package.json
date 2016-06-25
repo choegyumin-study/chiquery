@@ -1,5 +1,5 @@
 {
-  "name": "imitation-jquery",
+  "name": "chiquery",
   "version": "0.1.0",
   "description": " 제이쿼리 만들기 스터디 (짝퉁 제이쿼리)",
   "main": "index.js",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/choi4450-study/imitation-jquery.git"
+    "url": "git+https://github.com/choi4450-study/chiquery.git"
   },
   "author": "",
   "license": "ISC",

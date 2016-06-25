@@ -63,10 +63,16 @@ var fs = require('fs'),
 // };
 
 gulp.task('scripts', function () {
+	del(['src/chiquery.js']);
 	return gulp.src('src/module/chiquery.js')
-		.pipe(requirejsOptimize({
-			optimize: 'none',
-			useStrict: true
+		.pipe(requirejsOptimize(function(file) {
+			return {
+				name: 'bower_components/almond/almond',
+				optimize: 'none',
+				useStrict: true,
+				baseUrl: '.',
+				include: 'src/' + file.relative
+			};
 		}))
 		.pipe(gulp.dest('src/'));
 	// return gulp.src('src/chiquery.js')
