@@ -5,6 +5,7 @@ var fs = require('fs'),
 	path = require('path'),
 	gulp = require('gulp'),
 	del = require('del'),
+	Amdclean = require('gulp-amdclean'),
 	babel = require('gulp-babel'),
 	concat = require('gulp-concat'),
 	connect = require('gulp-connect'),
@@ -67,10 +68,12 @@ gulp.task('scripts', function () {
 		.pipe(requirejsOptimize({
 			optimize: 'none',
 			useStrict: true,
-			baseUrl: '.',
-			out: 'chiquery.js',
-			include: ['bower_components/almond/almond', 'src/module/chiquery'],
+			out: 'chiquery-built.js',
 			wrap: true
+		}))
+		.pipe(Amdclean.gulp({
+			'prefixMode': 'standard'
+			// some other options
 		}))
 		.pipe(gulp.dest('src/'));
 	// return gulp.src('src/chiquery.js')

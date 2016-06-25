@@ -1,6 +1,6 @@
-require.config({
-	baseUrl: '.'
-});
+// require.config({
+// 	baseUrl: '.'
+// });
 
 define([
 	'./core',
