@@ -33,5 +33,5 @@ $RECYCLE.BIN/
 
 .publish/
 dist/
-src/**/reports
+reports/
 src/chiquery*.js

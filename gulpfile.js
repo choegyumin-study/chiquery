@@ -63,24 +63,15 @@ var fs = require('fs'),
 // 	}, timer);
 // };
 
-gulp.task('lint', function() {
-	return gulp.src('src/**/*.js')
-		.pipe(eslint())
-		.pipe(eslint.format())
-		.pipe(eslint.format('html', function(results) {
-			fs.access('src/modules/reports/', fs.R_OK | fs.W_OK, function(err) {
-				if (err) fs.mkdir('src/modules/reports/');
-				fs.writeFile('src/modules/reports/eslint.html', results);
-			});
-		}));
-});
-
 gulp.task('scripts', function() {
 	return gulp.src('src/modules/chiquery.js')
 		.pipe(requirejsOptimize({
 			optimize: 'none',
 			useStrict: true,
 			out: 'chiquery-built.js'
+		}))
+		.pipe(babel({
+			presets: ['es2015']
 		}))
 		.pipe(Amdclean.gulp({
 			'prefixMode': 'standard'
@@ -111,6 +102,27 @@ gulp.task('connect', function() {
 		root: 'src/'
 	});
 });
+
+gulp.task('lint', function() {
+	return gulp.src('src/**/*.js')
+		.pipe(eslint())
+		.pipe(eslint.format())
+		.pipe(eslint.format('html', function(results) {
+			fs.access('reports/', fs.R_OK | fs.W_OK, function(err) {
+				if (err) fs.mkdir('reports/');
+				fs.writeFile('reports/eslint.html', results);
+			});
+		}));
+});
+
+gulp.task('doc', function (cb) {
+	return gulp.src(['README.md', 'src/**/*.js'], {read: false})
+		.pipe(jsdoc(cb));
+});
+
+gulp.task('report', gulpsync.sync([
+	['lint', 'doc']
+]));
 
 gulp.task('watch', gulpsync.sync([
 	['scripts:watch']

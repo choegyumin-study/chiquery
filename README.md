@@ -12,6 +12,6 @@ You do need to have a couple of other things installed first:
 If your computer already has these, congratulations! Just install Node modules with npm:
 
 ```shell
-npm install -g babel-cli gulp-cli
+npm install -g gulp-cli
 npm install --save-dev
 ```

@@ -4,6 +4,7 @@
   "description": " 제이쿼리 만들기 스터디 (짝퉁 제이쿼리)",
   "main": "index.js",
   "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
     "del": "^2.2.1",
     "gulp": "^3.9.1",
     "gulp-amdclean": "^1.1.1",
