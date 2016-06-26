@@ -92,25 +92,8 @@ define([
 		selector: function(selector, context) {
 			return core_selector.init(selector, context);
 		},
-		each: function(obj, callback) {
-			var length, i = 0;
-
-			if (isArrayLike(obj)) {
-				length = obj.length;
-				for (; i < length; i++) {
-					if (callback.call(obj[i], i, obj[i]) === false) {
-						break;
-					}
-				}
-			} else {
-				for (i in obj) {
-					if (callback.call(obj[i], i, obj[i]) === false) {
-						break;
-					}
-				}
-			}
-
-			return obj;
+		each: function(elements, callback) {
+			return core_traversing.each(elements, callback);
 		}
 	});
 

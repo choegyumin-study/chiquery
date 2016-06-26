@@ -123,5 +123,6 @@ define(function() {
 		context = context || document;
 		return context.querySelectorAll(selector);
 	};
+
 	return modules;
 });
