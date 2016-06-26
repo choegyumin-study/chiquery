@@ -7,6 +7,7 @@ var fs = require('fs'),
 	del = require('del'),
 	Amdclean = require('gulp-amdclean'),
 	babel = require('gulp-babel'),
+	concat = require('gulp-concat'),
 	connect = require('gulp-connect'),
 	eslint = require('gulp-eslint'),
 	jsdoc = require('gulp-jsdoc3'),
@@ -67,7 +68,7 @@ gulp.task('scripts', function() {
 		.pipe(requirejsOptimize({
 			optimize: 'none',
 			useStrict: true,
-			out: 'chiquery-built.js'
+			out: 'chiquery-compiled.js'
 		}))
 		.pipe(babel({
 			presets: ['es2015']
@@ -76,23 +77,25 @@ gulp.task('scripts', function() {
 			'prefixMode': 'standard'
 		}))
 		.pipe(gulp.dest('src/'));
-	// return gulp.src('src/chiquery.js')
-	// 	.pipe(jsdoc('./doc'));
 });
 
 gulp.task('scripts:watch', function() {
 	return gulp.watch(['src/modules/**/*.js'], ['scripts']);
 });
 
+gulp.task('scripts:clean', function() {
+	return del(['src/chiquery-compiled.js']);
+});
+
 gulp.task('build', gulpsync.sync([
-	'scripts', 'lint'
+	'scripts', 'report'
 ]), function() {
-	// gulp.src('src/chiquery.js')
-	// 	.pipe(gulp.dest('dist/'));
-	// return gulp.src('src/chiquery.js')
-	// 	.pipe(uglify())
-	// 	.pipe(concat('chiquery.min.js'))
-	// 	.pipe(gulp.dest('dist/'));
+	return gulp.src('src/chiquery-compiled.js')
+		.pipe(concat('chiquery.js'))
+		.pipe(gulp.dest('dist/'))
+		.pipe(uglify())
+		.pipe(concat('chiquery.min.js'))
+		.pipe(gulp.dest('dist/'));
 });
 
 gulp.task('connect', function() {
@@ -107,12 +110,16 @@ gulp.task('lint', function() {
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(eslint.format('html', function(results) {
-			fs.access('report/eslint/', fs.R_OK | fs.W_OK, function(err) {
-				if (err) fs.mkdir('report/eslint/');
-				fs.writeFile('report/eslint/index.html', results);
+			fs.access('report/', fs.R_OK | fs.W_OK, function(err) {
+				if (err) fs.mkdir('report/');
+				fs.access('report/lint/', fs.R_OK | fs.W_OK, function(err) {
+					if (err) fs.mkdir('report/lint/');
+					fs.writeFile('report/lint/index.html', results);
+				});
 			});
 		}));
 });
+
 
 gulp.task('doc', function () {
 	return gulp.src('src/*/**/*.js', {read: false})
@@ -121,6 +128,10 @@ gulp.task('doc', function () {
 				'destination': 'report/doc/'
 			}
 		}));
+});
+
+gulp.task('clean', ['scripts:clean'], function() {
+	return del(['.publish/', 'dist/', 'report/']);
 });
 
 gulp.task('report', gulpsync.sync([
