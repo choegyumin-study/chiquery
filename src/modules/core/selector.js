@@ -1,5 +1,7 @@
 define(function() {
 
+	"use strict";
+
 	(function(global) {
 		if (!('window' in global && 'document' in global))
 			return;
@@ -50,8 +52,8 @@ define(function() {
 		// Node interface constants
 		// Needed for: IE8-
 		global.Node = global.Node || function() {
-				throw TypeError("Illegal constructor");
-			};
+			throw TypeError("Illegal constructor");
+		};
 		Node.ELEMENT_NODE = 1;
 		Node.ATTRIBUTE_NODE = 2;
 		Node.TEXT_NODE = 3;
@@ -68,8 +70,8 @@ define(function() {
 		// DOMException constants
 		// Needed for: IE8-
 		global.DOMException = global.DOMException || function() {
-				throw TypeError("Illegal constructor");
-			};
+			throw TypeError("Illegal constructor");
+		};
 		DOMException.INDEX_SIZE_ERR = 1;
 		DOMException.DOMSTRING_SIZE_ERR = 2;
 		DOMException.HIERARCHY_REQUEST_ERR = 3;
@@ -120,6 +122,6 @@ define(function() {
 	modules.init = function(selector, context) {
 		context = context || document;
 		return context.querySelectorAll(selector);
-	}
+	};
 	return modules;
 });

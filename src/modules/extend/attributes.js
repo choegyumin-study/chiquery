@@ -1,5 +1,7 @@
 define(function() {
 
+	"use strict";
+
 	(function(global) {
 		if (!('window' in global && 'document' in global))
 			return;
@@ -58,13 +60,13 @@ define(function() {
 							value: function( /*tokens...*/ ) {
 								var tokens = Array.prototype.slice.call(arguments).map(String);
 								if (tokens.some(function(token) {
-										return token.length === 0;
-									})) {
+									return token.length === 0;
+								})) {
 									throw SyntaxError();
 								}
 								if (tokens.some(function(token) {
-										return (/\s/).test(token);
-									})) {
+									return (/\s/).test(token);
+								})) {
 									throw Error("InvalidCharacterError");
 								}
 
@@ -95,13 +97,13 @@ define(function() {
 							value: function( /*tokens...*/ ) {
 								var tokens = Array.prototype.slice.call(arguments).map(String);
 								if (tokens.some(function(token) {
-										return token.length === 0;
-									})) {
+									return token.length === 0;
+								})) {
 									throw SyntaxError();
 								}
 								if (tokens.some(function(token) {
-										return (/\s/).test(token);
-									})) {
+									return (/\s/).test(token);
+								})) {
 									throw Error("InvalidCharacterError");
 								}
 

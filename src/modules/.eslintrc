@@ -9,16 +9,41 @@
 		"chiQuery": true
 	},
 	"rules": {
-		"indent": ["error", "tab"],
-		"linebreak-style": ["error", "unix"],
-		"quotes": ["error", "single"],
-		"semi": ["error", "always"],
-
-		"comma-dangle": ["error", "always"],
-		"no-cond-assign": ["error", "always"],
-
-		"no-console": "off",
-
-		"strict": ["error", "function"]
+		"strict": [
+			"error",
+			"function"
+		],
+		"indent": [
+			"error",
+			"tab",
+			{
+				"SwitchCase": 1
+			}
+		],
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+//		"quotes": [
+//			"error",
+//			"single"
+//		],
+		"semi": [
+			"error",
+			"always"
+		],
+		"comma-dangle": [
+			"error",
+			"never"
+		],
+		"no-console": [
+			"error",
+			{
+				"allow": [
+					"warn",
+					"error"
+				]
+			}
+		]
 	}
 }
