@@ -108,8 +108,10 @@ gulp.task('lint', function() {
 		}));
 });
 
-gulp.task('doc', function () {
-	return gulp.src('src/*/**/*.js', {read: false})
+gulp.task('doc', function() {
+	return gulp.src('src/*/**/*.js', {
+		read: false
+	})
 		.pipe(jsdoc({
 			'opts': {
 				'destination': 'report/doc/'
