@@ -3,9 +3,10 @@
 // });
 
 define([
+	'./tool',
 	'./core',
 	'./extend'
-], function(chiQuery) {
+], function(tool, chiQuery) { // 설계축소
 
 	"use strict";
 

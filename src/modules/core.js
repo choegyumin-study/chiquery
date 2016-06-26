@@ -1,7 +1,6 @@
 define([
-	"./core/selector",
 	"./core/traversing"
-], function(core_selector, core_traversing) {
+], function(core_traversing) {
 
 	"use strict";
 
@@ -12,7 +11,13 @@ define([
 	chiQuery.fn = chiQuery.prototype = {
 		constructor: chiQuery,
 		init: function(selector, context) {
-			return chiQuery.selector(selector, context);
+			context = context || document;
+			var nodes = context.querySelectorAll(selector);
+			for (var i = 0; i < nodes.length; i++) {
+				this[i] = nodes[i];
+			}
+			this.length = nodes.length;
+			return this;
 		},
 		each: function(callback) {
 			return chiQuery.each(this, callback);
@@ -91,9 +96,6 @@ define([
 	};
 
 	chiQuery.extend({
-		selector: function(selector, context) {
-			return core_selector.init(selector, context);
-		},
 		each: function(elements, callback) {
 			return core_traversing.each(elements, callback);
 		}
