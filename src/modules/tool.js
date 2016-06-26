@@ -1,3 +1,0 @@
-define([
-	"./tool/polyfill"
-]);
