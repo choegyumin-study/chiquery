@@ -5,11 +5,13 @@ var fs = require('fs'),
 	path = require('path'),
 	gulp = require('gulp'),
 	del = require('del'),
+	gitRev = require('git-rev-sync'),
 	Amdclean = require('gulp-amdclean'),
 	babel = require('gulp-babel'),
 	concat = require('gulp-concat'),
 	connect = require('gulp-connect'),
 	eslint = require('gulp-eslint'),
+	deploy = require('gulp-gh-pages'),
 	jsdoc = require('gulp-jsdoc3'),
 	requirejsOptimize = require('gulp-requirejs-optimize'),
 	gulpsync = require('gulp-sync')(gulp),
@@ -17,10 +19,7 @@ var fs = require('fs'),
 	gutil = require('gulp-util');
 
 // Get Data of package.json
-//var packageJson = JSON.parse(fs.readFileSync('package.json'));
-
-// Define RegExp
-//var REGEXP = {};
+var packageJson = JSON.parse(fs.readFileSync('package.json'));
 
 // Function of get file names in a directory
 //function walkSync(currentDirPath, getExtension, callback) {
@@ -87,17 +86,6 @@ gulp.task('scripts:clean', function() {
 	return del(['src/chiquery-compiled.js']);
 });
 
-gulp.task('build', gulpsync.sync([
-	'scripts', 'report'
-]), function() {
-	return gulp.src('src/chiquery-compiled.js')
-		.pipe(concat('chiquery.js'))
-		.pipe(gulp.dest('dist/'))
-		.pipe(uglify())
-		.pipe(concat('chiquery.min.js'))
-		.pipe(gulp.dest('dist/'));
-});
-
 gulp.task('connect', function() {
 	connect.server({
 		port: 1337,
@@ -120,7 +108,6 @@ gulp.task('lint', function() {
 		}));
 });
 
-
 gulp.task('doc', function () {
 	return gulp.src('src/*/**/*.js', {read: false})
 		.pipe(jsdoc({
@@ -130,7 +117,41 @@ gulp.task('doc', function () {
 		}));
 });
 
-gulp.task('clean', ['scripts:clean'], function() {
+gulp.task('build', gulpsync.sync([
+	'scripts', 'report'
+]), function() {
+	return gulp.src('src/chiquery-compiled.js')
+		.pipe(concat('chiquery.js'))
+		.pipe(gulp.dest('dist/'))
+		.pipe(uglify())
+		.pipe(concat('chiquery.min.js'))
+		.pipe(gulp.dest('dist/'));
+});
+
+gulp.task('build:rebuild', gulpsync.sync([
+	'clean', 'build'
+]));
+gulp.task('deploy', function() {
+	var publishDir = 'dist/',
+		repoUrl = packageJson.repository.url,
+		branchName = 'dist/' + gitRev.branch();
+	return gulp.src(publishDir + '**/*')
+		.on('end', function() {
+			console.log('Push commits to origin:' + branchName);
+		})
+		.pipe(deploy({
+			remoteUrl: repoUrl,
+			branch: branchName
+		}));
+});
+
+gulp.task('deploy:build', gulpsync.sync([
+	'build:rebuild', 'deploy'
+]));
+
+gulp.task('clean', gulpsync.sync([
+	'scripts:clean'
+]), function() {
 	return del(['.publish/', 'dist/', 'report/']);
 });
 
