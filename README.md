@@ -20,6 +20,16 @@ npm install -g gulp-cli
 npm install --save-dev
 ```
 
+## API
+
+### Core
+
+#### Traversing
+
+- each
+
+### Extend
+
 ## Architecture
 
 ### Core
