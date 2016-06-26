@@ -8,6 +8,7 @@ var fs = require('fs'),
 	gitRev = require('git-rev-sync'),
 	Amdclean = require('gulp-amdclean'),
 	babel = require('gulp-babel'),
+	beautify = require('gulp-beautify'),
 	concat = require('gulp-concat'),
 	connect = require('gulp-connect'),
 	eslint = require('gulp-eslint'),
@@ -113,8 +114,8 @@ gulp.task('doc', function() {
 		read: false
 	})
 		.pipe(jsdoc({
-			'opts': {
-				'destination': 'report/doc/'
+			opts: {
+				destination: 'report/doc/'
 			}
 		}));
 });
@@ -123,9 +124,19 @@ gulp.task('build', gulpsync.sync([
 	'scripts', 'report'
 ]), function() {
 	return gulp.src('src/chiquery-compiled.js')
+		.pipe(beautify({
+			indent_size: 2,
+			indent_char: ' ',
+			eol: '\n',
+			indent_level: 0,
+			indent_with_tabs: false,
+			end_with_newline: true
+		}))
 		.pipe(concat('chiquery.js'))
 		.pipe(gulp.dest('dist/'))
-		.pipe(uglify())
+		.pipe(uglify({
+			preserveComments: 'license'
+		}))
 		.pipe(concat('chiquery.min.js'))
 		.pipe(gulp.dest('dist/'));
 });

@@ -10,6 +10,7 @@
     "gulp": "^3.9.1",
     "gulp-amdclean": "^1.1.1",
     "gulp-babel": "^6.1.2",
+    "gulp-beautify": "^2.0.0",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^4.1.0",
     "gulp-eslint": "^2.0.0",

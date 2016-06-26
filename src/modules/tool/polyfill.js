@@ -6,13 +6,6 @@ define(function() {
 		if (!('window' in global && 'document' in global))
 			return;
 
-		//----------------------------------------------------------------------
-		//
-		// DOM
-		// https://dom.spec.whatwg.org/
-		//
-		//----------------------------------------------------------------------
-
 		// Document.querySelectorAll method
 		// http://ajaxian.com/archives/creating-a-queryselector-for-ie-that-runs-at-native-speed
 		// Needed for: IE7-
