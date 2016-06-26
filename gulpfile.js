@@ -8,6 +8,7 @@ var fs = require('fs'),
 	Amdclean = require('gulp-amdclean'),
 	babel = require('gulp-babel'),
 	connect = require('gulp-connect'),
+	eslint = require('gulp-eslint'),
 	jsdoc = require('gulp-jsdoc3'),
 	mocha = require('gulp-mocha'),
 	requirejsOptimize = require('gulp-requirejs-optimize'),
@@ -62,8 +63,20 @@ var fs = require('fs'),
 // 	}, timer);
 // };
 
+gulp.task('lint', function() {
+	return gulp.src('src/**/*.js')
+		.pipe(eslint())
+		.pipe(eslint.format())
+		.pipe(eslint.format(
+			'html',
+			fs.createWriteStream('src/modules/reports/eslint.html', {
+				flags: 'w'
+			})
+		));
+});
+
 gulp.task('scripts', function() {
-	return gulp.src('src/module/chiquery.js')
+	return gulp.src('src/modules/chiquery.js')
 		.pipe(requirejsOptimize({
 			optimize: 'none',
 			useStrict: true,
@@ -78,7 +91,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('scripts:watch', function() {
-	return gulp.watch(['src/module/**/*.js'], ['scripts']);
+	return gulp.watch(['src/modules/**/*.js'], ['scripts']);
 });
 
 gulp.task('build', function() {
