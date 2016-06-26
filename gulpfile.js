@@ -99,7 +99,7 @@ gulp.task('build', gulpsync.sync([
 gulp.task('connect', function() {
 	connect.server({
 		port: 1337,
-		root: 'src/'
+		root: ['src/', 'report/']
 	});
 });
 
