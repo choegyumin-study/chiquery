@@ -108,9 +108,9 @@ gulp.task('lint', function() {
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(eslint.format('html', function(results) {
-			fs.access('reports/eslint/', fs.R_OK | fs.W_OK, function(err) {
-				if (err) fs.mkdir('reports/eslint/');
-				fs.writeFile('reports/eslint/index.html', results);
+			fs.access('report/eslint/', fs.R_OK | fs.W_OK, function(err) {
+				if (err) fs.mkdir('report/eslint/');
+				fs.writeFile('report/eslint/index.html', results);
 			});
 		}));
 });
@@ -119,7 +119,7 @@ gulp.task('doc', function () {
 	return gulp.src('src/*/**/*.js', {read: false})
 		.pipe(jsdoc({
 			'opts': {
-				'destination': 'reports/doc/'
+				'destination': 'report/doc/'
 			}
 		}));
 });
