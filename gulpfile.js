@@ -108,16 +108,20 @@ gulp.task('lint', function() {
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(eslint.format('html', function(results) {
-			fs.access('reports/', fs.R_OK | fs.W_OK, function(err) {
-				if (err) fs.mkdir('reports/');
-				fs.writeFile('reports/eslint.html', results);
+			fs.access('reports/eslint/', fs.R_OK | fs.W_OK, function(err) {
+				if (err) fs.mkdir('reports/eslint/');
+				fs.writeFile('reports/eslint/index.html', results);
 			});
 		}));
 });
 
-gulp.task('doc', function (cb) {
-	return gulp.src(['README.md', 'src/**/*.js'], {read: false})
-		.pipe(jsdoc(cb));
+gulp.task('doc', function () {
+	return gulp.src('src/*/**/*.js', {read: false})
+		.pipe(jsdoc({
+			'opts': {
+				'destination': 'reports/doc/'
+			}
+		}));
 });
 
 gulp.task('report', gulpsync.sync([
