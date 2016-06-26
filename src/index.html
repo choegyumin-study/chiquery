@@ -19,18 +19,20 @@
 </head>
 <body>
 
-<div class="test"></div>
-<div class="test"></div>
-<div class="test"></div>
-<div class="test"></div>
-<div class="test"></div>
+<div class="test idx0"></div>
+<div class="test idx1"></div>
+<div class="test idx2"></div>
+<div class="test idx3"></div>
+<div class="test idx4"></div>
 
 <script>
 	var els = $('.test');
-	console.log(els);
-	 els.each(function(idx) {
-	 	console.log(idx);
-	 });
+		console.log(els);
+		els.each(function(idx) {
+		console.log(idx);
+		console.log(this);
+		if(idx == 1) this.style.display = 'none';
+	});
 </script>
 
 </body>
