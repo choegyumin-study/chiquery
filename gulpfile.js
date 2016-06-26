@@ -67,12 +67,12 @@ gulp.task('lint', function() {
 	return gulp.src('src/**/*.js')
 		.pipe(eslint())
 		.pipe(eslint.format())
-		.pipe(eslint.format(
-			'html',
-			fs.createWriteStream('src/modules/reports/eslint.html', {
-				flags: 'w'
-			})
-		));
+		.pipe(eslint.format('html', function(results) {
+			fs.access('src/modules/reports/', fs.R_OK | fs.W_OK, function(err) {
+				if (err) fs.mkdir('src/modules/reports/');
+				fs.writeFile('src/modules/reports/eslint.html', results);
+			});
+		}));
 });
 
 gulp.task('scripts', function() {
@@ -94,7 +94,9 @@ gulp.task('scripts:watch', function() {
 	return gulp.watch(['src/modules/**/*.js'], ['scripts']);
 });
 
-gulp.task('build', function() {
+gulp.task('build', gulpsync.sync([
+	'scripts', 'lint'
+]), function() {
 	// gulp.src('src/chiquery.js')
 	// 	.pipe(gulp.dest('dist/'));
 	// return gulp.src('src/chiquery.js')
