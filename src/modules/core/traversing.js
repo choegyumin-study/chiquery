@@ -11,22 +11,13 @@ define(function() {
 	var modules = {};
 
 	modules.each = function(elements, callback) {
-		var length, i = 0;
-		if (isArrayLike(obj)) {
-			length = obj.length;
-			for (; i < length; i++) {
-				if (callback.call(obj[i], i, obj[i]) === false) {
-					break;
-				}
+		for (i in elements) {
+			var i = 0;
+			if (callback.call(elements[i], i, elements[i]) === false) {
+				break;
 			}
-		} else {
-			for (i in obj) {
-				if (callback.call(obj[i], i, obj[i]) === false) {
-					break;
-				}
-			}
+			return i;
 		}
-		return i;
 	};
 
 	return modules;

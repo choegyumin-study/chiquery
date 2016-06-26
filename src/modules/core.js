@@ -19,6 +19,8 @@ define([
 		}
 	};
 
+	chiQuery.fn.init.prototype = chiQuery.fn;
+
 	chiQuery.extend = chiQuery.fn.extend = function() {
 		var options, name, src, copy, copyIsArray, clone,
 			target = arguments[0] || {},
