@@ -22,8 +22,8 @@ define([
 	};
 
 	chiQuery.fn = chiQueryNodes.prototype = {
-		each: function(elements, callback) {
-			return core_traversing.each(elements, callback);
+		each: function(callback) {
+			return core_traversing.each(this, callback);
 		}
 	};
 

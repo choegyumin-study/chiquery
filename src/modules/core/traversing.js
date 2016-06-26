@@ -5,14 +5,12 @@ define(function() {
 	var modules = {};
 
 	modules.each = function(elements, callback) {
-		console.log('each');
-		for (i in elements) {
-			var i = 0;
-			if (callback.call(elements[i], i, elements[i]) === false) {
-				break;
-			}
-			return i;
+		var len = elements.length;
+		for (var _i = 0; _i < len; _i++) {
+			var element = elements[_i];
+			callback.call(element, _i, element);
 		}
+		return this;
 	};
 
 	return modules;
