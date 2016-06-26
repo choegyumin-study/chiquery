@@ -154,7 +154,7 @@ gulp.task('deploy:build', gulpsync.sync([
 gulp.task('clean', gulpsync.sync([
 	'scripts:clean'
 ]), function() {
-	return del(['.publish/', 'dist/', 'report/']);
+	return del(['.publish/', 'dist/*', '!dist/README.*', 'report/']);
 });
 
 gulp.task('report', gulpsync.sync([
