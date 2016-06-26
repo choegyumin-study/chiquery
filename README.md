@@ -81,4 +81,3 @@ npm install --save-dev
   - Properties of jQuery Object Instances
   - Properties of the Global jQuery Object
 - Removed
-
