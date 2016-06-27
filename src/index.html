@@ -37,15 +37,15 @@
 	var elements = $('.element');
 	console.log(elements);
 
-	console.log('\r\n.each()');
-	elements.each(function(idx) {
-		console.log(idx, this);
-	});
-
 	console.log('\r\n.get()');
 	console.log(elements.get(0));
 	console.log(elements.get(2));
 	console.log(elements.get(-1));
+
+	console.log('\r\n.each()');
+	elements.each(function(idx) {
+		console.log(idx, this);
+	});
 </script>
 
 </body>

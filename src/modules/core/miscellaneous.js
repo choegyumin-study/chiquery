@@ -7,8 +7,8 @@ export function core_miscellaneous() {
 	modules.get = function(elements, idx) {
 		var len = elements.length,
 			element;
-		if(typeof idx === 'number') {
-			if(idx < 0) idx = len + idx;
+		if (typeof idx === 'number') {
+			if (idx < 0) idx = len + idx;
 			element = elements[idx];
 		} else {
 			element = elements;
