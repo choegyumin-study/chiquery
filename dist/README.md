@@ -12,6 +12,10 @@
 
 #### Traversing
 
-- each
+#### Miscellaneous
+
+- [get](https://api.jquery.com/get/)
+- [index](https://api.jquery.com/index/)
+- [each](https://api.jquery.com/each/)
 
 ### Extend
