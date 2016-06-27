@@ -86,7 +86,7 @@ gulp.task('scripts:watch', function() {
 });
 
 gulp.task('scripts:clean', function() {
-	return del(['src/chiquery.js']);
+	return del(['src/chiquery.js', 'src/chiquery.js.map']);
 });
 
 gulp.task('connect', function() {
