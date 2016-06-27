@@ -18,9 +18,9 @@ var chiQueryNodes = function (selector, context) {
 	// console.log('');
 	// console.log('');
 	// console.log('selector:\r\n', selector);
-	if (typeof selector === "object" && typeof selector.nodeName==="string" && typeof selector.nodeType === "number") {
+	if (typeof selector === "object" && typeof selector.nodeName==="string" && typeof selector.nodeType === "number") { // NodeList
 		nodes = [selector];
-	} else if (typeof selector === 'string') {
+	} else if (typeof selector === 'string') { // String
 		if (selector[0] == "<") {
 			// nodes = [createDOM(selector)]
 		}
