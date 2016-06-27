@@ -3,8 +3,10 @@
 import {tool_polyfill} from './tool/polyfill.js';
 import {tool_variable} from './tool/variable.js';
 import {tool_function} from './tool/function.js';
+
 import {core_miscellaneous} from './core/miscellaneous.js';
 import {core_traversing} from './core/traversing.js';
+
 import {pod_attribute} from './pod/attribute.js';
 import {pod_event} from './pod/event.js';
 
@@ -43,14 +45,14 @@ var chiQueryNodes = function (selector, context) {
 };
 
 chiQuery.fn = chiQueryNodes.prototype = {
+	each: function (callback) {
+		return core_miscellaneous().each(this, callback);
+	},
 	get: function (idx) {
 		return core_miscellaneous().get(this, idx);
 	},
 	index: function(element) {
 		return core_miscellaneous().index(this, element);
-	},
-	each: function (callback) {
-		return core_miscellaneous().each(this, callback);
 	}
 };
 
