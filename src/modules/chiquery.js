@@ -18,25 +18,35 @@ var chiQuery = function (selector, context) {
 };
 
 var chiQueryNodes = function (selector, context) {
-	context = context || document;
+	if (context) {
+		if (tool_function().detectChiQueryNodes(context)) {
+			context = context.get();
+		} else {
+			context = [context];
+		}
+	} else {
+		context = [document];
+	}
 	var nodes;
-	// console.log('');
-	// console.log('');
+	// console.log(''); console.log('');
 	// console.log('selector:\r\n', selector);
-	if (typeof selector === "object" && typeof selector.nodeName==="string" && typeof selector.nodeType === "number") { // NodeList
+	if (tool_function().detectNodeItem(selector)) { // NodeItem
 		nodes = [selector];
 	} else if (typeof selector === 'string') { // String
-		if (selector[0] == "<") {
-			// nodes = [createDOM(selector)]
-		}
-		else {
-			nodes = context.querySelectorAll(selector);
+		nodes = [];
+		for(var _i = 0; _i < context.length; _i++) {
+			if (selector[0] == "<") {
+				// nodes = [createDOM(selector)]
+			} else {
+				nodes = Array.prototype.slice.call(nodes).concat(Array.prototype.slice.call(context[_i].querySelectorAll(selector)));
+			}
 		}
 	}
 	// console.log('nodes:\r\n', nodes);
 	for (var i = 0; i < nodes.length; i++) {
 		this[i] = nodes[i];
 	}
+	this.isChiQuery = true;
 	this.context = context;
 	this.length = nodes.length;
 	this.selector = selector;
