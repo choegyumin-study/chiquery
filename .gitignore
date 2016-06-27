@@ -36,3 +36,4 @@ dist/*
 !dist/README.*
 report/
 src/chiquery*.js
+src/chiquery*.js.map

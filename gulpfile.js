@@ -75,7 +75,7 @@ gulp.task('scripts', function() {
 		// .pipe(babel({
 		// 	presets: ['es2015']
 		// }))
-		.pipe(sourcemaps.write())
+		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('src/'));
 });
 
@@ -84,7 +84,7 @@ gulp.task('scripts:watch', function() {
 });
 
 gulp.task('scripts:clean', function() {
-	return del(['src/chiquery-compiled.js']);
+	return del(['src/chiquery.js']);
 });
 
 gulp.task('connect', function() {
@@ -123,7 +123,7 @@ gulp.task('doc', function() {
 gulp.task('build', gulpsync.sync([
 	'scripts', 'report'
 ]), function() {
-	return gulp.src('src/chiquery-compiled.js')
+	return gulp.src('src/chiquery.js')
 		.pipe(beautify({
 			indent_size: 2,
 			indent_char: ' ',
