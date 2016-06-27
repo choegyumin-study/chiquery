@@ -1,12 +1,15 @@
 "use strict";
 
 import {tool_polyfill} from './tool/polyfill.js';
+import {tool_variable} from './tool/variable.js';
+import {tool_function} from './tool/function.js';
 import {core_miscellaneous} from './core/miscellaneous.js';
 import {core_traversing} from './core/traversing.js';
-import {extend_attributes} from './extend/attributes.js';
-import {extend_event} from './extend/event.js';
+import {pod_attribute} from './pod/attribute.js';
+import {pod_event} from './pod/event.js';
 
 tool_polyfill();
+tool_variable();
 
 var chiQuery = function (selector, context) {
 	return new chiQueryNodes(selector, context);

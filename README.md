@@ -24,13 +24,6 @@ npm install --save-dev
 
 ### Core
 
-#### Event
-
-- off
-- on
-- ready
-- trigger
-
 #### Miscellaneous
 
 - [each](https://api.jquery.com/each/)
@@ -62,7 +55,7 @@ npm install --save-dev
 - siblings
 - slice
 
-### Extend
+### Pod
 
 #### Attribute
 
@@ -99,6 +92,13 @@ npm install --save-dev
 - wrap
 - wrapAll
 - wrapInner
+
+#### Event
+
+- off
+- on
+- ready
+- trigger
 
 #### Style
 

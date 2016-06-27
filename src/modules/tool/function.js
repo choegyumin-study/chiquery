@@ -1,4 +1,4 @@
-export function extend_event() {
+export function tool_function() {
 
 	"use strict";
 

@@ -10,13 +10,6 @@
 
 ### Core
 
-#### Event
-
-- off
-- on
-- ready
-- trigger
-
 #### Miscellaneous
 
 - [each](https://api.jquery.com/each/)
@@ -48,7 +41,7 @@
 - siblings
 - slice
 
-### Extend
+### Pod
 
 #### Attribute
 
@@ -85,6 +78,13 @@
 - wrap
 - wrapAll
 - wrapInner
+
+#### Event
+
+- off
+- on
+- ready
+- trigger
 
 #### Style
 

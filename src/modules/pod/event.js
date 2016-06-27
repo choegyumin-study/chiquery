@@ -1,4 +1,4 @@
-export function extend_attributes() {
+export function pod_event() {
 
 	"use strict";
 
