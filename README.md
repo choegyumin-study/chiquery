@@ -24,74 +24,89 @@ npm install --save-dev
 
 ### Core
 
-#### Traversing
+#### Event
+
+- off
+- on
+- ready
+- trigger
 
 #### Miscellaneous
 
+- [each](https://api.jquery.com/each/)
 - [get](https://api.jquery.com/get/)
 - [index](https://api.jquery.com/index/)
-- [each](https://api.jquery.com/each/)
+- size
+
+#### Traversing
+
+- children
+- closest
+- eq
+- filter
+- find
+- first
+- has
+- is
+- last
+- map
+- next
+- nextAll
+- nextUntil
+- not
+- parent
+- parents
+- prev
+- prevAll
+- prevUntil
+- siblings
+- slice
 
 ### Extend
 
-## Architecture
+#### Attribute
 
-### Core
+- attr
+- addClass
+- hasClass
+- prop
+- removeAttr
+- removeClass
+- removeProp
+- toggleClass
+- val
 
-- Selectors
-- Traversing
-  - Filtering
-  - Miscellaneous Traversing
-  - Tree Traversal
-  - Utilities
+#### DOM Control
 
-### Extend
+- add
+- after
+- append
+- appendTo
+- before
+- clone
+- detach
+- empty
+- html
+- insertAfter
+- insertBefore
+- prepend
+- prependTo
+- remove
+- replaceAll
+- replaceWith
+- text
+- unwrap
+- wrap
+- wrapAll
+- wrapInner
 
-- Ajax
-  - Global Ajax Event Handlers
-  - Helper Functions
-  - Low-Level Interface
-  - Shorthand Methods
-- Attributes
-- Callbacks Object
-- Core
-- CSS
-- Data
-- Deferred Object
-- Deprecated
-- Dimensions
-- Effects
-  - Basics
-  - Custom
-  - Fading
-  - Sliding
-- Events
-  - Browser Events
-  - Document Loading
-  - Event Handler Attachment
-  - Event Object
-  - Form Events
-  - Keyboard Events
-  - Mouse Events
-- Forms
-- Internals
-- Manipulation
-  - Class Attribute
-  - Copying
-  - DOM Insertion, Around
-  - DOM Insertion, Inside
-  - DOM Insertion, Outside
-  - DOM Removal
-  - DOM Replacement
-  - General Attributes
-  - Style Properties
-- Miscellaneous
-  - Collection Manipulation
-  - Data Storage
-  - DOM Element Methods
-  - Setup Methods
-- Offset
-  - Properties
-  - Properties of jQuery Object Instances
-  - Properties of the Global jQuery Object
-- Removed
+#### Style
+
+- css
+- height
+- offset
+- offsetParent
+- position
+- scrollLeft
+- scrollTop
+- width

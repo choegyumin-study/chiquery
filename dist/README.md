@@ -10,12 +10,89 @@
 
 ### Core
 
-#### Traversing
+#### Event
+
+- off
+- on
+- ready
+- trigger
 
 #### Miscellaneous
 
+- [each](https://api.jquery.com/each/)
 - [get](https://api.jquery.com/get/)
 - [index](https://api.jquery.com/index/)
-- [each](https://api.jquery.com/each/)
+- size
+
+#### Traversing
+
+- children
+- closest
+- eq
+- filter
+- find
+- first
+- has
+- is
+- last
+- map
+- next
+- nextAll
+- nextUntil
+- not
+- parent
+- parents
+- prev
+- prevAll
+- prevUntil
+- siblings
+- slice
 
 ### Extend
+
+#### Attribute
+
+- attr
+- addClass
+- hasClass
+- prop
+- removeAttr
+- removeClass
+- removeProp
+- toggleClass
+- val
+
+#### DOM Control
+
+- add
+- after
+- append
+- appendTo
+- before
+- clone
+- detach
+- empty
+- html
+- insertAfter
+- insertBefore
+- prepend
+- prependTo
+- remove
+- replaceAll
+- replaceWith
+- text
+- unwrap
+- wrap
+- wrapAll
+- wrapInner
+
+#### Style
+
+- css
+- height
+- offset
+- offsetParent
+- position
+- scrollLeft
+- scrollTop
+- width
