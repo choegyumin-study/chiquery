@@ -64,16 +64,18 @@ var packageJson = JSON.parse(fs.readFileSync('package.json'));
 // };
 
 gulp.task('scripts', function() {
-	return gulp.src('src/modules/chiquery.js')
+	return gulp.src('src/modules/**/*.js')
 		.pipe(sourcemaps.init())
-		// transform the files here.
 		.pipe(rollup({
-			entry: './src/main.js'
+			// intro: 'var chiQuery; (function() { "use strict";\r\n',
+			// outro: '\r\n}());',
+			format: 'iife',
+			entry: 'src/modules/chiquery.js'
 		}))
+		// .pipe(babel({
+		// 	presets: ['es2015']
+		// }))
 		.pipe(sourcemaps.write())
-		.pipe(babel({
-			presets: ['es2015']
-		}))
 		.pipe(gulp.dest('src/'));
 });
 

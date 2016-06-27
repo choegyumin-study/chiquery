@@ -14,7 +14,7 @@
 		background: gray;
 	}
 </style>
-<script src="chiquery-compiled.js"></script>
+<script src="chiquery.js"></script>
 
 </head>
 <body>
@@ -26,12 +26,11 @@
 <div class="test idx4"></div>
 
 <script>
-	var els = $('.test');
-		console.log(els);
-		els.each(function(idx) {
-		console.log(idx);
-		console.log(this);
-		if(idx == 1) this.style.display = 'none';
+	var elements = $('.test');
+	console.log(elements);
+	elements.each(function(idx) {
+		console.log(idx, this);
+		if (idx == 1) this.style.display = 'none';
 	});
 </script>
 
