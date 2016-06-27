@@ -143,9 +143,6 @@ gulp.task('build', gulpsync.sync([
 		.pipe(gulp.dest('dist/'));
 });
 
-gulp.task('build:rebuild', gulpsync.sync([
-	'clean', 'build'
-]));
 gulp.task('deploy', function() {
 	var publishDir = 'dist/',
 		repoUrl = packageJson.repository.url,
@@ -161,7 +158,7 @@ gulp.task('deploy', function() {
 });
 
 gulp.task('deploy:build', gulpsync.sync([
-	'build:rebuild', 'deploy'
+	'build', 'deploy'
 ]));
 
 gulp.task('clean', gulpsync.sync([
