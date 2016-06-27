@@ -63,7 +63,7 @@ var packageJson = JSON.parse(fs.readFileSync('package.json'));
 // 	}, timer);
 // };
 
-gulp.task('scripts', function() {
+gulp.task('scripts', function() { // 수정필요
 	return gulp.src('src/modules/**/*.js')
 		.pipe(sourcemaps.init())
 		.pipe(rollup({
@@ -100,7 +100,7 @@ gulp.task('lint', function() {
 	return gulp.src('src/**/*.js')
 		.pipe(eslint())
 		.pipe(eslint.format())
-		.pipe(eslint.format('html', function(results) {
+		.pipe(eslint.format('html', function(results) { // 수정필요
 			fs.access('report/', fs.R_OK | fs.W_OK, function(err) {
 				if (err) fs.mkdir('report/');
 				fs.access('report/lint/', fs.R_OK | fs.W_OK, function(err) {
