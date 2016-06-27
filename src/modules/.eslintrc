@@ -1,8 +1,7 @@
 {
-	"ecmaFeatures": {
-		"modules": true,
-		"spread" : true,
-		"restParams" : true
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module"
 	},
 	"env": {
 		"browser" : true,
@@ -14,9 +13,10 @@
 		"$": true
 	},
 	"rules": {
-		"strict": ["error", "function"],
+//		"strict": ["error", "function"],
 		"indent": ["error", "tab", { "SwitchCase": 1 }],
 		"linebreak-style": ["error", "unix"],
+//		"quotes": ["error", "single"],
 		"semi": ["error", "always"],
 		"comma-dangle": ["error", "never"],
 		"no-console": ["error", { "allow": ["warn", "error"] }]
