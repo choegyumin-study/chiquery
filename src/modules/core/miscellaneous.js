@@ -4,6 +4,18 @@ export function core_miscellaneous() {
 
 	var modules = {};
 
+	modules.get = function(elements, idx) {
+		var len = elements.length,
+			element;
+		if(typeof idx === 'number') {
+			if(idx < 0) idx = len + idx;
+			element = elements[idx];
+		} else {
+			element = elements;
+		}
+		return element;
+	};
+
 	modules.each = function(elements, callback) {
 		var len = elements.length;
 		for (var _i = 0; _i < len; _i++) {
@@ -12,16 +24,6 @@ export function core_miscellaneous() {
 		}
 		return this;
 	};
-
-	modules.get = function(elements, idx) {
-		var element;
-		if(typeof idx === 'number') {
-			element = elements[idx];
-		} else {
-			element = elements;
-		}
-		return element;
-	}
 
 	return modules;
 

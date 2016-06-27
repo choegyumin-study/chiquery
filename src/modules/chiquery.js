@@ -23,11 +23,11 @@ var chiQueryNodes = function (selector, context) {
 };
 
 chiQuery.fn = chiQueryNodes.prototype = {
+	get: function (idx) {
+		return core_miscellaneous().get(this, idx);
+	},
 	each: function (callback) {
 		return core_miscellaneous().each(this, callback);
-	},
-	get: function (callback) {
-		return core_miscellaneous().get(this, callback);
 	}
 };
 
