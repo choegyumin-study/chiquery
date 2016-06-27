@@ -5,6 +5,7 @@ var fs = require('fs'),
 	path = require('path'),
 	gulp = require('gulp'),
 	del = require('del'),
+	gitRev = require('git-rev-sync'),
 	beautify = require('gulp-beautify'),
 	concat = require('gulp-concat'),
 	connect = require('gulp-connect'),
@@ -145,7 +146,7 @@ gulp.task('build', gulpsync.sync([
 gulp.task('deploy', function() {
 	var publishDir = 'dist/',
 		repoUrl = packageJson.repository.url,
-		branchName = 'dist';
+		branchName = 'dist/' + gitRev.branch();
 	return gulp.src(publishDir + '**/*')
 		.on('end', function() {
 			console.log('Push commits to origin:' + branchName);
