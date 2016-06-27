@@ -14,13 +14,28 @@ var chiQuery = function (selector, context) {
 
 var chiQueryNodes = function (selector, context) {
 	context = context || document;
-	var nodes = context.querySelectorAll(selector);
+	var nodes;
+	// console.log('');
+	// console.log('');
+	// console.log('selector:\r\n', selector);
+	if (typeof selector === "object" && typeof selector.nodeName==="string" && typeof selector.nodeType === "number") {
+		nodes = [selector];
+	} else if (typeof selector === 'string') {
+		if (selector[0] == "<") {
+			// nodes = [createDOM(selector)]
+		}
+		else {
+			nodes = context.querySelectorAll(selector);
+		}
+	}
+	// console.log('nodes:\r\n', nodes);
 	for (var i = 0; i < nodes.length; i++) {
 		this[i] = nodes[i];
 	}
 	this.context = context;
 	this.length = nodes.length;
 	this.selector = selector;
+	// console.log('this:\r\n', this);
 	return this;
 };
 

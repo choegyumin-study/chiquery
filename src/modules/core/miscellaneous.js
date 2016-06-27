@@ -11,12 +11,13 @@ export function core_miscellaneous() {
 			if (idx < 0) idx = len + idx;
 			element = elements[idx];
 		} else {
-			element = Array.prototype.slice.call(elements)
+			element = Array.prototype.slice.call(elements);
 		}
 		return element;
 	};
 
 	modules.index = function(context, element) {
+		if (element) element = $(element);
 		var returning = '-1';
 		context.each(function(idx) {
 			if (element) {
