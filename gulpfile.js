@@ -6,7 +6,7 @@ var fs = require('fs'),
 	gulp = require('gulp'),
 	del = require('del'),
 	gitRev = require('git-rev-sync'),
-	babel = require('gulp-babel'),
+	babel = require('rollup-plugin-babel'),
 	beautify = require('gulp-beautify'),
 	concat = require('gulp-concat'),
 	connect = require('gulp-connect'),
@@ -67,14 +67,16 @@ gulp.task('scripts', function() {
 	return gulp.src('src/modules/**/*.js')
 		.pipe(sourcemaps.init())
 		.pipe(rollup({
+			entry: 'src/modules/chiquery.js',
 			// intro: 'var chiQuery; (function() { "use strict";\r\n',
 			// outro: '\r\n}());',
 			format: 'iife',
-			entry: 'src/modules/chiquery.js'
+			plugins: [
+				babel({
+					presets: 'es2015-rollup'
+				})
+			]
 		}))
-		// .pipe(babel({
-		// 	presets: ['es2015']
-		// }))
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('src/'));
 });
