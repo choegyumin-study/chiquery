@@ -6,7 +6,6 @@ var fs = require('fs'),
 	gulp = require('gulp'),
 	del = require('del'),
 	gitRev = require('git-rev-sync'),
-	babel = require('rollup-plugin-babel'),
 	beautify = require('gulp-beautify'),
 	concat = require('gulp-concat'),
 	connect = require('gulp-connect'),
@@ -17,7 +16,8 @@ var fs = require('fs'),
 	sourcemaps = require('gulp-sourcemaps'),
 	gulpsync = require('gulp-sync')(gulp),
 	uglify = require('gulp-uglify'),
-	gutil = require('gulp-util');
+	gutil = require('gulp-util'),
+	babel = require('rollup-plugin-babel');
 
 // Get Data of package.json
 var packageJson = JSON.parse(fs.readFileSync('package.json'));
