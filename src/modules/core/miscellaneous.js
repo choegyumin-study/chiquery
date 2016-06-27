@@ -17,7 +17,7 @@ export function core_miscellaneous() {
 	};
 
 	modules.index = function(context, element) {
-		var returning = '-1'
+		var returning = '-1';
 		context.each(function(idx) {
 			if (this === element) returning = idx;
 		});
