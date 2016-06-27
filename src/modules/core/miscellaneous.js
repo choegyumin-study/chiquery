@@ -11,7 +11,7 @@ export function core_miscellaneous() {
 			if (idx < 0) idx = len + idx;
 			element = elements[idx];
 		} else {
-			element = elements;
+			element = Array.prototype.slice.call(elements)
 		}
 		return element;
 	};
@@ -19,7 +19,9 @@ export function core_miscellaneous() {
 	modules.index = function(context, element) {
 		var returning = '-1';
 		context.each(function(idx) {
-			if (this === element) returning = idx;
+			if (element) {
+				if (this === element.get()) returning = idx;
+			}
 		});
 		return returning;
 	};

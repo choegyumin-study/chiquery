@@ -18,7 +18,9 @@ var chiQueryNodes = function (selector, context) {
 	for (var i = 0; i < nodes.length; i++) {
 		this[i] = nodes[i];
 	}
+	this.context = context;
 	this.length = nodes.length;
+	this.selector = selector;
 	return this;
 };
 
