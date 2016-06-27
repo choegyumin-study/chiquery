@@ -1,11 +1,11 @@
-define([
-	'./tool/polyfill',
-	'./core/traversing',
-	'./extend/attributes',
-	'./extend/event'
-], function(tool_polyfill, core_traversing, extend_attributes, extend_event) {
+;(function() {
 
 	"use strict";
+
+	import {tool_polyfill} from './tool/polyfill';
+	import {core_traversing} from './core/traversing';
+	import {extend_attributes} from './extend/attributes';
+	import {extend_event} from './extend/event';
 
 	var chiQuery = function(selector, context) {
 		return new chiQueryNodes(selector, context);
@@ -28,4 +28,5 @@ define([
 	};
 
 	return (window.$ = window.chiQuery = chiQuery);
+
 });

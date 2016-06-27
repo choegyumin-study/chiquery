@@ -6,7 +6,6 @@ var fs = require('fs'),
 	gulp = require('gulp'),
 	del = require('del'),
 	gitRev = require('git-rev-sync'),
-	Amdclean = require('gulp-amdclean'),
 	babel = require('gulp-babel'),
 	beautify = require('gulp-beautify'),
 	concat = require('gulp-concat'),
@@ -14,7 +13,8 @@ var fs = require('fs'),
 	eslint = require('gulp-eslint'),
 	deploy = require('gulp-gh-pages'),
 	jsdoc = require('gulp-jsdoc3'),
-	requirejsOptimize = require('gulp-requirejs-optimize'),
+	rollup = require('gulp-rollup'),
+	sourcemaps = require('gulp-sourcemaps'),
 	gulpsync = require('gulp-sync')(gulp),
 	uglify = require('gulp-uglify'),
 	gutil = require('gulp-util');
@@ -65,16 +65,14 @@ var packageJson = JSON.parse(fs.readFileSync('package.json'));
 
 gulp.task('scripts', function() {
 	return gulp.src('src/modules/chiquery.js')
-		.pipe(requirejsOptimize({
-			optimize: 'none',
-			useStrict: true,
-			out: 'chiquery-compiled.js'
+		.pipe(sourcemaps.init())
+		// transform the files here.
+		.pipe(rollup({
+			entry: './src/main.js'
 		}))
+		.pipe(sourcemaps.write())
 		.pipe(babel({
 			presets: ['es2015']
-		}))
-		.pipe(Amdclean.gulp({
-			'prefixMode': 'standard'
 		}))
 		.pipe(gulp.dest('src/'));
 });

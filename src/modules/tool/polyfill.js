@@ -1,4 +1,4 @@
-define(function() {
+export function tool_polyfill() {
 
 	"use strict";
 
@@ -459,6 +459,6 @@ define(function() {
 				};
 			}
 		}
-
 	}(self));
-});
+
+}

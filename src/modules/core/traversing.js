@@ -1,4 +1,4 @@
-define(function() {
+export function core_traversing() {
 
 	"use strict";
 
@@ -14,4 +14,5 @@ define(function() {
 	};
 
 	return modules;
-});
+
+}
