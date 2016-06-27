@@ -10,44 +10,15 @@
 	},
 	"globals": {
 		"window": true,
-		"chiQuery": true
+		"chiQuery": true,
+		"$": true
 	},
 	"rules": {
-		"strict": [
-			"error",
-			"function"
-		],
-		"indent": [
-			"error",
-			"tab",
-			{
-				"SwitchCase": 1
-			}
-		],
-		"linebreak-style": [
-			"error",
-			"unix"
-		],
-//		"quotes": [
-//			"error",
-//			"single"
-//		],
-		"semi": [
-			"error",
-			"always"
-		],
-		"comma-dangle": [
-			"error",
-			"never"
-		],
-		"no-console": [
-			"error",
-			{
-				"allow": [
-					"warn",
-					"error"
-				]
-			}
-		]
+		"strict": ["error", "function"],
+		"indent": ["error", "tab", { "SwitchCase": 1 }],
+		"linebreak-style": ["error", "unix"],
+		"semi": ["error", "always"],
+		"comma-dangle": ["error", "never"],
+		"no-console": ["error", { "allow": ["warn", "error"] }]
 	}
 }
