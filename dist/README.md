@@ -90,6 +90,10 @@
 
 - css
 - height
+- innerHeight
+- innerWidth
+- outerHeight
+- outerWidth
 - offset
 - offsetParent
 - position
