@@ -55,14 +55,23 @@ var chiQueryNodes = function (selector, context) {
 };
 
 chiQuery.fn = chiQueryNodes.prototype = {
-	each: function (callback) {
+	attr: function(attrName, attrValue) {
+		return pod_attribute().attr(this, attrName, attrValue);
+	},
+	each: function(callback) {
 		return core_miscellaneous().each(this, callback);
 	},
-	get: function (idx) {
+	eq: function(idx) {
+		return core_traversing().eq(this, idx);
+	},
+	get: function(idx) {
 		return core_miscellaneous().get(this, idx);
 	},
 	index: function(element) {
 		return core_miscellaneous().index(this, element);
+	},
+	size: function() {
+		return core_miscellaneous().size(this);
 	}
 };
 

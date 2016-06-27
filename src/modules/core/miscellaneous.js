@@ -36,6 +36,10 @@ export function core_miscellaneous() {
 		return returning;
 	};
 
+	modules.size = function(elements) {
+		return elements.length;
+	};
+
 	return modules;
 
 }

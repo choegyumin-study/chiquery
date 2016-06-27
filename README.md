@@ -29,13 +29,13 @@ npm install --save-dev
 - [each](https://api.jquery.com/each/)
 - [get](https://api.jquery.com/get/)
 - [index](https://api.jquery.com/index/)
-- size
+- [size](https://api.jquery.com/size/)
 
 #### Traversing
 
 - children
 - closest
-- eq
+- [eq](https://api.jquery.com/eq/)
 - filter
 - find
 - first
@@ -59,7 +59,7 @@ npm install --save-dev
 
 #### Attribute
 
-- attr
+- [attr](https://api.jquery.com/attr/)
 - addClass
 - hasClass
 - prop

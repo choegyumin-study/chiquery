@@ -4,6 +4,10 @@ export function core_traversing() {
 
 	var modules = {};
 
+	modules.eq = function(elements, idx) {
+		return chiQuery(elements[idx]);
+	};
+
 	return modules;
 
 }
