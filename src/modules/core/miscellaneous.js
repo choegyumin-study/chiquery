@@ -16,6 +16,14 @@ export function core_miscellaneous() {
 		return element;
 	};
 
+	modules.index = function(context, element) {
+		var returning = '-1'
+		context.each(function(idx) {
+			if (this === element) returning = idx;
+		});
+		return returning;
+	};
+
 	modules.each = function(elements, callback) {
 		var len = elements.length;
 		for (var _i = 0; _i < len; _i++) {

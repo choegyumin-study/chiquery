@@ -26,6 +26,9 @@ chiQuery.fn = chiQueryNodes.prototype = {
 	get: function (idx) {
 		return core_miscellaneous().get(this, idx);
 	},
+	index: function(element) {
+		return core_miscellaneous().index(this, element)
+	},
 	each: function (callback) {
 		return core_miscellaneous().each(this, callback);
 	}
