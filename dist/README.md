@@ -8,6 +8,10 @@
 
 ## API
 
+### Selector
+
+- [chiQuery](https://api.jquery.com/jQuery/) - is `.querySelectorAll()`
+
 ### Core
 
 #### Miscellaneous
@@ -15,13 +19,13 @@
 - [each](https://api.jquery.com/each/)
 - [get](https://api.jquery.com/get/)
 - [index](https://api.jquery.com/index/)
-- size
+- [size](https://api.jquery.com/size/)
 
 #### Navigation
 
 - children
 - closest
-- eq
+- [eq](https://api.jquery.com/eq/)
 - filter
 - find
 - first
@@ -45,7 +49,7 @@
 
 #### Attribute
 
-- attr
+- [attr](https://api.jquery.com/attr/)
 - addClass
 - hasClass
 - prop

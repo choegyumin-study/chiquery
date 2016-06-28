@@ -22,6 +22,10 @@ npm install --save-dev
 
 ## API
 
+### Selector
+
+- [chiQuery](https://api.jquery.com/jQuery/) - is `.querySelectorAll()`
+
 ### Core
 
 #### Miscellaneous
