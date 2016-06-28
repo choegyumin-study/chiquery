@@ -1,17 +1,17 @@
 "use strict";
 
 import {tool_polyfill} from './tool/polyfill.js';
-import {tool_variable} from './tool/variable.js';
-import {tool_function} from './tool/function.js';
+import {tool_var} from './tool/var.js';
+import {tool_fn} from './tool/fn.js';
 
-import {core_miscellaneous} from './core/miscellaneous.js';
-import {core_traversing} from './core/traversing.js';
+import {core_misc} from './core/misc.js';
+import {core_nav} from './core/nav.js';
 
-import {pod_attribute} from './pod/attribute.js';
+import {pod_attr} from './pod/attr.js';
 import {pod_event} from './pod/event.js';
 
 tool_polyfill();
-tool_variable();
+tool_var();
 
 var chiQuery = function (selector, context) {
 	return new chiQueryNodes(selector, context);
@@ -19,7 +19,7 @@ var chiQuery = function (selector, context) {
 
 var chiQueryNodes = function (selector, context) {
 	if (context) {
-		if (tool_function().detectChiQueryNodes(context)) {
+		if (tool_fn().detectChiQueryNodes(context)) {
 			context = context.get();
 		} else {
 			context = [context];
@@ -30,7 +30,7 @@ var chiQueryNodes = function (selector, context) {
 	var nodes;
 	// console.log(''); console.log('');
 	// console.log('selector:\r\n', selector);
-	if (tool_function().detectNodeItem(selector)) { // NodeItem
+	if (tool_fn().detectNodeItem(selector)) { // NodeItem
 		nodes = [selector];
 	} else if (typeof selector === 'string') { // String
 		nodes = [];
@@ -56,22 +56,22 @@ var chiQueryNodes = function (selector, context) {
 
 chiQuery.fn = chiQueryNodes.prototype = {
 	attr: function(attrName, attrValue) {
-		return pod_attribute().attr(this, attrName, attrValue);
+		return pod_attr().attr(this, attrName, attrValue);
 	},
 	each: function(callback) {
-		return core_miscellaneous().each(this, callback);
+		return core_misc().each(this, callback);
 	},
 	eq: function(idx) {
-		return core_traversing().eq(this, idx);
+		return core_nav().eq(this, idx);
 	},
 	get: function(idx) {
-		return core_miscellaneous().get(this, idx);
+		return core_misc().get(this, idx);
 	},
 	index: function(element) {
-		return core_miscellaneous().index(this, element);
+		return core_misc().index(this, element);
 	},
 	size: function() {
-		return core_miscellaneous().size(this);
+		return core_misc().size(this);
 	}
 };
 

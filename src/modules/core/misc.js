@@ -1,6 +1,4 @@
-export function core_miscellaneous() {
-
-	"use strict";
+export function core_misc() {
 
 	var modules = {};
 

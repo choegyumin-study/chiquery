@@ -31,7 +31,7 @@ npm install --save-dev
 - [index](https://api.jquery.com/index/)
 - [size](https://api.jquery.com/size/)
 
-#### Traversing
+#### Navigation
 
 - children
 - closest

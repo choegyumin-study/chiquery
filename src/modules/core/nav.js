@@ -1,6 +1,4 @@
-export function core_traversing() {
-
-	"use strict";
+export function core_nav() {
 
 	var modules = {};
 

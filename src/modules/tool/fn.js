@@ -1,4 +1,4 @@
-export function tool_function() {
+export function tool_fn() {
 
 	"use strict";
 

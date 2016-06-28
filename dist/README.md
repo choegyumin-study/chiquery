@@ -17,7 +17,7 @@
 - [index](https://api.jquery.com/index/)
 - size
 
-#### Traversing
+#### Navigation
 
 - children
 - closest

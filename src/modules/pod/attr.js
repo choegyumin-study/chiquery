@@ -1,6 +1,4 @@
-export function pod_attribute() {
-
-	"use strict";
+export function pod_attr() {
 
 	var modules = {};
 	
