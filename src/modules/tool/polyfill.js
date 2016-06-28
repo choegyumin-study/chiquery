@@ -1,7 +1,5 @@
 export function tool_polyfill() {
 
-	"use strict";
-
 	(function(global) {
 		if (!('window' in global && 'document' in global))
 			return;

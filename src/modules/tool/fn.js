@@ -1,7 +1,5 @@
 export function tool_fn() {
 
-	"use strict";
-
 	var modules = {};
 
 	modules.detectChiQueryNodes = function(nodes) {
