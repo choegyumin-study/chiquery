@@ -10,6 +10,10 @@ export function tool_fn() {
 		return typeof node === "object" && typeof node.nodeName==="string" && typeof node.nodeType === "number";
 	};
 
+	modules.unwrapChiQueryNodes = function(nodes) {
+		return Array.prototype.slice.call(nodes);
+	};
+
 	return modules;
 
 }

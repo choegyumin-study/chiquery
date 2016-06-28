@@ -18,7 +18,7 @@ export function core_misc() {
 			if (idx < 0) idx = len + idx;
 			element = elements[idx];
 		} else {
-			element = Array.prototype.slice.call(elements);
+			element = tool_fn().unwrapChiQueryNodes(elements);
 		}
 		return element;
 	};

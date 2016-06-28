@@ -18,39 +18,40 @@ var chiQuery = function (selector, context) {
 };
 
 var chiQueryNodes = function (selector, context) {
+	this.isChiQuery = true;
+
+	var nodes = [];
+
 	if (context) {
 		if (tool_fn().detectChiQueryNodes(context)) {
-			context = context.get();
+			context = tool_fn().unwrapChiQueryNodes(context);
 		} else {
 			context = [context];
 		}
 	} else {
 		context = [document];
 	}
-	var nodes;
-	// console.log(''); console.log('');
-	// console.log('selector:\r\n', selector);
+	this.context = context;
+
 	if (tool_fn().detectNodeItem(selector)) { // NodeItem
 		nodes = [selector];
 	} else if (typeof selector === 'string') { // String
-		nodes = [];
 		for(var _i = 0; _i < context.length; _i++) {
 			if (selector[0] == "<") {
-				// nodes = [createDOM(selector)]
+				// nodes = [createDOM(selector)];
 			} else {
-				nodes = Array.prototype.slice.call(nodes).concat(Array.prototype.slice.call(context[_i].querySelectorAll(selector)));
+				nodes = tool_fn().unwrapChiQueryNodes(nodes)
+					.concat(tool_fn().unwrapChiQueryNodes(context[_i].querySelectorAll(selector)));
 			}
 		}
+		this.selector = selector;
 	}
-	// console.log('nodes:\r\n', nodes);
+	this.length = nodes.length;
+
 	for (var i = 0; i < nodes.length; i++) {
 		this[i] = nodes[i];
 	}
-	this.isChiQuery = true;
-	this.context = context;
-	this.length = nodes.length;
-	this.selector = selector;
-	// console.log('this:\r\n', this);
+
 	return this;
 };
 
