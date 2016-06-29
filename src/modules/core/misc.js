@@ -1,4 +1,4 @@
-export function core_misc() {
+export default function() {
 
 	var modules = {};
 

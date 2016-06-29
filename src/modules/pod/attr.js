@@ -1,4 +1,4 @@
-export function pod_attr() {
+export default function() {
 
 	var modules = {};
 	

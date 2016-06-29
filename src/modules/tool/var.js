@@ -1,3 +1,3 @@
-export function tool_var() {
+export default function() {
 
 }

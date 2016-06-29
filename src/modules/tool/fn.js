@@ -1,4 +1,4 @@
-export function tool_fn() {
+export default function() {
 
 	var modules = {};
 

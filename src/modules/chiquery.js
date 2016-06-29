@@ -1,14 +1,14 @@
 "use strict";
 
-import {tool_polyfill} from './tool/polyfill.js';
-import {tool_var} from './tool/var.js';
-import {tool_fn} from './tool/fn.js';
+import tool_polyfill from './tool/polyfill.js';
+import tool_var from './tool/var.js';
+import tool_fn from './tool/fn.js';
 
-import {core_misc} from './core/misc.js';
-import {core_nav} from './core/nav.js';
+import core_misc from './core/misc.js';
+import core_nav from './core/nav.js';
 
-import {pod_attr} from './pod/attr.js';
-import {pod_event} from './pod/event.js';
+import pod_attr from './pod/attr.js';
+import pod_event from './pod/event.js';
 
 tool_polyfill();
 tool_var();

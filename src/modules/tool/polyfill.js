@@ -1,4 +1,4 @@
-export function tool_polyfill() {
+export default function() {
 
 	(function(global) {
 		if (!('window' in global && 'document' in global))

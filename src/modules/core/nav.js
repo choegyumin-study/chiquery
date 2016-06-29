@@ -1,4 +1,4 @@
-export function core_nav() {
+export default function() {
 
 	var modules = {};
 
