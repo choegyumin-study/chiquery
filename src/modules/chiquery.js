@@ -1,6 +1,6 @@
 "use strict";
 
-import tool_polyfill from './tool/polyfill.js';
+import './tool/polyfill.js';
 import tool_var from './tool/var.js';
 import tool_fn from './tool/fn.js';
 
@@ -9,9 +9,6 @@ import core_nav from './core/nav.js';
 
 import pod_attr from './pod/attr.js';
 import pod_event from './pod/event.js';
-
-tool_polyfill();
-tool_var();
 
 var chiQuery = function (selector, context) {
 	return new chiQueryNodes(selector, context);
