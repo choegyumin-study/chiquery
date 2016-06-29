@@ -71,6 +71,7 @@ gulp.task('scripts', function() { // 수정필요
 			// intro: 'var chiQuery; (function() { "use strict";\r\n',
 			// outro: '\r\n}());',
 			format: 'iife',
+			indent: false,
 			plugins: [
 				babel({
 					presets: 'es2015-rollup'
