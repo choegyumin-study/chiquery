@@ -6,6 +6,15 @@
 
 [https://github.com/choi4450-study/chiquery/tree/dist/master](https://github.com/choi4450-study/chiquery/tree/dist/master)
 
+## Browser Support
+
+- Chrome: Current
+- Edge: Current
+- Firefox: Current
+- Internet Explorer: 8+
+- Opera: Current
+- Safari: Current
+
 ## API
 
 ### Selector

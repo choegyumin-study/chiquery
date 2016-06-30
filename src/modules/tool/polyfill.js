@@ -34,38 +34,27 @@ export default (function(global) {
 		};
 	}
 
-	// Element.matches
 	// https://developer.mozilla.org/en/docs/Web/API/Element/matches
-	// Needed for: IE, Firefox 3.6, early Webkit and Opera 15.0
-	// Use msMatchesSelector(selector) for IE
-	// Use oMatchesSelector(selector) for Opera 15.0
-	// Use mozMatchesSelector(selector) for Firefox 3.6
-	// Use webkitMatchesSelector(selector) for early Webkit
-	// Use polyfill if no matches() support, but querySelectorAll() support
 	if ('Element' in global && !Element.prototype.matches) {
-		if (Element.prototype.msMatchesSelector) {
-			Element.prototype.matches = Element.prototype.msMatchesSelector;
-		} else if (Element.prototype.oMatchesSelector) {
-			Element.prototype.matches = Element.prototype.oMatchesSelector;
-		} else if (Element.prototype.mozMatchesSelector) {
-			Element.prototype.matches = Element.prototype.mozMatchesSelector;
-		} else if (Element.prototype.webkitMatchesSelector) {
-			Element.prototype.matches = Element.prototype.webkitMatchesSelector;
-		} else if (document.querySelectorAll) {
-			Element.prototype.matches = function matches(selector) {
-				var matches = (this.document || this.ownerDocument).querySelectorAll(selector),
+		Element.prototype.matches =
+			Element.prototype.matchesSelector ||
+			Element.prototype.mozMatchesSelector ||
+			Element.prototype.msMatchesSelector ||
+			Element.prototype.oMatchesSelector ||
+			Element.prototype.webkitMatchesSelector ||
+			function(s) {
+				var matches = (this.document || this.ownerDocument).querySelectorAll(s),
 					i = matches.length;
 				while (--i >= 0 && matches.item(i) !== this) {}
 				return i > -1;
 			};
-		}
 	}
 
-	// Object.keys - https://gist.github.com/jonfalcon/4715325
+	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
 	if (!Object.keys) {
-		Object.keys = (function () {
+		Object.keys = (function() {
 			var hasOwnProperty = Object.prototype.hasOwnProperty,
-				hasDontEnumBug = !({toString: null}).propertyIsEnumerable('toString'),
+				hasDontEnumBug = !({ toString: null }).propertyIsEnumerable('toString'),
 				dontEnums = [
 					'toString',
 					'toLocaleString',
@@ -76,88 +65,56 @@ export default (function(global) {
 					'constructor'
 				],
 				dontEnumsLength = dontEnums.length;
-
-			return function (obj) {
-				// if (typeof obj !== 'object' && typeof obj !== 'function' || obj === null) throw new TypeError('Object.keys called on non-object');
-
-				var result = [];
-
-				for (var prop in obj) {
-					if (hasOwnProperty.call(obj, prop)) result.push(prop);
+			return function(obj) {
+				// if (typeof obj !== 'object' && (typeof obj !== 'function' || obj === null)) {
+				// 	throw new TypeError('Object.keys called on non-object');
+				// }
+				var result = [], prop, i;
+				for (prop in obj) {
+					if (hasOwnProperty.call(obj, prop)) {
+						result.push(prop);
+					}
 				}
-
 				if (hasDontEnumBug) {
-					for (var i=0; i < dontEnumsLength; i++) {
-						if (hasOwnProperty.call(obj, dontEnums[i])) result.push(dontEnums[i]);
+					for (i = 0; i < dontEnumsLength; i++) {
+						if (hasOwnProperty.call(obj, dontEnums[i])) {
+							result.push(dontEnums[i]);
+						}
 					}
 				}
 				return result;
 			};
-		})();
-	};
+		}());
+	}
 
-	// array.indexOf - https://gist.github.com/revolunet/1908355
-	if (!Array.prototype.indexOf)
-	{
-		Array.prototype.indexOf = function(elt /*, from*/)
-		{
-			var len = this.length >>> 0;
-			var from = Number(arguments[1]) || 0;
-			from = (from < 0)
-				? Math.ceil(from)
-				: Math.floor(from);
-			if (from < 0)
-				from += len;
-
-			for (; from < len; from++)
-			{
-				if (from in this &&
-					this[from] === elt)
-					return from;
+	// Production steps of ECMA-262, Edition 5, 15.4.4.14
+	// Reference: http://es5.github.io/#x15.4.4.14
+	if (!Array.prototype.indexOf) {
+		Array.prototype.indexOf = function(searchElement, fromIndex) {
+			var k;
+			// if (this == null) {
+			// 	throw new TypeError('"this" is null or not defined');
+			// }
+			var o = Object(this);
+			var len = o.length >>> 0;
+			if (len === 0) {
+				return -1;
+			}
+			var n = +fromIndex || 0;
+			if (Math.abs(n) === Infinity) {
+				n = 0;
+			}
+			if (n >= len) {
+				return -1;
+			}
+			k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+			while (k < len) {
+				if (k in o && o[k] === searchElement) {
+					return k;
+				}
+				k++;
 			}
 			return -1;
-		};
-	}
-
-	// array.map - http://tech.pro/tutorial/1834/working-with-es5-javascript-array-functions-in-modern-and-legacy-browsers#map
-	if (!Array.prototype.map)
-	{
-		Array.prototype.map = function(fun /*, thisArg */)
-		{
-			"use strict";
-
-			// if (this === void 0 || this === null) throw new TypeError();
-
-			var t = Object(this),
-				len = t.length >>> 0;
-			// if (typeof fun !== "function") throw new TypeError();
-
-			var res = new Array(len);
-			var thisArg = arguments.length >= 2 ? arguments[1] : void 0;
-			for (var i = 0; i < len; i++)
-			{
-				if (i in t)
-					res[i] = fun.call(thisArg, t[i], i, t);
-			}
-
-			return res;
-		};
-	}
-
-	// Array.forEach - http://javascript.boxsheep.com/polyfills/Array-prototype-forEach/
-	if (!Array.prototype.forEach) {
-		Array.prototype.forEach = function (fn, arg) {
-			var arr = Object(this),
-				len = arr.length >>> 0,
-				thisArg = arg ? arg : undefined,
-				i;
-			// if (typeof fn !== 'function') throw new TypeError();
-			for (i = 0; i < len; i += 1) {
-				if (arr.hasOwnProperty(i)) {
-					fn.call(thisArg, arr[i], i, arr);
-				}
-			}
-			return undefined;
 		};
 	}
 }(self));
