@@ -10,7 +10,10 @@
 
 ### Selector
 
-- [chiQuery](https://api.jquery.com/jQuery/) - is `.querySelectorAll()`
+- [chiQuery](https://api.jquery.com/jQuery/)
+  - It is `.querySelectorAll()`
+  - chiQuery().context != jQuery().context
+  - chiQuery().context == jQuery().prevObject
 
 ### Core
 

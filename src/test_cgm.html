@@ -27,19 +27,19 @@
 <body>
 
 <div class="foo">
-	<span class="idx0">foo</span>
+	<span class="child idx0">foo</span>
 </div>
 <div class="foo">
-	<span class="idx1">foo</span>
+	<span class="child idx1">foo</span>
 </div>
 <div class="foo">
-	<span class="idx2">foo</span>
+	<span class="child idx2">foo</span>
 </div>
 <div class="foo">
-	<span class="idx3">foo</span>
+	<span class="child idx3">foo</span>
 </div>
 <div class="bar">
-	<span class="idx4">bar</span>
+	<span class="child idx4">bar</span>
 </div>
 
 <script>
@@ -50,6 +50,10 @@
 
 	console.log('eq');
 	console.log(foo.eq(-1));
+
+	console.log('find');
+	console.log(foo.eq(-1).find('.child'));
+	console.log(foo.eq(-1).find('.child').eq(0));
 
 	console.log('foo');
 	console.log(foo);
