@@ -44,6 +44,9 @@ var chiQueryNodes = function (selector, context) {
 	if (tool_fn().isChiQueryNodes(selector)) {
 		// console.log('selector is chiQueryNodes.');
 		nodes = tool_fn().nodesToArray(selector);
+	} else if (tool_fn().isNodeList(selector)) {
+		// console.log('selector is nodeList.');
+		nodes = selector;
 	} else if (tool_fn().isNodeItem(selector)) {
 		// console.log('selector is nodeItem.');
 		nodes = [selector];
