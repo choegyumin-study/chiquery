@@ -15,41 +15,36 @@ var chiQuery = function (selector, context) {
 };
 
 var chiQueryNodes = function (selector, context) {
-
-	console.log('selector:', selector);
-	console.log('context:', context);
-
 	this.isChiQuery = true;
 
 	var nodes = [];
 
 	if (context) {
-		if (tool_fn().detectChiQueryNodes(context)) {
+		if (tool_fn().isChiQueryNodes(context)) {
 			// console.log('context is chiQueryNodes.');
 			context = tool_fn().nodesToArray(context);
-		} else if (tool_fn().detectNodeList(context)) {
+		} else if (tool_fn().isNodeList(context)) {
 			// console.log('context is nodeList.');
 			context = context;
-		} else if (tool_fn().detectNodeItem(context)) {
+		} else if (tool_fn().isNodeItem(context)) {
 			// console.log('context is nodeItem.');
 			context = [context];
 		} else if (typeof context === 'string') {
 			// console.log('context is string.');
 			context = document.querySelectorAll(context);
 		} else {
-			throw 'ReferenceError: ' + context + ' is not defined';
+			// throw 'ReferenceError: ' + context + ' is not defined';
 		}
 	} else {
 		// console.log('context not exist.');
 		context = [document];
 	}
 	this.context = context;
-	// console.log(context);
 
-	if (tool_fn().detectChiQueryNodes(selector)) {
+	if (tool_fn().isChiQueryNodes(selector)) {
 		// console.log('selector is chiQueryNodes.');
 		nodes = tool_fn().nodesToArray(selector);
-	} else if (tool_fn().detectNodeItem(selector)) {
+	} else if (tool_fn().isNodeItem(selector)) {
 		// console.log('selector is nodeItem.');
 		nodes = [selector];
 	} else if (typeof selector === 'string') {

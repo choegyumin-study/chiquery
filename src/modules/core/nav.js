@@ -13,11 +13,11 @@ export default function() {
 	};
 	
 	modules.parent = function(context, element) {
-		var node;
-		if (element) node = element.get(0).parentNode;
-		else node = context.get(0).parentNode;
-		// console.log(chiQuery(node));
-		return node;
+		// var node;
+		// if (element) node = element.get(0).parentNode;
+		// else node = context.get(0).parentNode;
+		// // console.log(chiQuery(node));
+		// return node;
 	};
 
 	return modules;

@@ -61,31 +61,7 @@ export default (function(global) {
 		}
 	}
 
-	// IE<9 indexOf polyfill
-	// https://gist.github.com/revolunet/1908355#file-indexof-js
-	if (!Array.prototype.indexOf) {
-		Array.prototype.indexOf = function(elt /*, from*/) {
-			var len = this.length >>> 0;
-			var from = Number(arguments[1]) || 0;
-			from = (from < 0)
-				? Math.ceil(from)
-				: Math.floor(from);
-			if (from < 0)
-				from += len;
-			for (; from < len; from++) {
-				if (from in this &&
-					this[from] === elt)
-					return from;
-			}
-			return -1;
-		};
-	}
-
-	/**
-	 * Polyfill for Object.keys
-	 *
-	 * @see: https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/keys
-	 */
+	// Object.keys - https://gist.github.com/jonfalcon/4715325
 	if (!Object.keys) {
 		Object.keys = (function () {
 			var hasOwnProperty = Object.prototype.hasOwnProperty,
@@ -102,7 +78,7 @@ export default (function(global) {
 				dontEnumsLength = dontEnums.length;
 
 			return function (obj) {
-				if (typeof obj !== 'object' && typeof obj !== 'function' || obj === null) throw new TypeError('Object.keys called on non-object');
+				// if (typeof obj !== 'object' && typeof obj !== 'function' || obj === null) throw new TypeError('Object.keys called on non-object');
 
 				var result = [];
 
@@ -116,7 +92,72 @@ export default (function(global) {
 					}
 				}
 				return result;
-			}
-		})()
+			};
+		})();
 	};
+
+	// array.indexOf - https://gist.github.com/revolunet/1908355
+	if (!Array.prototype.indexOf)
+	{
+		Array.prototype.indexOf = function(elt /*, from*/)
+		{
+			var len = this.length >>> 0;
+			var from = Number(arguments[1]) || 0;
+			from = (from < 0)
+				? Math.ceil(from)
+				: Math.floor(from);
+			if (from < 0)
+				from += len;
+
+			for (; from < len; from++)
+			{
+				if (from in this &&
+					this[from] === elt)
+					return from;
+			}
+			return -1;
+		};
+	}
+
+	// array.map - http://tech.pro/tutorial/1834/working-with-es5-javascript-array-functions-in-modern-and-legacy-browsers#map
+	if (!Array.prototype.map)
+	{
+		Array.prototype.map = function(fun /*, thisArg */)
+		{
+			"use strict";
+
+			// if (this === void 0 || this === null) throw new TypeError();
+
+			var t = Object(this),
+				len = t.length >>> 0;
+			// if (typeof fun !== "function") throw new TypeError();
+
+			var res = new Array(len);
+			var thisArg = arguments.length >= 2 ? arguments[1] : void 0;
+			for (var i = 0; i < len; i++)
+			{
+				if (i in t)
+					res[i] = fun.call(thisArg, t[i], i, t);
+			}
+
+			return res;
+		};
+	}
+
+	// Array.forEach - http://javascript.boxsheep.com/polyfills/Array-prototype-forEach/
+	if (!Array.prototype.forEach) {
+		Array.prototype.forEach = function (fn, arg) {
+			var arr = Object(this),
+				len = arr.length >>> 0,
+				thisArg = arg ? arg : undefined,
+				i;
+			// if (typeof fn !== 'function') throw new TypeError();
+			for (i = 0; i < len; i += 1) {
+				if (arr.hasOwnProperty(i)) {
+					fn.call(thisArg, arr[i], i, arr);
+				}
+			}
+			return undefined;
+		};
+	}
 }(self));

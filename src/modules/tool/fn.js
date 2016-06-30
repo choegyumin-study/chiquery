@@ -2,11 +2,15 @@ export default function() {
 
 	var modules = {};
 
-	modules.detectChiQueryNodes = function(nodes) {
-		return nodes.hasOwnProperty('isChiQuery');
+	modules.isChiQueryNodes = function(nodes) {
+		var bool = false;
+		if (typeof nodes === 'object') {
+			if (nodes.isChiQuery) bool = true;
+		}
+		return bool;
 	};
 
-	modules.detectNodeList = function(nodes) {
+	modules.isNodeList = function(nodes) {
 		var stringRepr = Object.prototype.toString.call(nodes);
 		return typeof nodes === 'object' &&
 			/^\[object (HTMLCollection|NodeList|Object)\]$/.test(stringRepr) &&
@@ -14,7 +18,7 @@ export default function() {
 			(nodes.length === 0 || (typeof nodes[0] === "object" && nodes[0].nodeType > 0));
 	};
 
-	modules.detectNodeItem = function(node) {
+	modules.isNodeItem = function(node) {
 		return typeof node === "object" && typeof node.nodeName==="string" && typeof node.nodeType === "number";
 	};
 
