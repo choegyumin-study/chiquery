@@ -18,7 +18,7 @@ export default function() {
 			if (idx < 0) idx = len + idx;
 			element = elements[idx];
 		} else {
-			element = tool_fn().unwrapChiQueryNodes(elements);
+			element = tool_fn().nodesToArray(elements);
 		}
 		return element;
 	};

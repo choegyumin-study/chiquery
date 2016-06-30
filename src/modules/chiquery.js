@@ -15,34 +15,55 @@ var chiQuery = function (selector, context) {
 };
 
 var chiQueryNodes = function (selector, context) {
+
+	console.log('selector:', selector);
+	console.log('context:', context);
+
 	this.isChiQuery = true;
 
 	var nodes = [];
 
 	if (context) {
 		if (tool_fn().detectChiQueryNodes(context)) {
-			context = tool_fn().unwrapChiQueryNodes(context);
-		} else {
+			// console.log('context is chiQueryNodes.');
+			context = tool_fn().nodesToArray(context);
+		} else if (tool_fn().detectNodeList(context)) {
+			// console.log('context is nodeList.');
+			context = context;
+		} else if (tool_fn().detectNodeItem(context)) {
+			// console.log('context is nodeItem.');
 			context = [context];
+		} else if (typeof context === 'string') {
+			// console.log('context is string.');
+			context = document.querySelectorAll(context);
+		} else {
+			throw 'ReferenceError: ' + context + ' is not defined';
 		}
 	} else {
+		// console.log('context not exist.');
 		context = [document];
 	}
 	this.context = context;
+	// console.log(context);
 
-	if (tool_fn().detectNodeItem(selector)) { // NodeItem
+	if (tool_fn().detectChiQueryNodes(selector)) {
+		// console.log('selector is chiQueryNodes.');
+		nodes = tool_fn().nodesToArray(selector);
+	} else if (tool_fn().detectNodeItem(selector)) {
+		// console.log('selector is nodeItem.');
 		nodes = [selector];
-	} else if (typeof selector === 'string') { // String
+	} else if (typeof selector === 'string') {
+		// console.log('selector is string.');
 		for(var _i = 0; _i < context.length; _i++) {
 			if (selector[0] == "<") {
 				// nodes = [createDOM(selector)];
 			} else {
-				nodes = tool_fn().unwrapChiQueryNodes(nodes)
-					.concat(tool_fn().unwrapChiQueryNodes(context[_i].querySelectorAll(selector)));
+				nodes = nodes.concat(tool_fn().nodesToArray(context[_i].querySelectorAll(selector)));
 			}
 		}
 		this.selector = selector;
 	}
+
 	this.length = nodes.length;
 
 	for (var i = 0; i < nodes.length; i++) {
@@ -70,6 +91,9 @@ chiQuery.fn = chiQueryNodes.prototype = {
 	},
 	index: function(element) {
 		return core_misc().index(this, element);
+	},
+	parent: function(element) {
+		return core_nav().parent(this, element);
 	},
 	size: function() {
 		return core_misc().size(this);

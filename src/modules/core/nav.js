@@ -11,6 +11,14 @@ export default function() {
 	modules.find = function(context, selector) {
 		return chiQuery(selector, context);
 	};
+	
+	modules.parent = function(context, element) {
+		var node;
+		if (element) node = element.get(0).parentNode;
+		else node = context.get(0).parentNode;
+		// console.log(chiQuery(node));
+		return node;
+	};
 
 	return modules;
 

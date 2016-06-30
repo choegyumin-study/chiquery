@@ -43,22 +43,29 @@
 </div>
 
 <script>
-	var foo = $('.foo');
+	var element = $('.foo');
+	$('.foo', document.querySelectorAll('.foo'));
+	$('.foo', document);
+	$('.foo', 'body');
 
-	console.log('foo');
-	console.log(foo);
+//	console.log(' ');
+//	console.log(' ');
+//	console.log(' ');
+//	console.log(' ');
+//	console.log(' ');
 
-	console.log('eq');
-	console.log(foo.eq(-1));
+//	console.log('element');
+//	console.log(element);
+//
+//	console.log('eq');
+//	console.log(element.eq(-1));
 
-	console.log('find');
-	console.log(foo.eq(-1).find('.child'));
-	console.log(foo.eq(-1).find('.child').eq(0));
+//	console.log('find');
+//	console.log(element.eq(-1).find('.child'));
+//	console.log(element.eq(-1).find('.child').eq(0));
 
-	console.log('foo');
-	console.log(foo);
-
-	//foo.eq(2).style.background = 'red';
+//	console.log('parent');
+//	console.log(element.parent());
 </script>
 
 </body>
