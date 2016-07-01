@@ -18,15 +18,15 @@ export default function() {
 			if (idx < 0) idx = len + idx;
 			element = elements[idx];
 		} else {
-			element = tool_fn().nodesToArray(elements);
+			//element = tool_fn().nodesToArray(elements);
 		}
 		return element;
 	};
 
-	modules.index = function(context, element) {
+	modules.index = function(elements, element) {
 		if (element) element = $(element);
 		var returning = '-1';
-		context.each(function(idx) {
+		elements.each(function(idx) {
 			if (element) {
 				if (this === element.get()) returning = idx;
 			}

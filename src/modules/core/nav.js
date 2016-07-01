@@ -12,12 +12,20 @@ export default function() {
 		return chiQuery(selector, context);
 	};
 	
-	modules.parent = function(context, element) {
-		// var node;
-		// if (element) node = element.get(0).parentNode;
-		// else node = context.get(0).parentNode;
-		// // console.log(chiQuery(node));
-		// return node;
+	modules.parent = function(elements, element) {
+		// console.log(elements);
+		// console.log(element);
+		//
+		// var nodes = [];
+		//
+		// for(var _i = 0; _i < elements.length; _i++) {
+		// 	var aaaa = elements[_i].parentNode;
+		// 	console.log(aaaa);
+		// 	//if (!element) nodes = nodes.concat(fn.nodesToArray(aaaa));
+		// }
+		//
+		// // console.log(chiQuery(nodes));
+		// return nodes;
 	};
 
 	return modules;

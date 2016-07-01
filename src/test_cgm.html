@@ -26,29 +26,29 @@
 </head>
 <body>
 
-<div class="foo">
+<div class="foo idx0">
 	<span class="child idx0">foo</span>
 </div>
-<div class="foo">
+<div class="foo idx1">
 	<span class="child idx1">foo</span>
 </div>
-<div class="foo">
+<div class="foo idx2">
 	<span class="child idx2">foo</span>
 </div>
-<div class="foo">
+<div class="foo idx3">
 	<span class="child idx3">foo</span>
 </div>
-<div class="bar">
+<div class="bar idx4">
 	<span class="child idx4">bar</span>
 </div>
 
 <script>
-	var element = $('.foo');
-	$('.foo', document.querySelectorAll('.foo'));
-	$('.foo', document);
-	$('.foo', 'body');
-	$('.foo', $('body'));
-	$('<div class="foo">');
+	var elements = $('.foo');
+//	$('.foo', document.querySelectorAll('.foo'));
+//	$('.foo', document);
+//	$('.foo', 'body');
+//	$('.foo', $('body'));
+//	$('<div class="foo">');
 
 //	console.log(' ');
 //	console.log(' ');
@@ -56,18 +56,21 @@
 //	console.log(' ');
 //	console.log(' ');
 
-//	console.log('element');
-//	console.log(element);
+//	console.log('elements');
+//	console.log(elements);
 //
 //	console.log('eq');
-//	console.log(element.eq(-1));
+//	console.log(elements.eq(-1));
+
+	console.log(elements.get());
+	console.log(elements.get(0));
 
 //	console.log('find');
-//	console.log(element.eq(-1).find('.child'));
-//	console.log(element.eq(-1).find('.child').eq(0));
+//	console.log(elements.eq(-1).find('.child'));
+//	console.log(elements.eq(-1).find('.child').eq(0));
 
-//	console.log('parent');
-//	console.log(element.parent());
+	console.log('parent');
+	console.log($('.child').parent());
 </script>
 
 </body>
