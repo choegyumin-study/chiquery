@@ -51,11 +51,14 @@ var chiQueryNodes = function (selector, context) {
 		// console.log('selector is nodeItem.');
 		nodes = [selector];
 	} else if (typeof selector === 'string') {
-		// console.log('selector is string.');
-		for(var _i = 0; _i < context.length; _i++) {
-			if (selector[0] == "<") {
-				// nodes = [createDOM(selector)];
-			} else {
+		if (selector[0] == "<") {
+			// console.log('selector is HTML string.');
+			var createDOM = document.createElement('body');
+			createDOM.innerHTML = selector;
+			nodes = createDOM.childNodes;
+		} else {
+			// console.log('selector is string.');
+			for(var _i = 0; _i < context.length; _i++) {
 				nodes = nodes.concat(tool_fn().nodesToArray(context[_i].querySelectorAll(selector)));
 			}
 		}
