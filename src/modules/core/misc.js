@@ -1,3 +1,6 @@
+import global_var from '../global/var.js';
+import global_fn from '../global/fn.js';
+
 export default function() {
 
 	var modules = {};
@@ -18,7 +21,7 @@ export default function() {
 			if (idx < 0) idx = len + idx;
 			element = elements[idx];
 		} else {
-			// element = tool_fn().nodesToArray(elements);
+			element = global_fn().nodesToArray(elements);
 		}
 		return element;
 	};
