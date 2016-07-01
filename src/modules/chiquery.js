@@ -25,7 +25,7 @@ var chiQueryNodes = function (selector, context) {
 			context = global_fn().nodesToArray(context);
 		} else if (global_fn().isNodeList(context)) {
 			// console.log('context is nodeList.');
-			context = context;
+			context = global_fn().nodesToArray(context);
 		} else if (global_fn().isNodeItem(context)) {
 			// console.log('context is nodeItem.');
 			context = [context];
@@ -46,7 +46,7 @@ var chiQueryNodes = function (selector, context) {
 		nodes = global_fn().nodesToArray(selector);
 	} else if (global_fn().isNodeList(selector)) {
 		// console.log('selector is nodeList.');
-		nodes = selector;
+		nodes = /*global_fn().nodesToArray(*/selector/*)*/;
 	} else if (global_fn().isNodeItem(selector)) {
 		// console.log('selector is nodeItem.');
 		nodes = [selector];
@@ -55,7 +55,7 @@ var chiQueryNodes = function (selector, context) {
 			// console.log('selector is HTML string.');
 			var createDOM = document.createElement('body');
 			createDOM.innerHTML = selector;
-			nodes = createDOM.childNodes;
+			nodes = /*global_fn().nodesToArray(*/createDOM.childNodes/*)*/;
 		} else {
 			// console.log('selector is string.');
 			for(var _i = 0; _i < context.length; _i++) {
