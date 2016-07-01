@@ -10,17 +10,17 @@ export default function() {
 		return bool;
 	};
 
+	modules.isNodeItem = function(node) {
+		return typeof node === "object" &&
+			typeof node.nodeName==="string" &&
+			typeof node.nodeType === "number";
+	};
+
 	modules.isNodeList = function(nodes) {
 		return typeof nodes === 'object' &&
 			/^\[object (HTMLCollection|NodeList|Object)\]$/.test(Object.prototype.toString.call(nodes)) &&
 			(typeof nodes.length === 'number') &&
 			(nodes.length === 0 || (typeof nodes[0] === "object" && nodes[0].nodeType > 0));
-	};
-
-	modules.isNodeItem = function(node) {
-		return typeof node === "object" &&
-			typeof node.nodeName==="string" &&
-			typeof node.nodeType === "number";
 	};
 
 	modules.nodesToArray = function(nodes) {

@@ -16,19 +16,17 @@ export default function() {
 	};
 	
 	modules.parent = function(elements, element) {
-		// console.log(elements);
-		// console.log(element);
-		//
 		// var nodes = [];
 		//
 		// for(var _i = 0; _i < elements.length; _i++) {
-		// 	var aaaa = elements[_i].parentNode;
-		// 	console.log(aaaa);
-		// 	//if (!element) nodes = nodes.concat(fn.nodesToArray(aaaa));
+		// 	var parentNode = elements[_i].parentNode;
+		// 	if (!element) {
+		// 		nodes = nodes.concat(parentNode);
+		// 	}
 		// }
 		//
-		// // console.log(chiQuery(nodes));
-		// return nodes;
+		// console.log(nodes);
+		// return chiQuery(nodes, elements);
 	};
 
 	return modules;

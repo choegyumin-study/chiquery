@@ -44,11 +44,12 @@
 
 <script>
 	var elements = $('.foo');
-//	$('.foo', document.querySelectorAll('.foo'));
-//	$('.foo', document);
-//	$('.foo', 'body');
-//	$('.foo', $('body'));
-//	$('<div class="foo">');
+
+	$(document.querySelectorAll('.foo'));
+	$(document);
+	$('.foo');
+	$($('.foo'));
+	$('<div class="foo">');
 
 //	console.log(' ');
 //	console.log(' ');
@@ -61,16 +62,16 @@
 //
 //	console.log('eq');
 //	console.log(elements.eq(-1));
-
-	console.log(elements.get());
-	console.log(elements.get(0));
+//
+//	console.log(elements.get());
+//	console.log(elements.get(0));
 
 //	console.log('find');
 //	console.log(elements.eq(-1).find('.child'));
 //	console.log(elements.eq(-1).find('.child').eq(0));
 
-	console.log('parent');
-	console.log($('.child').parent());
+//	console.log('parent');
+//	console.log($('.child').parent());
 </script>
 
 </body>
