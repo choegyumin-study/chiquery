@@ -11,7 +11,7 @@ export default function() {
 			var element = elements[_i];
 			callback.call(element, _i, element);
 		}
-		return this;
+		return elements;
 	};
 
 	modules.get = function(elements, idx) {
