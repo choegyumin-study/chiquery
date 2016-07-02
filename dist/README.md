@@ -40,7 +40,7 @@
 - [closest](https://api.jquery.com/closest/)
 - [end](https://api.jquery.com/end/)
 - [eq](https://api.jquery.com/eq/)
-- filter
+- [filter](https://api.jquery.com/filter/)
 - [find](https://api.jquery.com/find/)
 - [first](https://api.jquery.com/first/)
 - [has](https://api.jquery.com/has/)

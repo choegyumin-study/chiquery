@@ -52,6 +52,27 @@ export default function() {
 		return chiQuery(_this[idx], _this);
 	};
 
+	modules.filter = function(_this, target) {
+		// console.log('_this:', _this);
+		// console.log('target:', target);
+		var nodes = [];
+		if (global_fn().isFunction(target)) {
+			// console.log('target is function.');
+			// _this.each(function () {
+			// 	console.log(this);
+			// });
+		} else {
+			// console.log('target exists.');
+			target = global_fn().nodesToArray(chiQuery(target));
+			// console.log('target (converted):', target);
+			_this.each(function () {
+				// console.log('each:', this);
+				if (!target || target.indexOf(this) > -1) nodes.push(this);
+			});
+		}
+		return chiQuery(nodes, _this);
+	};
+
 	modules.find = function(_this, selector) {
 		return chiQuery(selector, _this);
 	};

@@ -99,6 +99,9 @@ chiQueryInit.fn = chiQueryNodes.prototype = {
 	eq: function(idx) {
 		return core_nav().eq(this, idx);
 	},
+	filter: function(targetElement) {
+		return core_nav().filter(this, targetElement);
+	},
 	find: function(selector) {
 		return core_nav().find(this, selector);
 	},
