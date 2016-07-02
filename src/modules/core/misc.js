@@ -5,31 +5,31 @@ export default function() {
 
 	var modules = {};
 
-	modules.each = function(elements, callback) {
-		var len = elements.length;
+	modules.each = function(_this, callback) {
+		var len = _this.length;
 		for (var _i = 0; _i < len; _i++) {
-			var element = elements[_i];
+			var element = _this[_i];
 			callback.call(element, _i, element);
 		}
-		return elements;
+		return _this;
 	};
 
-	modules.get = function(elements, idx) {
-		var len = elements.length,
+	modules.get = function(_this, idx) {
+		var len = _this.length,
 			element;
 		if (global_fn().isNumber(idx)) {
 			if (idx < 0) idx = len + idx;
-			element = elements[idx];
+			element = _this[idx];
 		} else {
-			element = global_fn().nodesToArray(elements);
+			element = global_fn().nodesToArray(_this);
 		}
 		return element;
 	};
 
-	modules.index = function(elements, element) {
+	modules.index = function(_this, element) {
 		if (element) element = $(element);
 		var returning = '-1';
-		elements.each(function(idx) {
+		_this.each(function(idx) {
 			if (element) {
 				if (this === element.get()) returning = idx;
 			}
@@ -37,8 +37,8 @@ export default function() {
 		return returning;
 	};
 
-	modules.size = function(elements) {
-		return elements.length;
+	modules.size = function(_this) {
+		return _this.length;
 	};
 
 	return modules;
