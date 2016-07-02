@@ -42,7 +42,7 @@
 - filter
 - [find](https://api.jquery.com/find/)
 - [first](https://api.jquery.com/first/)
-- has
+- [has](https://api.jquery.com/has/)
 - [is](https://api.jquery.com/is/)
 - [last](https://api.jquery.com/last/)
 - map

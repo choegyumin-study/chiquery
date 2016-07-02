@@ -93,6 +93,9 @@ chiQueryInit.fn = chiQueryNodes.prototype = {
 	first: function() {
 		return core_nav().first(this);
 	},
+	has: function(selector) {
+		return core_nav().has(this, selector);
+	},
 	is: function(target) {
 		return core_nav().is(this, target);
 	},

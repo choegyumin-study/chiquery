@@ -19,6 +19,16 @@ export default function() {
 		return chiQuery(_this.get(0), _this);
 	};
 
+	modules.has = function(_this, selector) {
+		var nodes = [],
+			len = _this.size();
+		for (var _i = 0; _i < len; _i++) {
+			var element = _this.get(_i);
+			if (chiQuery(selector, element).size() > 0) nodes.push(element);
+		}
+		return chiQuery(nodes);
+	};
+
 	modules.is = function(_this, target) {
 		var returnBool = false,
 			len = _this.size();
