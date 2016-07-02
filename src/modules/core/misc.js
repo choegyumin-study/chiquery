@@ -8,7 +8,7 @@ export default function() {
 	modules.each = function(_this, callback) {
 		var len = _this.length;
 		for (var _i = 0; _i < len; _i++) {
-			var element = _this[_i];
+			var element = _this.get(_i);
 			callback.call(element, _i, element);
 		}
 		return _this;
@@ -28,13 +28,13 @@ export default function() {
 
 	modules.index = function(_this, element) {
 		if (element) element = $(element);
-		var returning = '-1';
+		var returnIdx = '-1';
 		_this.each(function(idx) {
 			if (element) {
-				if (this === element.get()) returning = idx;
+				if (this === element.get()) returnIdx = idx;
 			}
 		});
-		return returning;
+		return returnIdx;
 	};
 
 	modules.size = function(_this) {

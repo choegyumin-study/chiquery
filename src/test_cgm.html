@@ -56,37 +56,42 @@
 //	$($('.foo'));
 //	$('<div class="foo">');
 
-//	console.log(' ');
-//	console.log(' ');
-//	console.log(' ');
-//	console.log(' ');
-//	console.log(' ');
-
-//	console.log('foo');
+//	console.log('\r\n.foo()');
 //	console.log(foo);
-//
-//	console.log('eq');
+
+//	console.log('\r\n.eq()');
 //	console.log(foo.eq(-1));
-//
+
+//	console.log('\r\n.each()');
+//	console.log(foo.each(function(idx) {
+//		console.log(idx, this);
+//	}));
+
 //	console.log(foo.get());
 //	console.log(foo.get(0));
 
-//	console.log('find');
+//	console.log('\r\n.find()');
 //	console.log(foo.eq(-1).find('.child'));
 //	console.log(foo.eq(-1).find('.child').eq(0));
 
-//	console.log('first');
+//	console.log('\r\n.first()');
 //	console.log(foo.first());
 
-//	console.log('last');
+//	console.log('\r\n.is()');
+//	console.log(foo.is('.foo'));
+//	console.log(foo.is(function() {
+//		return $('.child', this).length === 1;
+//	}));
+
+//	console.log('\r\n.last()');
 //	console.log(bar.last());
 
-//	console.log("parent()");
+//	console.log('\r\n.parent()');
 //	console.log($('.child').parent());
 //	console.log($('.child').parent('.foo'));
 //	console.log($('.child').parent('.bar'));
 
-//	console.log("parents()");
+//	console.log('\r\n.parents()');
 //	console.log($('.child').parents());
 //	console.log($('.child').parents('.foo'));
 //	console.log($('.child').parents('.bar'));

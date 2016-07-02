@@ -39,6 +39,10 @@ export default function() {
 		return typeof obj === 'object';
 	};
 
+	modules.isObjectWithoutArray = function(obj) {
+		return typeof obj === 'object' && Object.prototype.toString.call(obj) !== '[object Array]';
+	};
+
 	modules.isString = function(obj) {
 		return typeof obj === 'string';
 	};
