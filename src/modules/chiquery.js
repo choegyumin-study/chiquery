@@ -87,14 +87,14 @@ chiQueryInit.fn = chiQueryNodes.prototype = {
 	eq: function(idx) {
 		return core_nav().eq(this, idx);
 	},
-	removeClass: function(className) {
-		return pod_attr().removeClass(this, className);
-	},
-	removeAttr: function(attrName) {
-		return pod_attr().removeAttr(this, attrName);
-	},
 	find: function(selector) {
 		return core_nav().find(this, selector);
+	},
+	first: function() {
+		return core_nav().first(this);
+	},
+	last: function() {
+		return core_nav().last(this);
 	},
 	get: function(idx) {
 		return core_misc().get(this, idx);
@@ -107,6 +107,12 @@ chiQueryInit.fn = chiQueryNodes.prototype = {
 	},
 	parents: function(elements) {
 		return core_nav().parents(this, elements);
+	},
+	removeAttr: function(attrName) {
+		return pod_attr().removeAttr(this, attrName);
+	},
+	removeClass: function(className) {
+		return pod_attr().removeClass(this, className);
 	},
 	size: function() {
 		return core_misc().size(this);

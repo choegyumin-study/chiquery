@@ -41,10 +41,10 @@
 - [eq](https://api.jquery.com/eq/)
 - filter
 - [find](https://api.jquery.com/find/)
-- first
+- [first](https://api.jquery.com/first/)
 - has
 - is
-- last
+- [last](https://api.jquery.com/last/)
 - map
 - next
 - nextAll

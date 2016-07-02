@@ -47,7 +47,8 @@
 <div class="bar undefined">.bar.undefined</div>
 
 <script>
-	var elements = $('.foo');
+	var foo = $('.foo'),
+		bar = $('.bar');
 
 //	$(document.querySelectorAll('.foo'));
 //	$(document);
@@ -61,18 +62,24 @@
 //	console.log(' ');
 //	console.log(' ');
 
-//	console.log('elements');
-//	console.log(elements);
+//	console.log('foo');
+//	console.log(foo);
 //
 //	console.log('eq');
-//	console.log(elements.eq(-1));
+//	console.log(foo.eq(-1));
 //
-//	console.log(elements.get());
-//	console.log(elements.get(0));
+//	console.log(foo.get());
+//	console.log(foo.get(0));
 
 //	console.log('find');
-//	console.log(elements.eq(-1).find('.child'));
-//	console.log(elements.eq(-1).find('.child').eq(0));
+//	console.log(foo.eq(-1).find('.child'));
+//	console.log(foo.eq(-1).find('.child').eq(0));
+
+//	console.log('first');
+//	console.log(foo.first());
+
+//	console.log('last');
+//	console.log(bar.last());
 
 //	console.log("parent()");
 //	console.log($('.child').parent());

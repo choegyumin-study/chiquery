@@ -15,6 +15,14 @@ export default function() {
 		return chiQuery(selector, _this);
 	};
 
+	modules.first = function(_this) {
+		return chiQuery(_this.get(0), _this);
+	};
+
+	modules.last = function(_this) {
+		return chiQuery(_this.get(-1), _this);
+	};
+
 	modules.parent = function(_this, target) {
 		target = target ? global_fn().nodesToArray(chiQuery(target)) : undefined;
 		var nodes = [];
