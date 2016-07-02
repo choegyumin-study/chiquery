@@ -19,8 +19,8 @@ export default function() {
 		target = target ? global_fn().nodesToArray(chiQuery(target)) : undefined;
 		var nodes = [];
 		for (var _i = 0; _i < _this.size(); _i++) {
-			var _parent = _this.get(_i).parentNode;
-			if (!target || Array.prototype.indexOf.call(target, _parent) > -1) nodes.push(_parent);
+			var parentNode = _this.get(_i).parentNode;
+			if (!target || Array.prototype.indexOf.call(target, parentNode) > -1) nodes.push(parentNode);
 		}
 		return chiQuery(nodes, _this);
 	};
@@ -29,13 +29,14 @@ export default function() {
 		target = target ? global_fn().nodesToArray(chiQuery(target)) : undefined;
 		var nodes = [];
 		for (var _i = 0; _i < _this.size(); _i++) {
-			var _parent = _this.get(_i).parentNode;
-			while (_parent !== null && _parent !== document) {
-				if (
-					(!target || (Array.prototype.indexOf.call(target, _parent) > -1)) &&
-					Array.prototype.indexOf.call(nodes, _parent) < 0
-				) nodes.push(_parent);
-				_parent = _parent.parentNode;
+			var parentNode = _this.get(_i).parentNode;
+			while (parentNode !== null && parentNode !== document) {
+				if (!target || Array.prototype.indexOf.call(target, parentNode) > -1) {
+					var hasParentIdx = Array.prototype.indexOf.call(nodes, parentNode);
+					if (hasParentIdx > -1) nodes.splice(hasParentIdx, 1);
+					nodes.push(parentNode);
+				}
+				parentNode = parentNode.parentNode;
 			}
 		}
 		return chiQuery(nodes, _this);
