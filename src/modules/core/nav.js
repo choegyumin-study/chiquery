@@ -18,7 +18,7 @@ export default function() {
 			for (var _j = 0; _j < childNodes.length; _j++) {
 				var childNode = childNodes[_j];
 				if (
-					(!target || Array.prototype.indexOf.call(target, childNode) > -1) &&
+					(!target || target.indexOf(childNode) > -1) &&
 					childNode.nodeType === 1
 				) nodes.push(childNode);
 			}
@@ -31,8 +31,8 @@ export default function() {
 		var nodes = [];
 		for (var _i = 0; _i < _this.size(); _i++) {
 			var parentNode = _this.get(_i);
-			while (parentNode !== null && parentNode !== document && Array.prototype.indexOf.call(global_fn().nodesToArray(chiQuery(context)), parentNode) < 0) {
-				if (Array.prototype.indexOf.call(target, parentNode) > -1) {
+			while (parentNode !== null && parentNode !== document && global_fn().nodesToArray(chiQuery(context)).indexOf(parentNode) < 0) {
+				if (target.indexOf(parentNode) > -1) {
 					nodes.push(parentNode);
 					break;
 				}
@@ -86,7 +86,7 @@ export default function() {
 			target = global_fn().nodesToArray(chiQuery(target));
 			if (global_fn().isArray(target)) {
 				for (var _i = 0; _i < len; _i++) {
-					if (Array.prototype.indexOf.call(target, _this.get(_i)) > -1) {
+					if (target.indexOf(_this.get(_i)) > -1) {
 						returnBool = true;
 						break;
 					}
@@ -107,7 +107,7 @@ export default function() {
 		var nodes = [];
 		for (var _i = 0; _i < _this.size(); _i++) {
 			var parentNode = _this.get(_i).parentNode;
-			if (!target || Array.prototype.indexOf.call(target, parentNode) > -1) nodes.push(parentNode);
+			if (!target || target.indexOf(parentNode) > -1) nodes.push(parentNode);
 		}
 		return chiQuery(nodes, _this);
 	};
@@ -118,8 +118,8 @@ export default function() {
 		for (var _i = 0; _i < _this.size(); _i++) {
 			var parentNode = _this.get(_i).parentNode;
 			while (parentNode !== null && parentNode !== document) {
-				if (!target || Array.prototype.indexOf.call(target, parentNode) > -1) {
-					var hasParentIdx = Array.prototype.indexOf.call(nodes, parentNode);
+				if (!target || target.indexOf(parentNode) > -1) {
+					var hasParentIdx = nodes.indexOf(parentNode);
 					if (hasParentIdx > -1) nodes.splice(hasParentIdx, 1);
 					nodes.push(parentNode);
 				}
