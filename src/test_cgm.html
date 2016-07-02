@@ -70,8 +70,12 @@
 //	console.log(elements.eq(-1).find('.child'));
 //	console.log(elements.eq(-1).find('.child').eq(0));
 
-	console.log('parent');
+	console.log(".parent()");
 	console.log($('.child').parent());
+	console.log(".parent('.foo')");
+	console.log($('.child').parent('.foo'));
+	console.log(".parent('.bar')");
+	console.log($('.child').parent('.bar'));
 </script>
 
 </body>

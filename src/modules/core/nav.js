@@ -14,7 +14,7 @@ export default function() {
 	modules.find = function(context, selector) {
 		return chiQuery(selector, context);
 	};
-	
+
 	modules.parent = function(elements, element) {
 		var nodes = [];
 		
@@ -24,8 +24,8 @@ export default function() {
 				nodes = nodes.concat(parentNode);
 			}
 		}
-		
-		console.log(nodes);
+
+		// console.log(nodes);
 		return chiQuery(nodes, elements);
 	};
 
