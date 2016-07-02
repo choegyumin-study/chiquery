@@ -56,53 +56,58 @@
 //	$($('.foo'));
 //	$('<div class="foo">');
 
-//	console.log('\r\n.foo()');
-//	console.log(foo);
+	console.log('\r\n.foo()');
+	console.log(foo);
 
-//	console.log('\r\n.add()');
-//	console.log($('.foo').add('.bar'));
-//	console.log($('.foo').add('<p class="test"></p>'));
+	console.log('\r\n.add()');
+	console.log($('.foo').add('.bar'));
+	console.log($('.foo').add('<p class="test"></p>'));
 
-//	console.log('\r\n.eq()');
-//	console.log(foo.eq(-1));
+	console.log('\r\n.children()');
+	console.log($('.foo').children());
+	console.log($('.foo').children('.idx1'));
+	console.log($('.bar').children('.child'));
 
-//	console.log('\r\n.each()');
-//	console.log(foo.each(function(idx) {
-//		console.log(idx, this);
-//	}));
+	console.log('\r\n.eq()');
+	console.log(foo.eq(-1));
 
-//	console.log(foo.get());
-//	console.log(foo.get(0));
+	console.log('\r\n.each()');
+	console.log(foo.each(function(idx) {
+		console.log(idx, this);
+	}));
 
-//	console.log('\r\n.find()');
-//	console.log(foo.eq(-1).find('.child'));
-//	console.log(foo.eq(-1).find('.child').eq(0));
+	console.log(foo.get());
+	console.log(foo.get(0));
 
-//	console.log('\r\n.first()');
-//	console.log(foo.first());
+	console.log('\r\n.find()');
+	console.log(foo.eq(-1).find('.child'));
+	console.log(foo.eq(-1).find('.child').eq(0));
 
-//	console.log('\r\n.has()');
-//	console.log($('.foo').has('.child'));
-//	console.log($('.bar').has('.child'));
+	console.log('\r\n.first()');
+	console.log(foo.first());
 
-//	console.log('\r\n.is()');
-//	console.log(foo.is('.foo'));
-//	console.log(foo.is(function() {
-//		return $('.child', this).length === 1;
-//	}));
+	console.log('\r\n.has()');
+	console.log($('.foo').has('.child'));
+	console.log($('.bar').has('.child'));
 
-//	console.log('\r\n.last()');
-//	console.log(bar.last());
+	console.log('\r\n.is()');
+	console.log(foo.is('.foo'));
+	console.log(foo.is(function() {
+		return $('.child', this).length === 1;
+	}));
 
-//	console.log('\r\n.parent()');
-//	console.log($('.child').parent());
-//	console.log($('.child').parent('.foo'));
-//	console.log($('.child').parent('.bar'));
+	console.log('\r\n.last()');
+	console.log(bar.last());
 
-//	console.log('\r\n.parents()');
-//	console.log($('.child').parents());
-//	console.log($('.child').parents('.foo'));
-//	console.log($('.child').parents('.bar'));
+	console.log('\r\n.parent()');
+	console.log($('.child').parent());
+	console.log($('.child').parent('.foo'));
+	console.log($('.child').parent('.bar'));
+
+	console.log('\r\n.parents()');
+	console.log($('.child').parents());
+	console.log($('.child').parents('.foo'));
+	console.log($('.child').parents('.bar'));
 </script>
 
 </body>

@@ -36,7 +36,7 @@
 #### Navigation
 
 - [add](https://api.jquery.com/add/)
-- children
+- [children](https://api.jquery.com/children/)
 - closest
 - [eq](https://api.jquery.com/eq/)
 - filter

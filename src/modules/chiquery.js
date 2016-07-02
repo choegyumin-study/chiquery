@@ -84,6 +84,9 @@ chiQueryInit.fn = chiQueryNodes.prototype = {
 	attr: function(attrName, attrValue) {
 		return pod_attr().attr(this, attrName, attrValue);
 	},
+	children: function(targetElement) {
+		return core_nav().children(this, targetElement);
+	},
 	each: function(callback) {
 		return core_misc().each(this, callback);
 	},
@@ -111,11 +114,11 @@ chiQueryInit.fn = chiQueryNodes.prototype = {
 	index: function(element) {
 		return core_misc().index(this, element);
 	},
-	parent: function(elements) {
-		return core_nav().parent(this, elements);
+	parent: function(targetElement) {
+		return core_nav().parent(this, targetElement);
 	},
-	parents: function(elements) {
-		return core_nav().parents(this, elements);
+	parents: function(targetElement) {
+		return core_nav().parents(this, targetElement);
 	},
 	removeAttr: function(attrName) {
 		return pod_attr().removeAttr(this, attrName);

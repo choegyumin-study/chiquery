@@ -14,6 +14,10 @@ export default function() {
 		return typeof obj === 'object' && obj.isChiQuery;
 	};
 
+	modules.isElementNodeItem = function(obj) {
+		return modules.isNodeItem(obj) && obj.nodeName;
+	};
+
 	modules.isFunction = function(obj) {
 		return typeof obj === 'function';
 	};

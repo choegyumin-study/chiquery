@@ -10,6 +10,22 @@ export default function() {
 		return chiQuery(global_fn().nodesToArray(_this).concat(global_fn().nodesToArray(chiQuery(selector, context))), _this);
 	};
 
+	modules.children = function(_this, target) {
+		target = target ? global_fn().nodesToArray(chiQuery(target)) : undefined;
+		var nodes = [];
+		for (var _i = 0; _i < _this.size(); _i++) {
+			var childNodes = _this.get(_i).childNodes;
+			for (var _j = 0; _j < childNodes.length; _j++) {
+				var childNode = childNodes[_j];
+				if (
+					(!target || Array.prototype.indexOf.call(target, childNode) > -1) &&
+						childNode.nodeType === 1
+				) nodes.push(childNode);
+			}
+		}
+		return chiQuery(nodes, _this);
+	};
+
 	modules.eq = function(_this, idx) {
 		var len = _this.length;
 		if (idx < 0) idx = len + idx;
