@@ -5,26 +5,26 @@ export default function() {
 
 	var modules = {};
 
-	modules.eq = function(elements, idx) {
-		var len = elements.length;
+	modules.eq = function(_this, idx) {
+		var len = _this.length;
 		if (idx < 0) idx = len + idx;
-		return chiQuery(elements[idx], elements);
+		return chiQuery(_this[idx], _this);
 	};
 
-	modules.find = function(context, selector) {
-		return chiQuery(selector, context);
+	modules.find = function(_this, selector) {
+		return chiQuery(selector, _this);
 	};
 
-	modules.parent = function(elements, target) {
+	modules.parent = function(_this, target) {
 		target = global_fn().nodesToArray(chiQuery(target));
 		var nodes = [];
-		for (var _i = 0; _i < elements.length; _i++) {
-			var parentNode = elements[_i].parentNode;
+		for (var _i = 0; _i < _this.length; _i++) {
+			var parentNode = _this[_i].parentNode;
 			if (!target || Array.prototype.indexOf.call(target, parentNode) > -1) {
 				nodes = nodes.concat(parentNode);
 			}
 		}
-		return chiQuery(nodes, elements);
+		return chiQuery(nodes, _this);
 	};
 
 	return modules;
