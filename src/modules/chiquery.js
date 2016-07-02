@@ -93,8 +93,11 @@ chiQueryInit.fn = chiQueryNodes.prototype = {
 	index: function(element) {
 		return core_misc().index(this, element);
 	},
-	parent: function(element) {
-		return core_nav().parent(this, element);
+	parent: function(elements) {
+		return core_nav().parent(this, elements);
+	},
+	parents: function(elements) {
+		return core_nav().parents(this, elements);
 	},
 	size: function() {
 		return core_misc().size(this);
