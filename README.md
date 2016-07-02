@@ -51,7 +51,7 @@ npm install --save-dev
 
 - [add](https://api.jquery.com/add/)
 - [children](https://api.jquery.com/children/)
-- closest
+- [closest](https://api.jquery.com/closest/)
 - [end](https://api.jquery.com/end/)
 - [eq](https://api.jquery.com/eq/)
 - filter

@@ -26,13 +26,13 @@ export default function() {
 		return chiQuery(nodes, _this);
 	};
 
-	modules.closest = function(_this, target) {
-		target = target ? global_fn().nodesToArray(chiQuery(target)) : undefined;
+	modules.closest = function(_this, target, context) {
+		target = global_fn().nodesToArray(chiQuery(target));
 		var nodes = [];
 		for (var _i = 0; _i < _this.size(); _i++) {
 			var parentNode = _this.get(_i);
-			while (parentNode !== null && parentNode !== document) {
-				if (!target || Array.prototype.indexOf.call(target, parentNode) > -1) {
+			while (parentNode !== null && parentNode !== document && Array.prototype.indexOf.call(global_fn().nodesToArray(chiQuery(context)), parentNode) < 0) {
+				if (Array.prototype.indexOf.call(target, parentNode) > -1) {
 					nodes.push(parentNode);
 					break;
 				}

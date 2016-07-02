@@ -76,6 +76,14 @@
 	console.log(foo.children('.idx1'));
 	console.log(bar.children('.baz'));
 
+	console.log('\r\n%c.closest()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+	console.log(foobar.closest('.foobar', '.baz'));
+	console.log(foobar.closest('.foo'));
+	console.log(foobar.closest('.foo', $('body')));
+	console.log(baz.closest('.foo'));
+	console.log(baz.closest('.bar'));
+	console.log(baz.closest('.baz'));
+
 	console.log('\r\n%c.eq()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
 	console.log(foo.eq(-1));
 
