@@ -37,10 +37,9 @@ export default function() {
 			target = chiQuery(element);
 		} else {
 			var nodes = [],
-				nodeList = _this.get(0).parentNode.childNodes;
+				nodeList = _this.parent().children();
 			for (var _i = 0; _i < nodeList.length; _i++) {
-				var nodeItem = nodeList[_i];
-				if (nodeItem.nodeType === 1) nodes.push(nodeItem);
+				nodes.push(nodeList[_i]);
 			}
 			elements = chiQuery(nodes);
 			target = _this;
