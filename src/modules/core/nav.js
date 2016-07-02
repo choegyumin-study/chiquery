@@ -65,7 +65,7 @@ export default function() {
 			// console.log('target exists.');
 			target = global_fn().nodesToArray(chiQuery(target));
 			// console.log('target (converted):', target);
-			_this.each(function () {
+			_this.each(function() {
 				// console.log('each:', this);
 				if (!target || target.indexOf(this) > -1) nodes.push(this);
 			});
