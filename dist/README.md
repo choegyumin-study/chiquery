@@ -38,6 +38,7 @@
 - [add](https://api.jquery.com/add/)
 - [children](https://api.jquery.com/children/)
 - closest
+- [end](https://api.jquery.com/end/)
 - [eq](https://api.jquery.com/eq/)
 - filter
 - [find](https://api.jquery.com/find/)

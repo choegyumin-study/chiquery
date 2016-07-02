@@ -90,6 +90,9 @@ chiQueryInit.fn = chiQueryNodes.prototype = {
 	each: function(callback) {
 		return core_misc().each(this, callback);
 	},
+	end: function() {
+		return core_nav().end(this);
+	},
 	eq: function(idx) {
 		return core_nav().eq(this, idx);
 	},

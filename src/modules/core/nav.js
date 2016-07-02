@@ -26,6 +26,10 @@ export default function() {
 		return chiQuery(nodes, _this);
 	};
 
+	modules.end = function(_this) {
+		return chiQuery(_this.context, _this);
+	};
+
 	modules.eq = function(_this, idx) {
 		var len = _this.length;
 		if (idx < 0) idx = len + idx;
@@ -76,7 +80,6 @@ export default function() {
 				return returnBool;
 			}
 		}
-		//global_fn().nodesToArray(chiQuery(target));
 	};
 
 	modules.last = function(_this) {
