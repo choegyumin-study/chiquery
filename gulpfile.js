@@ -14,6 +14,7 @@ var fs = require('fs'),
 	jsdoc = require('gulp-jsdoc3'),
 	rollup = require('gulp-rollup'),
 	sourcemaps = require('gulp-sourcemaps'),
+	strip = require('gulp-strip-comments'),
 	gulpsync = require('gulp-sync')(gulp),
 	uglify = require('gulp-uglify'),
 	gutil = require('gulp-util'),
@@ -127,6 +128,7 @@ gulp.task('build', gulpsync.sync([
 	'scripts', 'report'
 ]), function() {
 	return gulp.src('src/chiquery.js')
+		.pipe(strip())
 		.pipe(beautify({
 			indent_size: 2,
 			indent_char: ' ',
