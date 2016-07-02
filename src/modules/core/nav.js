@@ -13,24 +13,24 @@ export default function() {
 	modules.children = function(_this, target) {
 		target = target ? global_fn().nodesToArray(chiQuery(target)) : undefined;
 		var nodes = [];
-		for (var _i = 0; _i < _this.size(); _i++) {
-			var childNodes = _this.get(_i).childNodes;
-			for (var _j = 0; _j < childNodes.length; _j++) {
-				var childNode = childNodes[_j];
+		_this.each(function() {
+			var childNodes = this.childNodes;
+			for (var _i = 0; _i < childNodes.length; _i++) {
+				var childNode = childNodes[_i];
 				if (
 					(!target || target.indexOf(childNode) > -1) &&
 					childNode.nodeType === 1
 				) nodes.push(childNode);
 			}
-		}
+		});
 		return chiQuery(nodes, _this);
 	};
 
 	modules.closest = function(_this, target, context) {
 		target = global_fn().nodesToArray(chiQuery(target));
 		var nodes = [];
-		for (var _i = 0; _i < _this.size(); _i++) {
-			var parentNode = _this.get(_i);
+		_this.each(function() {
+			var parentNode = this;
 			while (parentNode !== null && parentNode !== document && global_fn().nodesToArray(chiQuery(context)).indexOf(parentNode) < 0) {
 				if (target.indexOf(parentNode) > -1) {
 					nodes.push(parentNode);
@@ -38,7 +38,7 @@ export default function() {
 				}
 				parentNode = parentNode.parentNode;
 			}
-		}
+		});
 		return chiQuery(nodes, _this);
 	};
 
@@ -126,18 +126,18 @@ export default function() {
 	modules.parent = function(_this, target) {
 		target = target ? global_fn().nodesToArray(chiQuery(target)) : undefined;
 		var nodes = [];
-		for (var _i = 0; _i < _this.size(); _i++) {
-			var parentNode = _this.get(_i).parentNode;
+		_this.each(function() {
+			var parentNode = this.parentNode;
 			if (!target || target.indexOf(parentNode) > -1) nodes.push(parentNode);
-		}
+		});
 		return chiQuery(nodes, _this);
 	};
 
 	modules.parents = function(_this, target) {
 		target = target ? global_fn().nodesToArray(chiQuery(target)) : undefined;
 		var nodes = [];
-		for (var _i = 0; _i < _this.size(); _i++) {
-			var parentNode = _this.get(_i).parentNode;
+		_this.each(function() {
+			var parentNode = this.parentNode;
 			while (parentNode !== null && parentNode !== document) {
 				if (!target || target.indexOf(parentNode) > -1) {
 					var hasParentIdx = nodes.indexOf(parentNode);
@@ -146,7 +146,7 @@ export default function() {
 				}
 				parentNode = parentNode.parentNode;
 			}
-		}
+		});
 		return chiQuery(nodes, _this);
 	};
 
