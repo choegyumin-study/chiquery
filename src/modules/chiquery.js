@@ -75,6 +75,9 @@ var chiQueryNodes = function(selector, context) {
 };
 
 chiQueryInit.fn = chiQueryNodes.prototype = {
+	addClass: function(className) {
+		return pod_attr().addClass(this, className);
+	},
 	attr: function(attrName, attrValue) {
 		return pod_attr().attr(this, attrName, attrValue);
 	},
@@ -83,6 +86,12 @@ chiQueryInit.fn = chiQueryNodes.prototype = {
 	},
 	eq: function(idx) {
 		return core_nav().eq(this, idx);
+	},
+	removeClass: function(className) {
+		return pod_attr().removeClass(this, className);
+	},
+	removeAttr: function(attrName) {
+		return pod_attr().removeAttr(this, attrName);
 	},
 	find: function(selector) {
 		return core_nav().find(this, selector);

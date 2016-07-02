@@ -77,11 +77,11 @@ npm install --save-dev
 #### Attribute
 
 - [attr](https://api.jquery.com/attr/)
-- addClass
+- [addClass](https://api.jquery.com/addClass/)
 - hasClass
 - prop
-- removeAttr
-- removeClass
+- [removeAttr](https://api.jquery.com/removeAttr/)
+- [removeClass](https://api.jquery.com/removeClass/)
 - removeProp
 - toggleClass
 - val

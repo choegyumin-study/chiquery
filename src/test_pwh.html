@@ -33,13 +33,14 @@
 <div class="element idx4">.element.idx4</div>
 
 <script>
-	$('.element').attr("class", function(idx, val) {
-		console.log(idx, val);
+	/*$(".element").addClass(function(idx, val) {
+		return "element_add"+idx;
+	});*/
+	$(".element").addClass("element_add");
+	$(".element").removeClass("element_add");
+	$(".element").removeClass(function(idx, val) {
+		return "idx"+idx;
 	});
-	console.log("----------------------------------------------------------------");
-	$('.element').attr("class", "element_change");
-	console.log("----------------------------------------------------------------");
-	console.log($('.elements').attr("class"));
 </script>
 
 </body>
