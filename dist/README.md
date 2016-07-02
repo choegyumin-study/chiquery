@@ -63,14 +63,14 @@
 #### Attribute
 
 - [attr](https://api.jquery.com/attr/)
-- addClass
-- hasClass
-- prop
-- removeAttr
-- removeClass
-- removeProp
-- toggleClass
-- val
+- [addClass](https://api.jquery.com/addClass/)
+- [hasClass](https://api.jquery.com/hasClass/)
+- [prop](https://api.jquery.com/prop/)
+- [removeAttr](https://api.jquery.com/removeAttr/)
+- [removeClass](https://api.jquery.com/removeClass/)
+- [removeProp](https://api.jquery.com/removeProp/)
+- [toggleClass](https://api.jquery.com/toggleClass/)
+- [val](https://api.jquery.com/val/)
 
 #### DOM Control
 
