@@ -87,6 +87,9 @@ chiQueryInit.fn = chiQueryNodes.prototype = {
 	children: function(targetElement) {
 		return core_nav().children(this, targetElement);
 	},
+	closest: function(targetElement) {
+		return core_nav().closest(this, targetElement);
+	},
 	each: function(callback) {
 		return core_misc().each(this, callback);
 	},

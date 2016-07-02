@@ -26,6 +26,22 @@ export default function() {
 		return chiQuery(nodes, _this);
 	};
 
+	modules.closest = function(_this, target) {
+		target = target ? global_fn().nodesToArray(chiQuery(target)) : undefined;
+		var nodes = [];
+		for (var _i = 0; _i < _this.size(); _i++) {
+			var parentNode = _this.get(_i);
+			while (parentNode !== null && parentNode !== document) {
+				if (!target || Array.prototype.indexOf.call(target, parentNode) > -1) {
+					nodes.push(parentNode);
+					break;
+				}
+				parentNode = parentNode.parentNode;
+			}
+		}
+		return chiQuery(nodes, _this);
+	};
+
 	modules.end = function(_this) {
 		return chiQuery(_this.context, _this);
 	};

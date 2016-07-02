@@ -16,7 +16,7 @@
 	body {
 		padding: 5px;
 	}
-	div {
+	body > div {
 		padding: 10px;
 		margin: 10px;
 		background: gray;
@@ -30,34 +30,44 @@
 <body>
 
 <div class="foo idx0">
-	.foo.idx0
-	<p class="baz idx0">.foo.idx0 > .baz.idx0</p>
+	div.foo.idx0
+	<p class="baz idx0">div.foo.idx0 > p.baz.idx0</p>
 </div>
 <div class="foo idx1">
-	.foo.idx1
-	<p class="baz idx1">.foo.idx1 > .baz.idx1</p>
+	div.foo.idx1
+	<div class="baz idx1">
+		div.foo.idx1 > div.baz.idx1
+		<p class="foobar">div.foo.idx1 > div.baz.idx1 > p.foobar</p>
+	</div>
 </div>
 <div class="foo idx2">
-	.foo.idx2
-	<p class="baz idx2">.foo.idx2 > .baz.idx2</p>
+	div.foo.idx2
+	<p class="baz idx2">div.foo.idx2 > p.baz.idx2</p>
 </div>
 <div class="foo idx3">
-	.foo.idx3
-	<p class="baz idx3">.foo.idx3 > .baz.idx3</p>
+	div.foo.idx3
+	<p class="baz idx3">div.foo.idx3 > p.baz.idx3</p>
 </div>
 <div class="bar idx0">
-	.bar.idx0
-	<p class="baz idx4">.bar.idx0 > .baz.idx4</p>
+	div.bar.idx0
+	<p class="baz idx4">div.bar.idx0 > p.baz.idx4</p>
 </div>
 
-<div class="foo undefined">.foo.undefined</div>
-<div class="foo undefined">.foo.undefined</div>
-<div class="bar undefined">.bar.undefined</div>
+<div class="foo undefined">div.foo.undefined</div>
+<div class="foo undefined">div.foo.undefined</div>
+<div class="bar undefined">div.bar.undefined</div>
 
 <script>
 	var foo = $('.foo'),
 		bar = $('.bar'),
-		baz = $('.baz');
+		baz = $('.baz'),
+		foobar = $('.foobar');
+
+	console.log('\r\n%c.closest()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+	console.log(foobar.closest('.foo'));
+	console.log(baz.closest('.foo'));
+	console.log(baz.closest('.bar'));
+	console.log(baz.closest('.baz'));
 </script>
 
 </body>
