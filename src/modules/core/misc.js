@@ -9,7 +9,9 @@ export default function() {
 		var len = _this.length;
 		for (var _i = 0; _i < len; _i++) {
 			var element = _this.get(_i);
-			callback.call(element, _i, element);
+			if (callback.call(element, _i, element) === false) {
+				break;
+			}
 		}
 		return _this;
 	};
@@ -27,11 +29,26 @@ export default function() {
 	};
 
 	modules.index = function(_this, element) {
-		if (element) element = $(element);
-		var returnIdx = '-1';
-		_this.each(function(idx) {
-			if (element) {
-				if (this === element.get()) returnIdx = idx;
+		var returnIdx = -1,
+			elements,
+			target;
+		if (element) {
+			elements = _this;
+			target = chiQuery(element);
+		} else {
+			var nodes = [],
+				nodeList = _this.get(0).parentNode.childNodes;
+			for (var _i = 0; _i < nodeList.length; _i++) {
+				var nodeItem = nodeList[_i];
+				if (nodeItem.nodeType === 1) nodes.push(nodeItem);
+			}
+			elements = chiQuery(nodes);
+			target = _this;
+		}
+		elements.each(function(idx) {
+			if (this === target.get(0)) {
+				returnIdx = idx;
+				return false;
 			}
 		});
 		return returnIdx;

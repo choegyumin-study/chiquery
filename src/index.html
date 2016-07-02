@@ -13,9 +13,9 @@
 		padding: 5px;
 		margin: 0;
 	}
-	.element {
-		padding: 5px;
-		margin: 5px;
+	div {
+		padding: 10px;
+		margin: 10px;
 		background: gray;
 		color: white;
 	}
@@ -26,43 +26,100 @@
 </head>
 <body>
 
-<div class="element idx0">.element.idx0</div>
-<div class="element idx1">.element.idx1</div>
-<div class="element idx2">.element.idx2</div>
-<div class="element idx3">.element.idx3</div>
-<div class="element idx4">.element.idx4</div>
+<div class="foo idx0">
+	<span class="baz idx0">.foo.idx0 > .baz.idx0</span>
+</div>
+<div class="foo idx1">
+	<span class="baz idx1">.foo.idx1 > .baz.idx1</span>
+</div>
+<div class="foo idx2">
+	<span class="baz idx2">.foo.idx2 > .baz.idx2</span>
+</div>
+<div class="foo idx3">
+	<span class="baz idx3">.foo.idx3 > .baz.idx3</span>
+</div>
+<div class="bar idx0">
+	<span class="baz idx4">.bar.idx0 > .baz.idx4</span>
+</div>
+
+<div class="foo undefined">.foo.undefined</div>
+<div class="foo undefined">.foo.undefined</div>
+<div class="bar undefined">.bar.undefined</div>
 
 <script>
-	var ELEMENTS = $('.element');
-</script>
+	var foo = $('.foo'),
+		bar = $('.bar'),
+		baz = $('.baz');
 
-<!--<script>
-	console.log('\r\n.$()');
-	console.log(ELEMENTS);
-</script>-->
+	console.log('\r\n%c.$()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+	console.log($(document.querySelectorAll('.foo')));
+	console.log($(document));
+	console.log($('.foo'));
+	console.log($($('.foo')));
+	console.log(foo);
+	console.log($('<p class="test"></p>'));
 
-<!--<script>
-	console.log('\r\n.get()');
-	console.log('null\r\n', ELEMENTS.get());
-	console.log('0\r\n', ELEMENTS.get(0));
-	console.log('2\r\n', ELEMENTS.get(2));
-	console.log('-1\r\n', ELEMENTS.get(-1));
-</script>-->
+	console.log('\r\n%c.add()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+	console.log(foo.add('.bar'));
+	console.log(foo.add('<p class="test"></p>'));
 
-<!--<script>
-	console.log('\r\n.index()');
-	console.log('ELEMENTS.get(0)\r\n', ELEMENTS.index(ELEMENTS.get(0)));
-	console.log('ELEMENTS.get(2)\r\n', ELEMENTS.index(ELEMENTS.get(2)));
-	console.log('ELEMENTS.get(-1)\r\n', ELEMENTS.index(ELEMENTS.get(-1)));
-	console.log($('.element.idx3').index());
-</script>-->
+	console.log('\r\n%c.children()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+	console.log(foo.children());
+	console.log(foo.children('.idx1'));
+	console.log(bar.children('.baz'));
 
-<!--<script>
-	console.log('\r\n.each()');
-	ELEMENTS.each(function(idx) {
+	console.log('\r\n%c.eq()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+	console.log(foo.eq(-1));
+
+	console.log('\r\n%c.each()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+	console.log(foo.each(function(idx) {
 		console.log(idx, this);
-	});
-</script>-->
+	}));
+
+	console.log('\r\n%c.get()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+	console.log(foo.get());
+	console.log(foo.get(0));
+	console.log(foo.get(-1));
+
+	console.log('\r\n%c.find()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+	console.log(foo.eq(2).find('.baz'));
+
+	console.log('\r\n%c.first()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+	console.log(foo.first());
+
+	console.log('\r\n%c.has()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+	console.log(foo.has('.baz'));
+	console.log(bar.has('.baz'));
+
+	console.log('\r\n%c.index()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+	console.log(foo.index(foo.get(0)));
+	console.log(foo.index(foo.get(2)));
+	console.log(foo.index(foo.get(-1)));
+	console.log($('.foo.idx3').index());
+
+	console.log('\r\n%c.is()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+	console.log(foo.is('.foo'));
+	console.log(foo.is(function() {
+		return $('.baz', this).length === 1;
+	}));
+
+	console.log('\r\n%c.last()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+	console.log(bar.last());
+
+	console.log('\r\n%c.parent()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+	console.log(baz.parent());
+	console.log(baz.parent('.foo'));
+	console.log(baz.parent('.bar'));
+	console.log(baz.parent($('.foo')));
+	console.log(baz.parent(foo));
+
+	console.log('\r\n%c.parents()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+	console.log(baz.parents());
+	console.log(baz.parents('.foo'));
+	console.log(baz.parents('.bar'));
+	console.log(baz.parents($('.foo')));
+	console.log(baz.parents(foo));
+</script>
 
 </body>
 </html>

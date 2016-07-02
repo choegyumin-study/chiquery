@@ -27,19 +27,19 @@
 <body>
 
 <div class="foo idx0">
-	<span class="child idx0">.foo.idx0 > .child.idx0</span>
+	<span class="baz idx0">.foo.idx0 > .baz.idx0</span>
 </div>
 <div class="foo idx1">
-	<span class="child idx1">.foo.idx1 > .child.idx1</span>
+	<span class="baz idx1">.foo.idx1 > .baz.idx1</span>
 </div>
 <div class="foo idx2">
-	<span class="child idx2">.foo.idx2 > .child.idx2</span>
+	<span class="baz idx2">.foo.idx2 > .baz.idx2</span>
 </div>
 <div class="foo idx3">
-	<span class="child idx3">.foo.idx3 > .child.idx3</span>
+	<span class="baz idx3">.foo.idx3 > .baz.idx3</span>
 </div>
 <div class="bar idx0">
-	<span class="child idx4">.bar.idx0 > .child.idx4</span>
+	<span class="baz idx4">.bar.idx0 > .baz.idx4</span>
 </div>
 
 <div class="foo undefined">.foo.undefined</div>
@@ -48,66 +48,8 @@
 
 <script>
 	var foo = $('.foo'),
-		bar = $('.bar');
-
-//	$(document.querySelectorAll('.foo'));
-//	$(document);
-//	$('.foo');
-//	$($('.foo'));
-//	$('<div class="foo">');
-
-	console.log('\r\n.foo()');
-	console.log(foo);
-
-	console.log('\r\n.add()');
-	console.log($('.foo').add('.bar'));
-	console.log($('.foo').add('<p class="test"></p>'));
-
-	console.log('\r\n.children()');
-	console.log($('.foo').children());
-	console.log($('.foo').children('.idx1'));
-	console.log($('.bar').children('.child'));
-
-	console.log('\r\n.eq()');
-	console.log(foo.eq(-1));
-
-	console.log('\r\n.each()');
-	console.log(foo.each(function(idx) {
-		console.log(idx, this);
-	}));
-
-	console.log(foo.get());
-	console.log(foo.get(0));
-
-	console.log('\r\n.find()');
-	console.log(foo.eq(-1).find('.child'));
-	console.log(foo.eq(-1).find('.child').eq(0));
-
-	console.log('\r\n.first()');
-	console.log(foo.first());
-
-	console.log('\r\n.has()');
-	console.log($('.foo').has('.child'));
-	console.log($('.bar').has('.child'));
-
-	console.log('\r\n.is()');
-	console.log(foo.is('.foo'));
-	console.log(foo.is(function() {
-		return $('.child', this).length === 1;
-	}));
-
-	console.log('\r\n.last()');
-	console.log(bar.last());
-
-	console.log('\r\n.parent()');
-	console.log($('.child').parent());
-	console.log($('.child').parent('.foo'));
-	console.log($('.child').parent('.bar'));
-
-	console.log('\r\n.parents()');
-	console.log($('.child').parents());
-	console.log($('.child').parents('.foo'));
-	console.log($('.child').parents('.bar'));
+		bar = $('.bar'),
+		baz = $('.baz');
 </script>
 
 </body>

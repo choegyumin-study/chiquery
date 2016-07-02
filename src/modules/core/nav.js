@@ -19,7 +19,7 @@ export default function() {
 				var childNode = childNodes[_j];
 				if (
 					(!target || Array.prototype.indexOf.call(target, childNode) > -1) &&
-						childNode.nodeType === 1
+					childNode.nodeType === 1
 				) nodes.push(childNode);
 			}
 		}
