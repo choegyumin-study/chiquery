@@ -49,7 +49,7 @@
 - nextAll
 - nextUntil
 - not
-- parent
+- [parent](https://api.jquery.com/parent/)
 - parents
 - prev
 - prevAll

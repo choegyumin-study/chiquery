@@ -16,17 +16,14 @@ export default function() {
 	};
 
 	modules.parent = function(elements, target) {
-		var nodes = [];
-
 		target = global_fn().nodesToArray(chiQuery(target));
-
+		var nodes = [];
 		for(var _i = 0; _i < elements.length; _i++) {
 			var parentNode = elements[_i].parentNode;
 			if (!target || Array.prototype.indexOf.call(target, parentNode) > -1) {
 				nodes = nodes.concat(parentNode);
 			}
 		}
-
 		return chiQuery(nodes, elements);
 	};
 

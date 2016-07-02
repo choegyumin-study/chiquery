@@ -63,7 +63,7 @@ npm install --save-dev
 - nextAll
 - nextUntil
 - not
-- parent
+- [parent](https://api.jquery.com/parent/)
 - parents
 - prev
 - prevAll
