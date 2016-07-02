@@ -65,7 +65,7 @@ npm install --save-dev
 - <del>nextUntil</del>
 - not
 - [parent](https://api.jquery.com/parent/)
-- parents
+- [parents](https://api.jquery.com/parents/)
 - prev
 - prevAll
 - <del>prevUntil</del>
