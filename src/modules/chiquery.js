@@ -41,29 +41,33 @@ var chiQueryNodes = function (selector, context) {
 	}
 	this.context = context;
 
+	// 배열 셀렉터 대응하기 (jQuery는 어떤지 확인)
+	console.log(selector);
 	if (global_fn().isChiQueryNodes(selector)) {
-		// console.log('selector is chiQueryNodes.');
+		console.log('selector is chiQueryNodes.');
 		nodes = global_fn().nodesToArray(selector);
 	} else if (global_fn().isNodeList(selector)) {
-		// console.log('selector is nodeList.');
+		console.log('selector is nodeList.');
 		nodes = /*global_fn().nodesToArray(*/selector/*)*/;
 	} else if (global_fn().isNodeItem(selector)) {
-		// console.log('selector is nodeItem.');
+		console.log('selector is nodeItem.');
 		nodes = [selector];
 	} else if (typeof selector === 'string') {
 		if (selector[0] == "<") {
-			// console.log('selector is HTML string.');
+			console.log('selector is HTML string.');
 			var createDOM = document.createElement('body');
 			createDOM.innerHTML = selector;
 			nodes = /*global_fn().nodesToArray(*/createDOM.childNodes/*)*/;
 		} else {
-			// console.log('selector is string.');
+			console.log('selector is string.');
 			for(var _i = 0; _i < context.length; _i++) {
 				nodes = nodes.concat(global_fn().nodesToArray(context[_i].querySelectorAll(selector)));
 			}
 		}
 		this.selector = selector;
 	}
+	console.log(nodes);
+	console.log('');
 
 	this.length = nodes.length;
 

@@ -16,17 +16,17 @@ export default function() {
 	};
 	
 	modules.parent = function(elements, element) {
-		// var nodes = [];
-		//
-		// for(var _i = 0; _i < elements.length; _i++) {
-		// 	var parentNode = elements[_i].parentNode;
-		// 	if (!element) {
-		// 		nodes = nodes.concat(parentNode);
-		// 	}
-		// }
-		//
-		// console.log(nodes);
-		// return chiQuery(nodes, elements);
+		var nodes = [];
+		
+		for(var _i = 0; _i < elements.length; _i++) {
+			var parentNode = elements[_i].parentNode;
+			if (!element) {
+				nodes = nodes.concat(parentNode);
+			}
+		}
+		
+		console.log(nodes);
+		return chiQuery(nodes, elements);
 	};
 
 	return modules;

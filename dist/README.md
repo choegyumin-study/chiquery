@@ -20,7 +20,7 @@
 ### Selector
 
 - [chiQuery](https://api.jquery.com/jQuery/)
-  - It is `.querySelectorAll()`
+  - Use `.querySelectorAll()`
   - chiQuery().context != jQuery().context
   - chiQuery().context == jQuery().prevObject
 
