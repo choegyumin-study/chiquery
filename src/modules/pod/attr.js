@@ -7,7 +7,7 @@ export default function() {
 	
 	modules.attr = function(elements, attrName, attrValue) {
 		var len = elements.length;
-		if(typeof attrValue == "undefined") {
+		if(global_fn().isUndefined(attrValue)) {
 			return elements[0].getAttribute(attrName);
 		} else if(typeof attrValue == "string") {
 			for(var _i = 0; _i < len; _i++) {

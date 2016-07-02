@@ -17,7 +17,7 @@ export default function() {
 	modules.get = function(elements, idx) {
 		var len = elements.length,
 			element;
-		if (typeof idx === 'number') {
+		if (global_fn().isNumber(idx)) {
 			if (idx < 0) idx = len + idx;
 			element = elements[idx];
 		} else {

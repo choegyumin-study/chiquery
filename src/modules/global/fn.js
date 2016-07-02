@@ -2,25 +2,49 @@ export default function() {
 
 	var modules = {};
 
-	modules.isChiQueryNodes = function(nodes) {
-		var bool = false;
-		if (typeof nodes === 'object') {
-			if (nodes.isChiQuery) bool = true;
-		}
-		return bool;
+	modules.isArray = function(obj) {
+		return Object.prototype.toString.call(obj) === '[object Array]';
 	};
 
-	modules.isNodeItem = function(node) {
-		return typeof node === "object" &&
-			typeof node.nodeName==="string" &&
-			typeof node.nodeType === "number";
+	modules.isBoolean = function(obj) {
+		return typeof obj === 'boolean';
 	};
 
-	modules.isNodeList = function(nodes) {
-		return typeof nodes === 'object' &&
-			/^\[object (HTMLCollection|NodeList|Object)\]$/.test(Object.prototype.toString.call(nodes)) &&
-			(typeof nodes.length === 'number') &&
-			(nodes.length === 0 || (typeof nodes[0] === "object" && nodes[0].nodeType > 0));
+	modules.isChiQueryNodes = function(obj) {
+		return typeof obj === 'object' && obj.isChiQuery;
+	};
+
+	modules.isFunction = function(obj) {
+		return typeof obj === 'function';
+	};
+
+	modules.isNodeItem = function(obj) {
+		return typeof obj === 'object' &&
+			typeof obj.nodeName === 'string' &&
+			typeof obj.nodeType === 'number';
+	};
+
+	modules.isNumber = function(obj) {
+		return typeof obj === 'number';
+	};
+
+	modules.isNodeList = function(obj) {
+		return typeof obj === 'object' &&
+			/^\[object (HTMLCollection|NodeList|Object)\]$/.test(Object.prototype.toString.call(obj)) &&
+			(typeof obj.length === 'number') &&
+			(obj.length === 0 || (typeof obj[0] === 'object' && obj[0].nodeType > 0));
+	};
+
+	modules.isObject = function(obj) {
+		return typeof obj === 'object';
+	};
+
+	modules.isString = function(obj) {
+		return typeof obj === 'string';
+	};
+
+	modules.isUndefined = function(obj) {
+		return typeof obj === 'undefined';
 	};
 
 	modules.nodesToArray = function(nodes) {
