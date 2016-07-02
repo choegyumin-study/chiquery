@@ -5,20 +5,25 @@ export default function() {
 
 	var modules = {};
 	
-	modules.attr = function(elements, attrName, attrValue) {
-		var len = elements.length;
-		if(global_fn().isUndefined(attrValue)) {
-			return elements[0].getAttribute(attrName);
-		} else if(typeof attrValue == "string") {
-			for(var _i = 0; _i < len; _i++) {
-				elements[0].setAttribute(attrName, attrValue);
-			}
-		} else if(typeof attrValue == "function") {
+	modules.attr = function(_this, attrName, attrValue) {
+		var element,
+			len = _this.length;
+		if (global_fn().isUndefined(attrValue)) {
+			if(len < 1) return _this;
+			return _this[0].getAttribute(attrName);
+		} else if (global_fn().isString(attrValue)) {
 			for (var _i = 0; _i < len; _i++) {
-				var element = elements[_i];
+				element = _this[_i];
+				element.setAttribute(attrName, attrValue);
+			}
+		} else if (global_fn().isFunction(attrValue)) {
+			if(len < 1) return _this;
+			for (var _i = 0; _i < len; _i++) {
+				element = _this[_i];
 				attrValue.call(element, _i, element.getAttribute(attrName));
 			}
 		}
+		return _this;
 	};
 
 	return modules;
