@@ -15,17 +15,18 @@ export default function() {
 		return chiQuery(selector, context);
 	};
 
-	modules.parent = function(elements, element) {
+	modules.parent = function(elements, target) {
 		var nodes = [];
-		
+
+		target = global_fn().nodesToArray(chiQuery(target));
+
 		for(var _i = 0; _i < elements.length; _i++) {
 			var parentNode = elements[_i].parentNode;
-			if (!element) {
+			if (!target || Array.prototype.indexOf.call(target, parentNode) > -1) {
 				nodes = nodes.concat(parentNode);
 			}
 		}
 
-		// console.log(nodes);
 		return chiQuery(nodes, elements);
 	};
 

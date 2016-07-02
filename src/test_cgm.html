@@ -27,20 +27,24 @@
 <body>
 
 <div class="foo idx0">
-	<span class="child idx0">foo</span>
+	<span class="child idx0">.foo.idx0 > .child.idx0</span>
 </div>
 <div class="foo idx1">
-	<span class="child idx1">foo</span>
+	<span class="child idx1">.foo.idx1 > .child.idx1</span>
 </div>
 <div class="foo idx2">
-	<span class="child idx2">foo</span>
+	<span class="child idx2">.foo.idx2 > .child.idx2</span>
 </div>
 <div class="foo idx3">
-	<span class="child idx3">foo</span>
+	<span class="child idx3">.foo.idx3 > .child.idx3</span>
 </div>
-<div class="bar idx4">
-	<span class="child idx4">bar</span>
+<div class="bar idx0">
+	<span class="child idx4">.bar.idx0 > .child.idx4</span>
 </div>
+
+<div class="foo undefined">.foo.undefined</div>
+<div class="foo undefined">.foo.undefined</div>
+<div class="bar undefined">.bar.undefined</div>
 
 <script>
 	var elements = $('.foo');
@@ -70,12 +74,10 @@
 //	console.log(elements.eq(-1).find('.child'));
 //	console.log(elements.eq(-1).find('.child').eq(0));
 
-	console.log(".parent()");
-	console.log($('.child').parent());
-	console.log(".parent('.foo')");
-	console.log($('.child').parent('.foo'));
-	console.log(".parent('.bar')");
-	console.log($('.child').parent('.bar'));
+//	console.log("parent()");
+//	console.log($('.child').parent());
+//	console.log($('.child').parent('.foo'));
+//	console.log($('.child').parent('.bar'));
 </script>
 
 </body>
