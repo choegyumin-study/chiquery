@@ -49,7 +49,7 @@ npm install --save-dev
 
 #### Navigation
 
-- add
+- [add](https://api.jquery.com/add/)
 - children
 - closest
 - [eq](https://api.jquery.com/eq/)

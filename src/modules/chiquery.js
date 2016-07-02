@@ -75,6 +75,9 @@ var chiQueryNodes = function(selector, context) {
 };
 
 chiQueryInit.fn = chiQueryNodes.prototype = {
+	add: function(selector, context) {
+		return core_nav().add(this, selector, context);
+	},
 	addClass: function(className) {
 		return pod_attr().addClass(this, className);
 	},

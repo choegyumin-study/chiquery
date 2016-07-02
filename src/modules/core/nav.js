@@ -5,6 +5,11 @@ export default function() {
 
 	var modules = {};
 
+	modules.add = function(_this, selector, context) {
+		context = context || document;
+		return chiQuery(global_fn().nodesToArray(_this).concat(global_fn().nodesToArray(chiQuery(selector, context))), _this);
+	};
+
 	modules.eq = function(_this, idx) {
 		var len = _this.length;
 		if (idx < 0) idx = len + idx;
