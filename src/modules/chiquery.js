@@ -10,11 +10,11 @@ import core_nav from './core/nav.js';
 import pod_attr from './pod/attr.js';
 import pod_event from './pod/event.js';
 
-var chiQueryInit = function (selector, context) {
+var chiQueryInit = function(selector, context) {
 	return new chiQueryNodes(selector, context);
 };
 
-var chiQueryNodes = function (selector, context) {
+var chiQueryNodes = function(selector, context) {
 	this.isChiQuery = true;
 
 	var nodes = [];
@@ -47,19 +47,18 @@ var chiQueryNodes = function (selector, context) {
 	} else if (global_fn().isNodeItem(selector)) {
 		// console.log('selector is nodeItem.');
 		nodes = [selector];
-
 	} else if (global_fn().isArray(selector)) { // } else if (global_fn().isNodeList(selector)) {
 		// console.log('selector is array.'); // console.log('selector is nodeList.');
-		nodes = /*global_fn().nodesToArray(*/selector/*)*/;
+		nodes = /*global_fn().nodesToArray(*/ selector /*)*/ ;
 	} else if (global_fn().isString(selector)) {
 		if (selector[0] == "<") {
 			// console.log('selector is HTML string.');
 			var createDOM = document.createElement('body');
 			createDOM.innerHTML = selector;
-			nodes = /*global_fn().nodesToArray(*/createDOM.childNodes/*)*/;
+			nodes = /*global_fn().nodesToArray(*/ createDOM.childNodes /*)*/ ;
 		} else {
 			// console.log('selector is string.');
-			for(var _i = 0; _i < context.length; _i++) {
+			for (var _i = 0; _i < context.length; _i++) {
 				nodes = nodes.concat(global_fn().nodesToArray(context[_i].querySelectorAll(selector)));
 			}
 		}

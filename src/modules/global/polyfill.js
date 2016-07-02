@@ -7,7 +7,9 @@ export default (function(global) {
 	// Needed for: IE7-
 	if (!document.querySelectorAll) {
 		document.querySelectorAll = function(selectors) {
-			var style = document.createElement('style'), elements = [], element;
+			var style = document.createElement('style'),
+				elements = [],
+				element;
 			document.documentElement.firstChild.appendChild(style);
 			document._qsa = [];
 
@@ -54,7 +56,9 @@ export default (function(global) {
 	if (!Object.keys) {
 		Object.keys = (function() {
 			var hasOwnProperty = Object.prototype.hasOwnProperty,
-				hasDontEnumBug = !({ toString: null }).propertyIsEnumerable('toString'),
+				hasDontEnumBug = !({
+					toString: null
+				}).propertyIsEnumerable('toString'),
 				dontEnums = [
 					'toString',
 					'toLocaleString',
@@ -69,7 +73,8 @@ export default (function(global) {
 				// if (typeof obj !== 'object' && (typeof obj !== 'function' || obj === null)) {
 				// 	throw new TypeError('Object.keys called on non-object');
 				// }
-				var result = [], prop, i;
+				var result = [],
+					prop, i;
 				for (prop in obj) {
 					if (hasOwnProperty.call(obj, prop)) {
 						result.push(prop);

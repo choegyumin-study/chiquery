@@ -35,11 +35,12 @@
 
 #### Navigation
 
+- add
 - children
 - closest
 - [eq](https://api.jquery.com/eq/)
 - filter
-- find
+- [find](https://api.jquery.com/find/)
 - first
 - has
 - is
@@ -47,13 +48,13 @@
 - map
 - next
 - nextAll
-- nextUntil
+- <del>nextUntil</del>
 - not
 - [parent](https://api.jquery.com/parent/)
 - parents
 - prev
 - prevAll
-- prevUntil
+- <del>prevUntil</del>
 - siblings
 - slice
 
@@ -73,27 +74,25 @@
 
 #### DOM Control
 
-- add
 - after
 - append
-- appendTo
+- <del>appendTo</del>
 - before
 - clone
 - detach
 - empty
 - html
-- insertAfter
-- insertBefore
+- <del>insertAfter</del>
+- <del>insertBefore</del>
 - prepend
-- prependTo
+- <del>prependTo</del>
 - remove
-- replaceAll
+- <del>replaceAll</del>
 - replaceWith
 - text
 - unwrap
 - wrap
 - wrapAll
-- wrapInner
 
 #### Event
 
