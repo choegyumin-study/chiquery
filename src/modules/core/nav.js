@@ -53,21 +53,19 @@ export default function() {
 	};
 
 	modules.filter = function(_this, target) {
-		// console.log('_this:', _this);
-		// console.log('target:', target);
 		var nodes = [];
 		if (global_fn().isFunction(target)) {
-			// console.log('target is function.');
-			// _this.each(function () {
-			// 	console.log(this);
-			// });
+			_this.each(function(idx) {
+				var node = this;
+				if (target.call(node, idx, node)) {
+					nodes.push(node);
+				}
+			});
 		} else {
-			// console.log('target exists.');
 			target = global_fn().nodesToArray(chiQuery(target));
-			// console.log('target (converted):', target);
 			_this.each(function() {
-				// console.log('each:', this);
-				if (!target || target.indexOf(this) > -1) nodes.push(this);
+				var node = this;
+				if (!target || target.indexOf(node) > -1) nodes.push(node);
 			});
 		}
 		return chiQuery(nodes, _this);
@@ -84,8 +82,8 @@ export default function() {
 	modules.has = function(_this, selector) {
 		var nodes = [];
 		_this.each(function() {
-			var element = this;
-			if (chiQuery(selector, element).size() > 0) nodes.push(element);
+			var node = this;
+			if (chiQuery(selector, node).size() > 0) nodes.push(node);
 		});
 		return chiQuery(nodes);
 	};
@@ -94,8 +92,8 @@ export default function() {
 		var returnBool = false;
 		if (global_fn().isFunction(target)) {
 			_this.each(function(idx) {
-				var element = this;
-				if (target.call(element, idx, element)) {
+				var node = this;
+				if (target.call(node, idx, node)) {
 					returnBool = true;
 					return false;
 				}
@@ -105,8 +103,8 @@ export default function() {
 			target = global_fn().nodesToArray(chiQuery(target));
 			if (global_fn().isArray(target)) {
 				_this.each(function() {
-					var element = this;
-					if (target.indexOf(element) > -1) {
+					var node = this;
+					if (target.indexOf(node) > -1) {
 						returnBool = true;
 						return false;
 					}
