@@ -122,6 +122,7 @@
 
 	console.log('\r\n%c.is()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
 	console.log(foo.is('.foo'));
+	console.log(foo.is('abcd'));
 	console.log(foo.is(function() {
 		return $('.baz', this).length === 1;
 	}));

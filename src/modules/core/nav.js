@@ -82,36 +82,35 @@ export default function() {
 	};
 
 	modules.has = function(_this, selector) {
-		var nodes = [],
-			len = _this.size();
-		for (var _i = 0; _i < len; _i++) {
-			var element = _this.get(_i);
+		var nodes = [];
+		_this.each(function() {
+			var element = this;
 			if (chiQuery(selector, element).size() > 0) nodes.push(element);
-		}
+		});
 		return chiQuery(nodes);
 	};
 
 	modules.is = function(_this, target) {
-		var returnBool = false,
-			len = _this.size();
+		var returnBool = false;
 		if (global_fn().isFunction(target)) {
-			for (var _i = 0; _i < len; _i++) {
-				var element = _this.get(_i);
-				if (target.call(element, _i, element)) {
+			_this.each(function(idx) {
+				var element = this;
+				if (target.call(element, idx, element)) {
 					returnBool = true;
-					break;
+					return false;
 				}
-			}
+			});
 			return returnBool;
 		} else {
 			target = global_fn().nodesToArray(chiQuery(target));
 			if (global_fn().isArray(target)) {
-				for (var _i = 0; _i < len; _i++) {
-					if (target.indexOf(_this.get(_i)) > -1) {
+				_this.each(function() {
+					var element = this;
+					if (target.indexOf(element) > -1) {
 						returnBool = true;
-						break;
+						return false;
 					}
-				}
+				});
 				return returnBool;
 			} else {
 				return returnBool;
