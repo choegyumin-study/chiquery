@@ -4,7 +4,7 @@
 
 ## Download
 
-[https://github.com/choi4450-study/chiquery/tree/dist/master](https://github.com/choi4450-study/chiquery/tree/dist/master)
+[https://github.com/choi4450-study/chiquery/tree/dist](https://github.com/choi4450-study/chiquery/tree/dist)
 
 ## Browser Support
 
