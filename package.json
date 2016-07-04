@@ -1,12 +1,11 @@
 {
   "name": "chiquery",
   "version": "0.1.0",
-  "description": " 제이쿼리 만들기 스터디 (짝퉁 제이쿼리)",
+  "description": " 제이쿼리 만들기 프로젝트",
   "main": "index.js",
   "devDependencies": {
     "babel-preset-es2015-rollup": "^1.1.1",
     "del": "^2.2.1",
-    "git-rev-sync": "^1.6.0",
     "gulp": "^3.9.1",
     "gulp-beautify": "^2.0.0",
     "gulp-concat": "^2.6.0",

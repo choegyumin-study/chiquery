@@ -5,7 +5,6 @@ var fs = require('fs'),
 	path = require('path'),
 	gulp = require('gulp'),
 	del = require('del'),
-	gitRev = require('git-rev-sync'),
 	beautify = require('gulp-beautify'),
 	concat = require('gulp-concat'),
 	connect = require('gulp-connect'),
@@ -147,16 +146,13 @@ gulp.task('build', gulpsync.sync([
 });
 
 gulp.task('deploy', function() {
-	var publishDir = 'dist/',
-		repoUrl = packageJson.repository.url,
-		branchName = 'dist/' + gitRev.branch();
-	return gulp.src(publishDir + '**/*')
+	return gulp.src('dist/**/*')
 		.on('end', function() {
-			console.log('Push commits to origin:' + branchName);
+			console.log('Push commits to origin:dist');
 		})
 		.pipe(deploy({
-			remoteUrl: repoUrl,
-			branch: branchName
+			remoteUrl: packageJson.repository.url,
+			branch: 'dist'
 		}));
 });
 
