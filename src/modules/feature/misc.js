@@ -1,5 +1,5 @@
-import global_var from '../global/var.js';
-import global_fn from '../global/fn.js';
+import TOOL_var from '../tool/var.js';
+import TOOL_fn from '../tool/fn.js';
 
 export default function() {
 
@@ -8,8 +8,8 @@ export default function() {
 	modules.each = function(_this, callback) {
 		var len = _this.length;
 		for (var _i = 0; _i < len; _i++) {
-			var element = _this.get(_i);
-			if (callback.call(element, _i, element) === false) {
+			var node = _this.get(_i);
+			if (callback.call(node, _i, node) === false) {
 				break;
 			}
 		}
@@ -18,14 +18,14 @@ export default function() {
 
 	modules.get = function(_this, idx) {
 		var len = _this.length,
-			element;
-		if (global_fn().isNumber(idx)) {
-			if (idx < 0) idx = len + idx;
-			element = _this[idx];
+			node;
+		if (TOOL_fn().isNumber(idx)) {
+			idx = TOOL_fn().negativeNumberWithinLength(idx, len);
+			node = _this[idx];
 		} else {
-			element = global_fn().nodesToArray(_this);
+			node = TOOL_fn().nodesToArray(_this);
 		}
-		return element;
+		return node;
 	};
 
 	modules.index = function(_this, element) {
@@ -51,6 +51,16 @@ export default function() {
 			}
 		});
 		return returnIdx;
+	};
+
+	modules.map = function(_this, callback) {
+		var arr = [];
+		_this.each(function(idx) {
+			var node = this,
+				returned = callback.call(node, idx, node);
+			if (!TOOL_fn().isNull(returned) && !TOOL_fn().isUndefined(returned)) arr.push(returned);
+		});
+		return arr;
 	};
 
 	modules.size = function(_this) {

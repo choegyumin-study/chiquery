@@ -1,142 +1,135 @@
 "use strict";
 
-import './global/polyfill.js';
-import global_var from './global/var.js';
-import global_fn from './global/fn.js';
+import './tool/polyfill.js';
+import TOOL_var from './tool/var.js';
+import TOOL_fn from './tool/fn.js';
 
-import core_misc from './core/misc.js';
-import core_nav from './core/nav.js';
+import CORE_selector from './core/selector.js';
 
-import pod_attr from './pod/attr.js';
-import pod_event from './pod/event.js';
+import INTERNAL_stack from './internal/stack.js';
+
+import FEATURE_misc from './feature/misc.js';
+import FEATURE_nav from './feature/nav.js';
+import FEATURE_attr from './feature/attr.js';
+import FEATURE_dom from './feature/dom.js';
+import FEATURE_event from './feature/event.js';
 
 var chiQueryInit = function(selector, context) {
-	return new chiQueryNodes(selector, context);
+	return new chiQueryComponent(selector, context);
 };
 
-var chiQueryNodes = function(selector, context) {
-	this.isChiQuery = true;
-
-	var nodes = [];
-
-	if (context) {
-		if (global_fn().isChiQueryNodes(context)) {
-			// console.log('context is chiQueryNodes.');
-			context = global_fn().nodesToArray(context);
-		} else if (global_fn().isNodeItem(context)) {
-			// console.log('context is nodeItem.');
-			context = [context];
-		} else if (global_fn().isArray(context)) { // } else if (global_fn().isNodeList(context)) {
-			// console.log('context is array.'); // console.log('context is nodeList.');
-			context = global_fn().nodesToArray(context);
-		} else if (global_fn().isString(context)) {
-			// console.log('context is string.');
-			context = document.querySelectorAll(context);
-		} else {
-			// throw 'ReferenceError: ' + context + ' is not defined';
-		}
-	} else {
-		// console.log('context not exist.');
-		context = [document];
-	}
-	this.context = context;
-
-	if (global_fn().isChiQueryNodes(selector)) {
-		// console.log('selector is chiQueryNodes.');
-		nodes = global_fn().nodesToArray(selector);
-	} else if (global_fn().isNodeItem(selector)) {
-		// console.log('selector is nodeItem.');
-		nodes = [selector];
-	} else if (global_fn().isArray(selector)) { // } else if (global_fn().isNodeList(selector)) {
-		// console.log('selector is array.'); // console.log('selector is nodeList.');
-		nodes = /*global_fn().nodesToArray(*/ selector /*)*/ ;
-	} else if (global_fn().isString(selector)) {
-		if (selector[0] == "<") {
-			// console.log('selector is HTML string.');
-			var createDOM = document.createElement('body');
-			createDOM.innerHTML = selector;
-			nodes = /*global_fn().nodesToArray(*/ createDOM.childNodes /*)*/ ;
-		} else {
-			// console.log('selector is string.');
-			for (var _i = 0; _i < context.length; _i++) {
-				nodes = nodes.concat(global_fn().nodesToArray(context[_i].querySelectorAll(selector)));
-			}
-		}
-		this.selector = selector;
-	}
-
-	this.length = nodes.length;
-
-	for (var i = 0; i < nodes.length; i++) {
-		this[i] = nodes[i];
-	}
-
-	return this;
+var chiQueryComponent = function(selector, context) {
+	return CORE_selector(this, selector, context);
 };
 
-chiQueryInit.fn = chiQueryNodes.prototype = {
+chiQueryInit.fn = chiQueryComponent.prototype = {
+	_changeStack: function(elements, name, args) {
+		return INTERNAL_stack().changeStack(this, elements, name, args);
+	},
 	add: function(selector, context) {
-		return core_nav().add(this, selector, context);
+		return FEATURE_nav().add(this, selector, context);
 	},
 	addClass: function(className) {
-		return pod_attr().addClass(this, className);
+		return FEATURE_attr().addClass(this, className);
 	},
 	attr: function(attrName, attrValue) {
-		return pod_attr().attr(this, attrName, attrValue);
+		return FEATURE_attr().attr(this, attrName, attrValue);
 	},
-	children: function(targetElement) {
-		return core_nav().children(this, targetElement);
+	children: function(target) {
+		return FEATURE_nav().children(this, target);
 	},
-	closest: function(targetElement, context) {
-		return core_nav().closest(this, targetElement, context);
+	closest: function(target, context) {
+		return FEATURE_nav().closest(this, target, context);
 	},
 	each: function(callback) {
-		return core_misc().each(this, callback);
+		return FEATURE_misc().each(this, callback);
 	},
 	end: function() {
-		return core_nav().end(this);
+		return FEATURE_nav().end(this);
 	},
 	eq: function(idx) {
-		return core_nav().eq(this, idx);
+		return FEATURE_nav().eq(this, idx);
 	},
-	filter: function(targetElement) {
-		return core_nav().filter(this, targetElement);
+	filter: function(target) {
+		return FEATURE_nav().filter(this, target);
 	},
 	find: function(selector) {
-		return core_nav().find(this, selector);
+		return FEATURE_nav().find(this, selector);
 	},
 	first: function() {
-		return core_nav().first(this);
-	},
-	has: function(selector) {
-		return core_nav().has(this, selector);
-	},
-	is: function(target) {
-		return core_nav().is(this, target);
-	},
-	last: function() {
-		return core_nav().last(this);
+		return FEATURE_nav().first(this);
 	},
 	get: function(idx) {
-		return core_misc().get(this, idx);
+		return FEATURE_misc().get(this, idx);
+	},
+	has: function(selector) {
+		return FEATURE_nav().has(this, selector);
+	},
+	hasClass: function(className) {
+		return FEATURE_attr().hasClass(this, className);
 	},
 	index: function(element) {
-		return core_misc().index(this, element);
+		return FEATURE_misc().index(this, element);
 	},
-	parent: function(targetElement) {
-		return core_nav().parent(this, targetElement);
+	is: function(target) {
+		return FEATURE_nav().is(this, target);
 	},
-	parents: function(targetElement) {
-		return core_nav().parents(this, targetElement);
+	last: function() {
+		return FEATURE_nav().last(this);
+	},
+	map: function(callback) {
+		return FEATURE_misc().map(this, callback);
+	},
+	next: function(target) {
+		return FEATURE_nav().next(this, target);
+	},
+	nextAll: function(target) {
+		return FEATURE_nav().nextAll(this, target);
+	},
+	not: function(target) {
+		return FEATURE_nav().not(this, target);
+	},
+	parent: function(target) {
+		return FEATURE_nav().parent(this, target);
+	},
+	parents: function(target) {
+		return FEATURE_nav().parents(this, target);
+	},
+	prev: function(target) {
+		return FEATURE_nav().prev(this, target);
+	},
+	prevAll: function(target) {
+		return FEATURE_nav().prevAll(this, target);
+	},
+	prop: function(propertyName, propertyValue) {
+		return FEATURE_attr().prop(this, propertyName, propertyValue);
 	},
 	removeAttr: function(attrName) {
-		return pod_attr().removeAttr(this, attrName);
+		return FEATURE_attr().removeAttr(this, attrName);
 	},
 	removeClass: function(className) {
-		return pod_attr().removeClass(this, className);
+		return FEATURE_attr().removeClass(this, className);
+	},
+	removeProp: function(propertyName) {
+		return FEATURE_attr().removeProp(this, propertyName);
+	},
+	siblings: function(target) {
+		return FEATURE_nav().siblings(this, target);
 	},
 	size: function() {
-		return core_misc().size(this);
+		return FEATURE_misc().size(this);
+	},
+	slice: function(start, end) {
+		return FEATURE_nav().slice(this, start, end);
+	},
+	text: function(text) {
+		return FEATURE_dom().text(this, text);
+	},
+	toggleClass: function(className, status) {
+		return FEATURE_attr().toggleClass(this, className, status);
+	},
+	val: function() {
+		return FEATURE_attr().val(this);
 	}
 };
 

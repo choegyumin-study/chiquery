@@ -31,20 +31,23 @@ npm install --save-dev
 
 ## API
 
-### Selector
+### Core
+
+#### Selector
 
 - [chiQuery](https://api.jquery.com/jQuery/)
   - Use `.querySelectorAll()`
-  - chiQuery().context != jQuery().context
-  - chiQuery().context == jQuery().prevObject
+  - `chiQuery().context` === `jQuery().context` || `chiQuery().context` !== `jQuery().context`
+  - `chiQuery().history` === `jQuery().prevObject` || `chiQuery().history` !== `jQuery().prevObject`
 
-### Core
+### Feature
 
 #### Miscellaneous
 
 - [each](https://api.jquery.com/each/)
 - [get](https://api.jquery.com/get/)
 - [index](https://api.jquery.com/index/)
+- [map](https://api.jquery.com/map/)
 - [size](https://api.jquery.com/size/)
 
 #### Navigation
@@ -60,32 +63,29 @@ npm install --save-dev
 - [has](https://api.jquery.com/has/)
 - [is](https://api.jquery.com/is/)
 - [last](https://api.jquery.com/last/)
-- map
-- next
-- nextAll
+- [next](https://api.jquery.com/next/)
+- [nextAll](https://api.jquery.com/nextAll/)
 - <del>nextUntil</del>
-- not
+- [not](https://api.jquery.com/not/)
 - [parent](https://api.jquery.com/parent/)
 - [parents](https://api.jquery.com/parents/)
-- prev
-- prevAll
+- [prev](https://api.jquery.com/prev/)
+- [prevAll](https://api.jquery.com/prevAll/)
 - <del>prevUntil</del>
-- siblings
-- slice
-
-### Pod
+- [siblings](https://api.jquery.com/siblings/)
+- [slice](https://api.jquery.com/slice/)
 
 #### Attribute
 
 - [attr](https://api.jquery.com/attr/)
 - [addClass](https://api.jquery.com/addClass/)
-- hasClass
-- prop
+- [hasClass](https://api.jquery.com/hasClass/)
+- [prop](https://api.jquery.com/prop/)
 - [removeAttr](https://api.jquery.com/removeAttr/)
 - [removeClass](https://api.jquery.com/removeClass/)
-- removeProp
-- toggleClass
-- val
+- [removeProp](https://api.jquery.com/removeProp/)
+- [toggleClass](https://api.jquery.com/toggleClass/)
+- [val](https://api.jquery.com/val/)
 
 #### DOM Control
 
@@ -130,3 +130,9 @@ npm install --save-dev
 - scrollLeft
 - scrollTop
 - width
+
+### Internal
+
+#### Stack
+
+- changeStack
