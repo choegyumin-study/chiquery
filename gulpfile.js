@@ -137,22 +137,22 @@ gulp.task('build', gulpsync.sync([
 			end_with_newline: true
 		}))
 		.pipe(concat('chiquery.js'))
-		.pipe(gulp.dest('dist/'))
+		.pipe(gulp.dest('prod/'))
 		.pipe(uglify({
 			preserveComments: 'license'
 		}))
 		.pipe(concat('chiquery.min.js'))
-		.pipe(gulp.dest('dist/'));
+		.pipe(gulp.dest('prod/'));
 });
 
 gulp.task('deploy', function() {
-	return gulp.src('dist/**/*')
+	return gulp.src('prod/**/*')
 		.on('end', function() {
-			console.log('Push commits to origin:dist');
+			console.log('Push commits to origin:prod');
 		})
 		.pipe(deploy({
 			remoteUrl: packageJson.repository.url,
-			branch: 'dist'
+			branch: 'prod'
 		}));
 });
 
@@ -163,7 +163,7 @@ gulp.task('deploy:build', gulpsync.sync([
 gulp.task('clean', gulpsync.sync([
 	'scripts:clean'
 ]), function() {
-	return del(['.publish/', 'dist/*', '!dist/README.*', 'report/']);
+	return del(['.publish/', 'prod/*', '!prod/README.*', 'report/']);
 });
 
 gulp.task('report', gulpsync.sync([

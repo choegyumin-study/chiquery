@@ -32,8 +32,8 @@ Desktop.ini
 $RECYCLE.BIN/
 
 .publish/
-dist/*
-!dist/README.*
+prod/*
+!prod/README.*
 report/
 src/chiquery*.js
 src/chiquery*.js.map
