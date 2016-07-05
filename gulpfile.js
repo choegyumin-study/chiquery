@@ -137,16 +137,16 @@ gulp.task('build', gulpsync.sync([
 			end_with_newline: true
 		}))
 		.pipe(concat('chiquery.js'))
-		.pipe(gulp.dest('prod/'))
+		.pipe(gulp.dest('dist/'))
 		.pipe(uglify({
 			preserveComments: 'license'
 		}))
 		.pipe(concat('chiquery.min.js'))
-		.pipe(gulp.dest('prod/'));
+		.pipe(gulp.dest('dist/'));
 });
 
 gulp.task('deploy', function() {
-	return gulp.src('prod/**/*')
+	return gulp.src('dist/**/*')
 		.on('end', function() {
 			console.log('Push commits to origin:prod');
 		})
@@ -163,7 +163,7 @@ gulp.task('deploy:build', gulpsync.sync([
 gulp.task('clean', gulpsync.sync([
 	'scripts:clean'
 ]), function() {
-	return del(['.publish/', 'prod/*', '!prod/README.*', 'report/']);
+	return del(['.publish/', 'dist/*', '!dist/README.*', 'report/']);
 });
 
 gulp.task('report', gulpsync.sync([
