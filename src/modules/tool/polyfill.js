@@ -70,9 +70,9 @@ export default (function(global) {
 				],
 				dontEnumsLength = dontEnums.length;
 			return function(obj) {
-				// if (typeof obj !== 'object' && (typeof obj !== 'function' || obj === null)) {
-				// 	throw new TypeError('Object.keys called on non-object');
-				// }
+				if (typeof obj !== 'object' && (typeof obj !== 'function' || obj === null)) {
+					throw new TypeError('Object.keys called on non-object');
+				}
 				var result = [],
 					prop, i;
 				for (prop in obj) {
@@ -97,9 +97,9 @@ export default (function(global) {
 	if (!Array.prototype.indexOf) {
 		Array.prototype.indexOf = function(searchElement, fromIndex) {
 			var k;
-			// if (this == null) {
-			// 	throw new TypeError('"this" is null or not defined');
-			// }
+			if (this == null) {
+				throw new TypeError('"this" is null or not defined');
+			}
 			var o = Object(this);
 			var len = o.length >>> 0;
 			if (len === 0) {

@@ -119,9 +119,6 @@ export default function() {
 						}
 					}
 				}
-				/* else {
-				 throw 'ReferenceError: ' + element + ' is not defined';
-				 }*/
 				return {
 					list: elementList,
 					type: elementType
