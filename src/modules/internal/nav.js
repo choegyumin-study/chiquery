@@ -5,7 +5,7 @@ export default function() {
 
 	var modules = {};
 
-	modules.getParents = function(_this, target, loop) {
+	modules.getParentNodesArray = function(_this, target, loop) {
 		target = target ? TOOL_fn().nodesSelector(target) : undefined;
 		var nodesArr = [];
 		var _i = 0,

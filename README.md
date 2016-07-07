@@ -126,7 +126,10 @@ npm install --save-dev
 
 ### Internal
 
+### Navigation
+
+- getParentNodesArray
+
 #### Stack
 
 - changeStack
-- getParents
