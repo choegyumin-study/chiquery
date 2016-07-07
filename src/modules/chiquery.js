@@ -27,6 +27,9 @@ chiQueryInit.fn = chiQueryComponent.prototype = {
 	_changeStack: function(elements, name, args) {
 		return INTERNAL_stack().changeStack(this, elements, name, args);
 	},
+	_getChildNodesArray: function(target, loop) {
+		return INTERNAL_nav().getChildNodesArray(this, target, loop);
+	},
 	_getParentNodesArray: function(target, loop) {
 		return INTERNAL_nav().getParentNodesArray(this, target, loop);
 	},

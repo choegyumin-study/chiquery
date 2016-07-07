@@ -15,15 +15,7 @@ export default function() {
 	};
 
 	modules.children = function(_this, target) {
-		target = target ? TOOL_fn().nodesSelector(target) : undefined;
-		var nodes = [];
-		_this.each(function() {
-			var childNodes = this.childNodes;
-			for (var _i = 0; _i < childNodes.length; _i++) {
-				var childNode = childNodes[_i];
-				if ((!target || target.indexOf(childNode) > -1) && TOOL_fn().isElementNodeItem(childNode)) nodes.push(childNode);
-			}
-		});
+		var nodes = _this._getChildNodesArray(target, 1);
 		return _this._changeStack(nodes, _this);
 	};
 
