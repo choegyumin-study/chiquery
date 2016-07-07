@@ -6,6 +6,7 @@ import TOOL_fn from './tool/fn.js';
 
 import CORE_selector from './core/selector.js';
 
+import INTERNAL_nav from './internal/nav.js';
 import INTERNAL_stack from './internal/stack.js';
 
 import FEATURE_misc from './feature/misc.js';
@@ -25,6 +26,9 @@ var chiQueryComponent = function(selector, context) {
 chiQueryInit.fn = chiQueryComponent.prototype = {
 	_changeStack: function(elements, name, args) {
 		return INTERNAL_stack().changeStack(this, elements, name, args);
+	},
+	_getParents: function(target, loop) {
+		return INTERNAL_nav().getParents(this, target, loop);
 	},
 	add: function(selector, context) {
 		return FEATURE_nav().add(this, selector, context);

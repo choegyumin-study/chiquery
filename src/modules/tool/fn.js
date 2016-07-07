@@ -2,25 +2,6 @@ export default function() {
 
 	var modules = {};
 
-	modules.getParentNodes = function(nodes, target, loop) {
-		var nodesArr = [];
-		var _i = 0,
-			_j = 0;
-		for (; _i < nodes.length; _i++) {
-			var parentNode = nodes[_i].parentNode;
-			while (parentNode !== null && parentNode !== document && (!loop || loop > _j)) {
-				if (!target || target.indexOf(parentNode) > -1) {
-					var hasParentIdx = nodesArr.indexOf(parentNode);
-					if (hasParentIdx > -1) nodesArr.splice(hasParentIdx, 1);
-					nodesArr.push(parentNode);
-				}
-				parentNode = parentNode.parentNode;
-				_j++;
-			}
-		}
-		return nodesArr;
-	};
-
 	modules.hasAttr = function(obj, attrName, attrValue) {
 		if (modules.isObject(obj)) {
 			return modules.regexDetectString(obj, obj.getAttribute(attrName), attrValue);
@@ -107,6 +88,10 @@ export default function() {
 					// console.log('element is chiQueryComponent.');
 					elementType = 'chiQueryComponent';
 					elementList = modules.nodesToArray(element);
+					// if (context) {
+					// 	console.log('context exists!');
+					// 	console.log(elementList);
+					// }
 				} else if (modules.isNodeItem(element)) {
 					// console.log('element is nodeItem.');
 					elementType = 'nodeItem';

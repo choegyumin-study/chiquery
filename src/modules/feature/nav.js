@@ -172,14 +172,12 @@ export default function() {
 	};
 
 	modules.parent = function(_this, target) {
-		target = target ? TOOL_fn().nodesSelector(target) : undefined;
-		var nodes = TOOL_fn().getParentNodes(TOOL_fn().nodesToArray(_this), target, 1);
+		var nodes = _this._getParents(target, 1);
 		return _this._changeStack(nodes, _this);
 	};
 
 	modules.parents = function(_this, target) {
-		target = target ? TOOL_fn().nodesSelector(target) : undefined;
-		var nodes = TOOL_fn().getParentNodes(TOOL_fn().nodesToArray(_this), target);
+		var nodes = _this._getParents(target);
 		return _this._changeStack(nodes, _this);
 	};
 

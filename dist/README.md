@@ -51,13 +51,11 @@
 - [last](https://api.jquery.com/last/)
 - [next](https://api.jquery.com/next/)
 - [nextAll](https://api.jquery.com/nextAll/)
-- <del>nextUntil</del>
 - [not](https://api.jquery.com/not/)
 - [parent](https://api.jquery.com/parent/)
 - [parents](https://api.jquery.com/parents/)
 - [prev](https://api.jquery.com/prev/)
 - [prevAll](https://api.jquery.com/prevAll/)
-- <del>prevUntil</del>
 - [siblings](https://api.jquery.com/siblings/)
 - [slice](https://api.jquery.com/slice/)
 
@@ -75,50 +73,46 @@
 
 #### DOM Control
 
-- after
-- append
-- <del>appendTo</del>
-- before
-- clone
-- detach
-- empty
-- html
-- <del>insertAfter</del>
-- <del>insertBefore</del>
-- prepend
-- <del>prependTo</del>
-- remove
-- <del>replaceAll</del>
-- replaceWith
-- text
-- unwrap
-- wrap
-- wrapAll
+- <del>after</del>
+- <del>append</del>
+- <del>before</del>
+- <del>clone</del>
+- <del>detach</del>
+- <del>empty</del>
+- <del>html</del>
+- <del>prepend</del>
+- <del>remove</del>
+- <del>replaceWith</del>
+- <del>text</del>
+- <del>unwrap</del>
+- <del>wrap</del>
+- <del>wrapAll</del>
 
 #### Event
 
-- off
-- on
-- ready
-- trigger
+- <del>off</del>
+- <del>on</del>
+- <del>ready</del>
+- <del>trigger</del>
 
 #### Style
 
-- css
-- height
-- innerHeight
-- innerWidth
-- outerHeight
-- outerWidth
-- offset
-- offsetParent
-- position
-- scrollLeft
-- scrollTop
-- width
+- <del>css</del>
+- <del>height</del>
+- <del>innerHeight</del>
+- <del>innerWidth</del>
+- <del>outerHeight</del>
+- <del>outerWidth</del>
+- <del>offset</del>
+- <del>offsetParent</del>
+- <del>position</del>
+- <del>scrollLeft</del>
+- <del>scrollTop</del>
+- <del>width</del>
 
 ### Internal
 
 #### Stack
 
 - changeStack
+- getParents
