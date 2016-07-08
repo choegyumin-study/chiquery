@@ -163,7 +163,7 @@ gulp.task('deploy:build', gulpsync.sync([
 gulp.task('clean', gulpsync.sync([
 	'scripts:clean'
 ]), function() {
-	return del(['.publish/', 'dist/*', '!dist/README.*', 'report/']);
+	return del(['.publish/', 'dist/*', '!dist/demo*', '!dist/README.*', 'report/']);
 });
 
 gulp.task('report', gulpsync.sync([
