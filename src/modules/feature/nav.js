@@ -116,33 +116,12 @@ export default function() {
 	};
 
 	modules.next = function(_this, target) {
-		target = target ? TOOL_fn().nodesSelector(target) : undefined;
-		var nodes = [];
-		_this.each(function() {
-			var nextNode = this.nextSibling;
-			while (nextNode !== null && nextNode !== document) {
-				if ((!target || target.indexOf(nextNode) > -1) && TOOL_fn().isElementNodeItem(nextNode)) {
-					nodes.push(nextNode);
-					break;
-				}
-				nextNode = nextNode.nextSibling;
-			}
-		});
+		var nodes = TOOL_fn().getSiblingNodesArray(_this, 'next', target, 1);
 		return _this._changeStack(nodes);
 	};
 
 	modules.nextAll = function(_this, target) {
-		target = target ? TOOL_fn().nodesSelector(target) : undefined;
-		var nodes = [];
-		_this.each(function() {
-			var nextNode = this.nextSibling;
-			while (nextNode !== null && nextNode !== document) {
-				if ((!target || target.indexOf(nextNode) > -1) && TOOL_fn().isElementNodeItem(nextNode)) {
-					nodes.push(nextNode);
-				}
-				nextNode = nextNode.nextSibling;
-			}
-		});
+		var nodes = TOOL_fn().getSiblingNodesArray(_this, 'next', target);
 		return _this._changeStack(nodes);
 	};
 
@@ -176,38 +155,18 @@ export default function() {
 	};
 
 	modules.prev = function(_this, target) {
-		target = target ? TOOL_fn().nodesSelector(target) : undefined;
-		var nodes = [];
-		_this.each(function() {
-			var prevNode = this.previousSibling;
-			while (prevNode !== null && prevNode !== document) {
-				if ((!target || target.indexOf(prevNode) > -1) && TOOL_fn().isElementNodeItem(prevNode)) {
-					nodes.push(prevNode);
-					break;
-				}
-				prevNode = prevNode.previousSibling;
-			}
-		});
+		var nodes = TOOL_fn().getSiblingNodesArray(_this, 'prev', target, 1);
 		return _this._changeStack(nodes);
 	};
 
 	modules.prevAll = function(_this, target) {
-		target = target ? TOOL_fn().nodesSelector(target) : undefined;
-		var nodes = [];
-		_this.each(function() {
-			var prevNode = this.previousSibling;
-			while (prevNode !== null && prevNode !== document) {
-				if ((!target || target.indexOf(prevNode) > -1) && TOOL_fn().isElementNodeItem(prevNode)) {
-					nodes.push(prevNode);
-				}
-				prevNode = prevNode.previousSibling;
-			}
-		});
+		var nodes = TOOL_fn().getSiblingNodesArray(_this, 'prev', target);
 		return _this._changeStack(nodes);
 	};
 
 	modules.siblings = function(_this, target) {
-		return _this._changeStack(TOOL_fn().nodesToArray(_this.prevAll(target || undefined)).concat(TOOL_fn().nodesToArray(_this.nextAll(target || undefined))));
+		var nodes = TOOL_fn().getSiblingNodesArray(_this, 'all', target);
+		return _this._changeStack(nodes);
 	};
 
 	modules.slice = function(_this, start, end) {

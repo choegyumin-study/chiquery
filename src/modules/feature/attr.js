@@ -23,7 +23,7 @@ export default function() {
 		}
 		return _this;
 	};
-	
+
 	modules.attr = function(_this, attrName, attrValue) {
 		var element,
 			len = _this.size();
@@ -64,9 +64,9 @@ export default function() {
 			len = _this.size();
 		if (TOOL_fn().isObject(propertyName)) {
 			if (len < 1) return undefined;
-			for(var _i = 0; _i < len; _i++) {
+			for (var _i = 0; _i < len; _i++) {
 				var propertyObj = Object.keys(propertyName);
-				if(propertyObj.length < 1) return _this;
+				if (propertyObj.length < 1) return _this;
 				element = _this.get(_i);
 				for (var _j = 0; _j < propertyObj.length; _j++) {
 					element[propertyObj[_j]] = propertyName[propertyObj[_j]];
@@ -112,7 +112,7 @@ export default function() {
 				var regex = new RegExp("(\\s|^)" + className + "(\\s|$)");
 				chiQuery(element).attr("class", chiQuery(element).attr("class").replace(regex, " ").trim());
 			}
-		} else if(TOOL_fn().isFunction(className)) {
+		} else if (TOOL_fn().isFunction(className)) {
 			if (len < 1) return _this;
 			for (var _i = 0; _i < len; _i++) {
 				element = _this.get(_i);
@@ -140,7 +140,7 @@ export default function() {
 		if (TOOL_fn().isString(className)) {
 			if (len < 1) return _this;
 			if (TOOL_fn().isBoolean(status)) {
-				if(status === true) {
+				if (status === true) {
 					chiQuery(element).addClass(className);
 				} else {
 					chiQuery(element).removeClass(className);
