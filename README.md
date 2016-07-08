@@ -112,10 +112,6 @@
 
 ### Internal
 
-### Navigation
-
-- getParentNodesArray
-
 #### Stack
 
 - changeStack
