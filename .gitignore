@@ -33,6 +33,7 @@ $RECYCLE.BIN/
 
 .publish/
 dist/*
+!dist/demo*
 !dist/README.*
 report/
 src/chiquery*.js
