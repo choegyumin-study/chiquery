@@ -15,7 +15,7 @@ export default function() {
 	};
 
 	modules.children = function(_this, target) {
-		var nodes = _this._getChildNodesArray(target, 1);
+		var nodes = TOOL_fn().getChildNodesArray(_this, target, 1);
 		return _this._changeStack(nodes, _this);
 	};
 
@@ -164,12 +164,12 @@ export default function() {
 	};
 
 	modules.parent = function(_this, target) {
-		var nodes = _this._getParentNodesArray(target, 1);
+		var nodes = TOOL_fn().getParentNodesArray(_this, target, 1);
 		return _this._changeStack(nodes, _this);
 	};
 
 	modules.parents = function(_this, target) {
-		var nodes = _this._getParentNodesArray(target);
+		var nodes = TOOL_fn().getParentNodesArray(_this, target);
 		return _this._changeStack(nodes, _this);
 	};
 

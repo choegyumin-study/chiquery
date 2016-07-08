@@ -2,6 +2,45 @@ export default function() {
 
 	var modules = {};
 
+	modules.getChildNodesArray = function(obj, target, loop) {
+		target = target ? modules.nodesSelector(target) : undefined;
+		var nodes = [];
+		for (var _i = 0; _i < obj.length; _i++) {
+			var childNodes = obj[_i].childNodes;
+			var _j = 0;
+			while (childNodes !== null && (!loop || loop > _j)) {
+				for (var _k = 0; _k < childNodes.length; _k++) {
+					var childNode = childNodes[_k];
+					if ((!target || target.indexOf(childNode) > -1) && modules.isElementNodeItem(childNode)) {
+						nodes.push(childNode);
+					}
+				}
+				childNodes = childNodes.parentNode;
+				_j++;
+			}
+		}
+		return nodes;
+	};
+
+	modules.getParentNodesArray = function(obj, target, loop) {
+		target = target ? modules.nodesSelector(target) : undefined;
+		var nodes = [];
+		for (var _i = 0; _i < obj.length; _i++) {
+			var parentNode = obj[_i].parentNode;
+			var _j = 0;
+			while (parentNode !== null && parentNode !== document && (!loop || loop > _j)) {
+				if (!target || target.indexOf(parentNode) > -1) {
+					var hasParentIdx = nodes.indexOf(parentNode);
+					if (hasParentIdx > -1) nodes.splice(hasParentIdx, 1);
+					nodes.push(parentNode);
+				}
+				parentNode = parentNode.parentNode;
+				_j++;
+			}
+		}
+		return nodes;
+	};
+
 	modules.hasAttr = function(obj, attrName, attrValue) {
 		if (modules.isObject(obj)) {
 			return modules.regexDetectString(obj, obj.getAttribute(attrName), attrValue);

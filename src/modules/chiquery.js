@@ -6,7 +6,6 @@ import TOOL_fn from './tool/fn.js';
 
 import CORE_selector from './core/selector.js';
 
-import INTERNAL_nav from './internal/nav.js';
 import INTERNAL_stack from './internal/stack.js';
 
 import FEATURE_misc from './feature/misc.js';
@@ -14,6 +13,7 @@ import FEATURE_nav from './feature/nav.js';
 import FEATURE_attr from './feature/attr.js';
 import FEATURE_dom from './feature/dom.js';
 import FEATURE_event from './feature/event.js';
+import FEATURE_style from './feature/style.js';
 
 var chiQueryInit = function(selector, context) {
 	return new chiQueryComponent(selector, context);
@@ -26,12 +26,6 @@ var chiQueryComponent = function(selector, context) {
 chiQueryInit.fn = chiQueryComponent.prototype = {
 	_changeStack: function(elements, name, args) {
 		return INTERNAL_stack().changeStack(this, elements, name, args);
-	},
-	_getChildNodesArray: function(target, loop) {
-		return INTERNAL_nav().getChildNodesArray(this, target, loop);
-	},
-	_getParentNodesArray: function(target, loop) {
-		return INTERNAL_nav().getParentNodesArray(this, target, loop);
 	},
 	add: function(selector, context) {
 		return FEATURE_nav().add(this, selector, context);
