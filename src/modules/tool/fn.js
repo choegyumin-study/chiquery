@@ -112,59 +112,72 @@ export default function() {
 	};
 
 	modules.nodesSelector = function(selector, args) {
-		args = args || {};
-		args.context = args.context || document;
-		args.createDOM = args.createDOM || false;
-		var nodes,
-			/**
-			 * @todo Add context filter
-			 */
-			converter = function(element, context) {
-				context = context || [document];
-				var elementList = [],
-					elementType = '';
+		function detectItemInContext(element, context) {
+			var nodes;
+			if (context && context[0] !== document) {
+				nodes = [];
+				for (var _i = 0; _i < element.length; _i++) {
+					var currentNode = element[_i],
+						parentNode = element[_i].parentNode;
+					while (parentNode !== null && parentNode !== document) {
+						if (context.indexOf(parentNode) > -1) {
+							nodes.push(currentNode);
+							break;
+						}
+						parentNode = parentNode.parentNode;
+					}
+				}
+			} else {
+				nodes = element;
+			}
+			return nodes;
+		}
+		function selectorToNodes(element, context) {
+				context = modules.isArray(context) && context.length > 0 ? context : [document];
+				var elsTyps = '',
+					elsList = [];
 				if (modules.ischiQueryComponent(element)) {
 					// console.log('element is chiQueryComponent.');
-					elementType = 'chiQueryComponent';
-					elementList = modules.nodesToArray(element);
-					// if (context) {
-					// 	console.log('context exists!');
-					// 	console.log(elementList);
-					// }
+					elsTyps = 'chiQueryComponent';
+					elsList = detectItemInContext(modules.nodesToArray(element), context);
 				} else if (modules.isNodeItem(element)) {
 					// console.log('element is nodeItem.');
-					elementType = 'nodeItem';
-					elementList = [element];
+					elsTyps = 'nodeItem';
+					elsList = detectItemInContext([element], context);
 				} else if (modules.isNodeList(element)) {
 					// console.log('element is nodeList.');
-					elementType = 'nodeList';
-					elementList = modules.nodesToArray(element);
+					elsTyps = 'nodeList';
+					elsList = detectItemInContext(modules.nodesToArray(element), context);
 				} else if (modules.isArray(element)) {
 					// console.log('element is array.');
-					elementType = 'array';
-					elementList = element;
+					elsTyps = 'array';
+					elsList = detectItemInContext(element, context);
 				} else if (modules.isString(element)) {
 					if (args.createDOM && element[0] === "<") {
 						// console.log('element is HTML string.');
-						elementType = 'htmlString';
+						elsTyps = 'htmlString';
 						var createDOM = document.createElement('body');
 						createDOM.innerHTML = element;
-						elementList = modules.nodesToArray(createDOM.childNodes);
+						elsList = modules.nodesToArray(createDOM.childNodes);
 					} else {
 						// console.log('element is string.');
-						elementType = 'string';
+						elsTyps = 'string';
 						for (var _i = 0; _i < context.length; _i++) {
-							elementList = elementList.concat(modules.nodesToArray(context[_i].querySelectorAll(element)));
+							elsList = elsList.concat(modules.nodesToArray(context[_i].querySelectorAll(element)));
 						}
 					}
 				}
 				return {
-					list: elementList,
-					type: elementType
+					list: elsList,
+					type: elsTyps
 				};
-			};
-		args.context = converter(args.context).list;
-		nodes = converter(selector, args.context);
+			}
+		var nodes;
+		args = args || {};
+		args.context = selectorToNodes(args.context).list || [document];
+		args.context = args.context.length < 1 ? undefined : args.context;
+		args.createDOM = args.createDOM || false;
+		nodes = selectorToNodes(selector, args.context);
 		if (args.callback) args.callback.call(nodes.list, nodes.type);
 		return nodes.list;
 	};
