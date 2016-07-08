@@ -3,9 +3,7 @@ export default function() {
 	var modules = {};
 
 	modules.getChildNodesArray = function(obj, target, loop) {
-		// console.log('target:', target);
 		target = target ? modules.nodesSelector(target) : undefined;
-		// console.log('target - after:', target);
 		var nodes = [];
 		for (var _i = 0; _i < obj.length; _i++) {
 			var childNodes = obj[_i].childNodes;

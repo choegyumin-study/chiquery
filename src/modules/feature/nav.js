@@ -26,13 +26,15 @@ export default function() {
 			var parentNode = this;
 			while (parentNode !== null && parentNode !== document && TOOL_fn().nodesSelector(context).indexOf(parentNode) < 0) {
 				if (target.indexOf(parentNode) > -1) {
+					var hasParentIdx = nodes.indexOf(parentNode);
+					if (hasParentIdx > -1) nodes.splice(hasParentIdx, 1);
 					nodes.push(parentNode);
 					break;
 				}
 				parentNode = parentNode.parentNode;
 			}
 		});
-		return _this._changeStack(nodes, _this);
+		return _this._changeStack(nodes);
 	};
 
 	modules.end = function(_this) {
@@ -42,7 +44,7 @@ export default function() {
 	modules.eq = function(_this, idx) {
 		var len = _this.length;
 		idx = TOOL_fn().negativeNumberWithinLength(idx, len);
-		return _this._changeStack(_this.get(idx), _this);
+		return _this._changeStack(_this.get(idx));
 	};
 
 	modules.filter = function(_this, target) {
@@ -61,7 +63,7 @@ export default function() {
 				if (!target || target.indexOf(node) > -1) nodes.push(node);
 			});
 		}
-		return _this._changeStack(nodes, _this);
+		return _this._changeStack(nodes);
 	};
 
 	modules.find = function(_this, selector) {
@@ -69,7 +71,7 @@ export default function() {
 	};
 
 	modules.first = function(_this) {
-		return _this._changeStack(_this.get(0), _this);
+		return _this._changeStack(_this.get(0));
 	};
 
 	modules.has = function(_this, selector) {
@@ -110,7 +112,7 @@ export default function() {
 	};
 
 	modules.last = function(_this) {
-		return _this._changeStack(_this.get(-1), _this);
+		return _this._changeStack(_this.get(-1));
 	};
 
 	modules.next = function(_this, target) {
@@ -126,7 +128,7 @@ export default function() {
 				nextNode = nextNode.nextSibling;
 			}
 		});
-		return _this._changeStack(nodes, _this);
+		return _this._changeStack(nodes);
 	};
 
 	modules.nextAll = function(_this, target) {
@@ -141,7 +143,7 @@ export default function() {
 				nextNode = nextNode.nextSibling;
 			}
 		});
-		return _this._changeStack(nodes, _this);
+		return _this._changeStack(nodes);
 	};
 
 	modules.not = function(_this, target) {
@@ -160,12 +162,12 @@ export default function() {
 				if (!target || target.indexOf(node) < 0) nodes.push(node);
 			});
 		}
-		return _this._changeStack(nodes, _this);
+		return _this._changeStack(nodes);
 	};
 
 	modules.parent = function(_this, target) {
 		var nodes = TOOL_fn().getParentNodesArray(_this, target, 1);
-		return _this._changeStack(nodes, _this);
+		return _this._changeStack(nodes);
 	};
 
 	modules.parents = function(_this, target) {
@@ -186,7 +188,7 @@ export default function() {
 				prevNode = prevNode.previousSibling;
 			}
 		});
-		return _this._changeStack(nodes, _this);
+		return _this._changeStack(nodes);
 	};
 
 	modules.prevAll = function(_this, target) {
@@ -201,11 +203,11 @@ export default function() {
 				prevNode = prevNode.previousSibling;
 			}
 		});
-		return _this._changeStack(nodes, _this);
+		return _this._changeStack(nodes);
 	};
 
 	modules.siblings = function(_this, target) {
-		return _this._changeStack(TOOL_fn().nodesToArray(_this.prevAll(target || undefined)).concat(TOOL_fn().nodesToArray(_this.nextAll(target || undefined))), _this);
+		return _this._changeStack(TOOL_fn().nodesToArray(_this.prevAll(target || undefined)).concat(TOOL_fn().nodesToArray(_this.nextAll(target || undefined))));
 	};
 
 	modules.slice = function(_this, start, end) {
@@ -216,7 +218,7 @@ export default function() {
 		_this.filter(function(idx) {
 			if (idx >= start && (!end || idx < end)) nodes.push(this);
 		});
-		return _this._changeStack(nodes, _this);
+		return _this._changeStack(nodes);
 	};
 
 	return modules;
