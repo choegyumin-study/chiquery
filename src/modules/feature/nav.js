@@ -16,7 +16,7 @@ export default function() {
 
 	modules.children = function(_this, target) {
 		var nodes = TOOL_fn().getChildNodesArray(_this, target, 1);
-		return _this._changeStack(nodes, _this);
+		return _this._changeStack(nodes);
 	};
 
 	modules.closest = function(_this, target, context) {

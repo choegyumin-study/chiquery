@@ -3,7 +3,9 @@ export default function() {
 	var modules = {};
 
 	modules.getChildNodesArray = function(obj, target, loop) {
+		// console.log('target:', target);
 		target = target ? modules.nodesSelector(target) : undefined;
+		// console.log('target - after:', target);
 		var nodes = [];
 		for (var _i = 0; _i < obj.length; _i++) {
 			var childNodes = obj[_i].childNodes;
@@ -133,9 +135,9 @@ export default function() {
 			return nodes;
 		}
 		function selectorToNodes(element, context) {
-			var elsType = '',
+			var elsType = 'typeError',
 				elsList = [];
-			if (!context) context = [document];
+			if (context === undefined) context = [document];
 			if (modules.isArray(context) && context.length > 0) {
 				if (modules.ischiQueryComponent(element)) {
 					// console.log('element is chiQueryComponent.');
@@ -176,7 +178,8 @@ export default function() {
 		}
 		var nodes;
 		args = args || {};
-		args.context = selectorToNodes(args.context).list;
+		// args.context = selectorToNodes(args.context).list;
+		args.context = args.context ? selectorToNodes(args.context).list : [document];
 		args.createDOM = args.createDOM || false;
 		nodes = selectorToNodes(selector, args.context);
 		if (args.callback) args.callback.call(nodes.list, nodes.type);
