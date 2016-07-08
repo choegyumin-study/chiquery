@@ -11,7 +11,7 @@ export default function() {
 			context: context,
 			createDOM: true
 		}));
-		return _this._changeStack(nodes, context);
+		return _this._changeStack(nodes);
 	};
 
 	modules.children = function(_this, target) {
@@ -170,7 +170,7 @@ export default function() {
 
 	modules.parents = function(_this, target) {
 		var nodes = TOOL_fn().getParentNodesArray(_this, target);
-		return _this._changeStack(nodes, _this);
+		return _this._changeStack(nodes);
 	};
 
 	modules.prev = function(_this, target) {

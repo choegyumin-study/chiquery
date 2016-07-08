@@ -23,8 +23,8 @@
 
 - [chiQuery](https://api.jquery.com/jQuery/)
   - Use `.querySelectorAll()`
-  - `chiQuery().context` === `jQuery().context` || `chiQuery().context` !== `jQuery().context`
-  - `chiQuery().history` === `jQuery().prevObject` || `chiQuery().history` !== `jQuery().prevObject`
+  - `jQuery().context` is not defined in chiQuery.
+  - `chiQuery().history` === `jQuery().prevObject`
 
 ### Feature
 

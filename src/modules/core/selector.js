@@ -16,7 +16,6 @@ export default function(_this, selector, context) {
 		_this[_i] = nodes[_i];
 	}
 
-	_this.context = context;
 	_this.isChiQuery = true;
 	_this.length = nodes.length;
 

@@ -112,7 +112,7 @@ export default function() {
 	};
 
 	modules.nodesSelector = function(selector, args) {
-		function detectItemInContext(element, context) {
+		function detectNodeInContext(element, context) {
 			var nodes;
 			if (context && context[0] !== document) {
 				nodes = [];
@@ -133,49 +133,50 @@ export default function() {
 			return nodes;
 		}
 		function selectorToNodes(element, context) {
-				context = modules.isArray(context) && context.length > 0 ? context : [document];
-				var elsTyps = '',
-					elsList = [];
+			var elsType = '',
+				elsList = [];
+			if (!context) context = [document];
+			if (modules.isArray(context) && context.length > 0) {
 				if (modules.ischiQueryComponent(element)) {
 					// console.log('element is chiQueryComponent.');
-					elsTyps = 'chiQueryComponent';
-					elsList = detectItemInContext(modules.nodesToArray(element), context);
+					elsType = 'chiQueryComponent';
+					elsList = detectNodeInContext(modules.nodesToArray(element), context);
 				} else if (modules.isNodeItem(element)) {
 					// console.log('element is nodeItem.');
-					elsTyps = 'nodeItem';
-					elsList = detectItemInContext([element], context);
+					elsType = 'nodeItem';
+					elsList = detectNodeInContext([element], context);
 				} else if (modules.isNodeList(element)) {
 					// console.log('element is nodeList.');
-					elsTyps = 'nodeList';
-					elsList = detectItemInContext(modules.nodesToArray(element), context);
+					elsType = 'nodeList';
+					elsList = detectNodeInContext(modules.nodesToArray(element), context);
 				} else if (modules.isArray(element)) {
 					// console.log('element is array.');
-					elsTyps = 'array';
-					elsList = detectItemInContext(element, context);
+					elsType = 'array';
+					elsList = detectNodeInContext(element, context);
 				} else if (modules.isString(element)) {
 					if (args.createDOM && element[0] === "<") {
 						// console.log('element is HTML string.');
-						elsTyps = 'htmlString';
+						elsType = 'htmlString';
 						var createDOM = document.createElement('body');
 						createDOM.innerHTML = element;
 						elsList = modules.nodesToArray(createDOM.childNodes);
 					} else {
 						// console.log('element is string.');
-						elsTyps = 'string';
+						elsType = 'string';
 						for (var _i = 0; _i < context.length; _i++) {
 							elsList = elsList.concat(modules.nodesToArray(context[_i].querySelectorAll(element)));
 						}
 					}
 				}
-				return {
-					list: elsList,
-					type: elsTyps
-				};
 			}
+			return {
+				list: elsList,
+				type: elsType
+			};
+		}
 		var nodes;
 		args = args || {};
-		args.context = selectorToNodes(args.context).list || [document];
-		args.context = args.context.length < 1 ? undefined : args.context;
+		args.context = selectorToNodes(args.context).list;
 		args.createDOM = args.createDOM || false;
 		nodes = selectorToNodes(selector, args.context);
 		if (args.callback) args.callback.call(nodes.list, nodes.type);

@@ -83,8 +83,9 @@
 //	console.log($('<p class="test"></p>'));
 
 //	console.log('\r\n%c.add()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-//	console.log(foo.add('.bar'));
-//	console.log(foo.add('<p class="test"></p>'));
+//	console.log(foo.add('.bar', 'body'));
+//	console.log(foo.add('.bar', '.baz'));
+//	console.log(foo.add('<p class="test"></p>'));;
 
 //	console.log('\r\n%c.children()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
 //	console.log(foo.children());
@@ -99,15 +100,25 @@
 //	console.log(baz.closest('.bar'));
 //	console.log(baz.closest('.baz'));
 
+//	console.log('\r\n%c.each()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+//	console.log(foo.each(function(idx) {
+//		console.log(idx, this);
+//	}));
+
 //	console.log('\r\n%c.end()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
 //	console.log(foo);
 //	console.log(foo.find('.idx1'));
 //	console.log(foo.find('.idx1').end());
 //	console.log(foo.find('.idx1').end().eq(0));
 
-	//	console.log('\r\n%c.eq()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+//	console.log('\r\n%c.eq()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
 //	console.log(foo.eq(2));
 //	console.log(foo.eq(-1));
+
+//	console.log('\r\n%c.get()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+//	console.log(foo.get());
+//	console.log(foo.get(0));
+//	console.log(foo.get(-1));
 
 //	console.log('\r\n%c.filter()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
 //	console.log(foo.filter('.idx1, .undefined'));
@@ -132,6 +143,12 @@
 //	console.log(foo.has('.baz'));
 //	console.log(bar.has('.baz'));
 
+//	console.log('\r\n%c.index()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+//	console.log(foo.index(foo.get(0)));
+//	console.log(foo.index(foo.get(2)));
+//	console.log(foo.index(foo.get(-1)));
+//	console.log($('.foo.idx3').index());
+
 //	console.log('\r\n%c.is()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
 //	console.log(foo.is('.foo'));
 //	console.log(foo.is('abcd'));
@@ -141,6 +158,20 @@
 
 //	console.log('\r\n%c.last()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
 //	console.log(bar.last());
+
+//	console.log('\r\n%c.map()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+//	console.log(foo.map(function() {
+//		return this.className;
+//	}));
+//	console.log(foo.map(function() {
+//		return false;
+//	}));
+//	console.log(foo.map(function() {
+//		return null;
+//	}));
+//	console.log(foo.map(function() {
+//		return undefined;
+//	}));
 
 //	console.log('\r\n%c.next()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
 //	console.log(baz.next());
