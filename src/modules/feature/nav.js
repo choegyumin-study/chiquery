@@ -40,7 +40,7 @@ export default function() {
 	modules.end = _this => _this.history;
 
 	modules.eq = (_this, idx) => {
-		const len = _this.length;
+		const len = _this.size();
 		idx = TOOL_fn().negativeNumberWithinLength(idx, len);
 		return _this._changeStack(_this.get(idx));
 	};

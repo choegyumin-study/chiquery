@@ -6,8 +6,7 @@ export default function() {
 	const modules = {};
 
 	modules.each = (_this, callback) => {
-		const len = _this.length;
-		for (let _i = 0; _i < len; _i++) {
+		for (let _i = 0; _i < _this.size(); _i++) {
 			const node = _this.get(_i);
 			if (callback.call(node, _i, node) === false) {
 				break;
@@ -17,7 +16,7 @@ export default function() {
 	};
 
 	modules.get = (_this, idx) => {
-		const len = _this.length;
+		const len = _this.size();
 		let node;
 		if (TOOL_fn().isNumber(idx)) {
 			idx = TOOL_fn().negativeNumberWithinLength(idx, len);
