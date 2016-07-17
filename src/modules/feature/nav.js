@@ -22,7 +22,7 @@ export default function() {
 	modules.closest = (_this, target, context) => {
 		target = TOOL_fn().nodesSelector(target);
 		const nodes = [];
-		_this.each(function () {
+		_this.each(function() {
 			let parentNode = this;
 			while (parentNode !== null && parentNode !== document && TOOL_fn().nodesSelector(context).indexOf(parentNode) < 0) {
 				if (target.indexOf(parentNode) > -1) {
@@ -48,7 +48,7 @@ export default function() {
 	modules.filter = (_this, target) => {
 		const nodes = [];
 		if (TOOL_fn().isFunction(target)) {
-			_this.each(function (idx) {
+			_this.each(function(idx) {
 				const node = this;
 				if (target.call(node, idx, node)) {
 					nodes.push(node);
@@ -56,7 +56,7 @@ export default function() {
 			});
 		} else {
 			target = TOOL_fn().nodesSelector(target);
-			_this.each(function () {
+			_this.each(function() {
 				const node = this;
 				if (!target || target.indexOf(node) > -1) nodes.push(node);
 			});
@@ -70,7 +70,7 @@ export default function() {
 
 	modules.has = (_this, selector) => {
 		const nodes = [];
-		_this.each(function () {
+		_this.each(function() {
 			const node = this;
 			if (chiQuery(selector, node).size() > 0) nodes.push(node);
 		});
@@ -80,7 +80,7 @@ export default function() {
 	modules.is = (_this, target) => {
 		let returnBool = false;
 		if (TOOL_fn().isFunction(target)) {
-			_this.each(function (idx) {
+			_this.each(function(idx) {
 				const node = this;
 				if (target.call(node, idx, node)) {
 					returnBool = true;
@@ -91,7 +91,7 @@ export default function() {
 		} else {
 			target = TOOL_fn().nodesSelector(target);
 			if (TOOL_fn().isArray(target)) {
-				_this.each(function () {
+				_this.each(function() {
 					const node = this;
 					if (target.indexOf(node) > -1) {
 						returnBool = true;
@@ -120,7 +120,7 @@ export default function() {
 	modules.not = (_this, target) => {
 		const nodes = [];
 		if (TOOL_fn().isFunction(target)) {
-			_this.each(function (idx) {
+			_this.each(function(idx) {
 				const node = this;
 				if (!target.call(node, idx, node)) {
 					nodes.push(node);
@@ -128,7 +128,7 @@ export default function() {
 			});
 		} else {
 			target = TOOL_fn().nodesSelector(target);
-			_this.each(function () {
+			_this.each(function() {
 				const node = this;
 				if (!target || target.indexOf(node) < 0) nodes.push(node);
 			});
@@ -162,10 +162,11 @@ export default function() {
 	};
 
 	modules.slice = (_this, start, end) => {
-		const nodes = [], len = _this.size();
+		const nodes = [],
+			len = _this.size();
 		start = TOOL_fn().negativeNumberWithinLength(start, len);
 		end = TOOL_fn().negativeNumberWithinLength(end, len);
-		_this.filter(function (idx) {
+		_this.filter(function(idx) {
 			if (idx >= start && (!end || idx < end)) nodes.push(this);
 		});
 		return _this._changeStack(nodes);

@@ -129,7 +129,8 @@ export default function() {
 		}
 
 		function selectorToNodes(selector, context) {
-			let elsType = 'typeError', elsList = [];
+			let elsType = 'typeError',
+				elsList = [];
 			if (context === undefined) context = [document];
 			if (modules.isArray(context) && context.length > 0) {
 				if (modules.ischiQueryComponent(selector)) {

@@ -28,19 +28,21 @@ export default function() {
 	};
 
 	modules.index = (_this, element) => {
-		let returnIdx = -1, elements, target;
+		let returnIdx = -1,
+			elements, target;
 		if (element) {
 			elements = _this;
 			target = chiQuery(element);
 		} else {
-			const nodes = [], nodeList = _this.parent().children();
+			const nodes = [],
+				nodeList = _this.parent().children();
 			for (let _i = 0; _i < nodeList.length; _i++) {
 				nodes.push(nodeList[_i]);
 			}
 			elements = chiQuery(nodes);
 			target = _this;
 		}
-		elements.each(function (idx) {
+		elements.each(function(idx) {
 			if (this === target.get(0)) {
 				returnIdx = idx;
 				return false;
@@ -51,8 +53,9 @@ export default function() {
 
 	modules.map = (_this, callback) => {
 		const arr = [];
-		_this.each(function (idx) {
-			const node = this, returned = callback.call(node, idx, node);
+		_this.each(function(idx) {
+			const node = this,
+				returned = callback.call(node, idx, node);
 			if (!TOOL_fn().isNull(returned) && !TOOL_fn().isUndefined(returned)) arr.push(returned);
 		});
 		return arr;
