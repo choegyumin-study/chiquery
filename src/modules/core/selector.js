@@ -7,7 +7,7 @@ export default function(_this, selector, context) {
 	const nodes = TOOL_fn().nodesSelector(selector, {
 		context,
 		createDOM: true,
-		callback: function callback(selectorType) {
+		callback(selectorType) {
 			if (selectorType === 'string') _this.selector = selector;
 		}
 	});

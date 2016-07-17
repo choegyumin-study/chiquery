@@ -24,112 +24,112 @@ var chiQueryComponent = function chiQueryComponent(selector, context) {
 };
 
 chiQueryInit.fn = chiQueryComponent.prototype = {
-	_changeStack: function _changeStack(elements, name, args) {
+	_changeStack(elements, name, args) {
 		return INTERNAL_stack().changeStack(this, elements, name, args);
 	},
-	add: function add(selector, context) {
+	add(selector, context) {
 		return FEATURE_nav().add(this, selector, context);
 	},
-	addClass: function addClass(className) {
+	addClass(className) {
 		return FEATURE_attr().addClass(this, className);
 	},
-	attr: function attr(attrName, attrValue) {
+	attr(attrName, attrValue) {
 		return FEATURE_attr().attr(this, attrName, attrValue);
 	},
-	children: function children(target) {
+	children(target) {
 		return FEATURE_nav().children(this, target);
 	},
-	closest: function closest(target, context) {
+	closest(target, context) {
 		return FEATURE_nav().closest(this, target, context);
 	},
-	each: function each(callback) {
+	each(callback) {
 		return FEATURE_misc().each(this, callback);
 	},
-	end: function end() {
+	end() {
 		return FEATURE_nav().end(this);
 	},
-	eq: function eq(idx) {
+	eq(idx) {
 		return FEATURE_nav().eq(this, idx);
 	},
-	filter: function filter(target) {
+	filter(target) {
 		return FEATURE_nav().filter(this, target);
 	},
-	find: function find(selector) {
+	find(selector) {
 		return FEATURE_nav().find(this, selector);
 	},
-	first: function first() {
+	first() {
 		return FEATURE_nav().first(this);
 	},
-	get: function get(idx) {
+	get(idx) {
 		return FEATURE_misc().get(this, idx);
 	},
-	has: function has(selector) {
+	has(selector) {
 		return FEATURE_nav().has(this, selector);
 	},
-	hasClass: function hasClass(className) {
+	hasClass(className) {
 		return FEATURE_attr().hasClass(this, className);
 	},
-	index: function index(element) {
+	index(element) {
 		return FEATURE_misc().index(this, element);
 	},
-	is: function is(target) {
+	is(target) {
 		return FEATURE_nav().is(this, target);
 	},
-	last: function last() {
+	last() {
 		return FEATURE_nav().last(this);
 	},
-	map: function map(callback) {
+	map(callback) {
 		return FEATURE_misc().map(this, callback);
 	},
-	next: function next(target) {
+	next(target) {
 		return FEATURE_nav().next(this, target);
 	},
-	nextAll: function nextAll(target) {
+	nextAll(target) {
 		return FEATURE_nav().nextAll(this, target);
 	},
-	not: function not(target) {
+	not(target) {
 		return FEATURE_nav().not(this, target);
 	},
-	parent: function parent(target) {
+	parent(target) {
 		return FEATURE_nav().parent(this, target);
 	},
-	parents: function parents(target) {
+	parents(target) {
 		return FEATURE_nav().parents(this, target);
 	},
-	prev: function prev(target) {
+	prev(target) {
 		return FEATURE_nav().prev(this, target);
 	},
-	prevAll: function prevAll(target) {
+	prevAll(target) {
 		return FEATURE_nav().prevAll(this, target);
 	},
-	prop: function prop(propertyName, propertyValue) {
+	prop(propertyName, propertyValue) {
 		return FEATURE_attr().prop(this, propertyName, propertyValue);
 	},
-	removeAttr: function removeAttr(attrName) {
+	removeAttr(attrName) {
 		return FEATURE_attr().removeAttr(this, attrName);
 	},
-	removeClass: function removeClass(className) {
+	removeClass(className) {
 		return FEATURE_attr().removeClass(this, className);
 	},
-	removeProp: function removeProp(propertyName) {
+	removeProp(propertyName) {
 		return FEATURE_attr().removeProp(this, propertyName);
 	},
-	siblings: function siblings(target) {
+	siblings(target) {
 		return FEATURE_nav().siblings(this, target);
 	},
-	size: function size() {
+	size() {
 		return FEATURE_misc().size(this);
 	},
-	slice: function slice(start, end) {
+	slice(start, end) {
 		return FEATURE_nav().slice(this, start, end);
 	},
-	text: function text(_text) {
+	text(_text) {
 		return FEATURE_dom().text(this, _text);
 	},
-	toggleClass: function toggleClass(className, status) {
+	toggleClass(className, status) {
 		return FEATURE_attr().toggleClass(this, className, status);
 	},
-	val: function val() {
+	val() {
 		return FEATURE_attr().val(this);
 	}
 };
