@@ -246,12 +246,12 @@
 
     modules.nodesSelector = function(selector, args) {
       function detectNodeInContext(elements, context) {
-        var nodes;
+        var nodes = void 0;
         if (context && context[0] !== document) {
           nodes = [];
           for (var _i = 0; _i < elements.length; _i++) {
-            var currentNode = elements[_i],
-              parentNode = elements[_i].parentNode;
+            var currentNode = elements[_i];
+            var parentNode = elements[_i].parentNode;
             while (parentNode !== null && parentNode !== document) {
               if (context.indexOf(parentNode) > -1) {
                 nodes.push(currentNode);
@@ -319,7 +319,7 @@
     };
 
     modules.regexDetectString = function(obj, value, regexValue) {
-      return new RegExp("(\\s|^)" + regexValue + "(\\s|$)").test(value);
+      return new RegExp('(\\s|^)' + regexValue + '(\\s|$)').test(value);
     };
 
     return modules;
@@ -364,8 +364,7 @@
     var modules = {};
 
     modules.each = function(_this, callback) {
-      var len = _this.length;
-      for (var _i = 0; _i < len; _i++) {
+      for (var _i = 0; _i < _this.size(); _i++) {
         var node = _this.get(_i);
         if (callback.call(node, _i, node) === false) {
           break;
@@ -375,8 +374,8 @@
     };
 
     modules.get = function(_this, idx) {
-      var len = _this.length,
-        node;
+      var len = _this.size();
+      var node = void 0;
       if (TOOL_fn().isNumber(idx)) {
         idx = TOOL_fn().negativeNumberWithinLength(idx, len);
         node = _this[idx];
@@ -388,8 +387,8 @@
 
     modules.index = function(_this, element) {
       var returnIdx = -1,
-        elements,
-        target;
+        elements = void 0,
+        target = void 0;
       if (element) {
         elements = _this;
         target = chiQuery(element);
@@ -469,7 +468,7 @@
     };
 
     modules.eq = function(_this, idx) {
-      var len = _this.length;
+      var len = _this.size();
       idx = TOOL_fn().negativeNumberWithinLength(idx, len);
       return _this._changeStack(_this.get(idx));
     };
@@ -615,16 +614,15 @@
     var modules = {};
 
     modules.addClass = function(_this, className) {
-      var element,
-        len = _this.size();
+      var element = void 0;
+      var len = _this.size();
+      if (len < 1) return _this;
       if (TOOL_fn().isString(className)) {
-        if (len < 1) return _this;
         for (var _i = 0; _i < len; _i++) {
           element = _this.get(_i);
-          if (TOOL_fn().hasAttr(element, "class", className) === false) chiQuery(element).attr("class", chiQuery(element).attr("class") + " " + className);
+          if (TOOL_fn().hasAttr(element, "class", className) === false) chiQuery(element).attr("class", chiQuery(element).attr("class") + ' ' + className);
         }
       } else if (TOOL_fn().isFunction(className)) {
-        if (len < 1) return _this;
         for (var _i = 0; _i < len; _i++) {
           element = _this.get(_i);
           if (TOOL_fn().hasAttr(element, "class", className) === false) chiQuery(element).addClass(className.call(element, _i, chiQuery(element).attr("class")));
@@ -634,10 +632,10 @@
     };
 
     modules.attr = function(_this, attrName, attrValue) {
-      var element,
-        len = _this.size();
+      var element = void 0;
+      var len = _this.size();
+      if (len < 1) return _this;
       if (TOOL_fn().isUndefined(attrValue)) {
-        if (len < 1) return _this;
         return _this.get(0).getAttribute(attrName);
       } else if (TOOL_fn().isString(attrValue)) {
         for (var _i = 0; _i < len; _i++) {
@@ -646,7 +644,6 @@
         }
         return _this;
       } else if (TOOL_fn().isFunction(attrValue)) {
-        if (len < 1) return _this;
         for (var _i = 0; _i < len; _i++) {
           element = _this.get(_i);
           chiQuery(element).attr(attrName, attrValue.call(element, _i, element.getAttribute(attrName)));
@@ -657,8 +654,8 @@
     };
 
     modules.hasClass = function(_this, className) {
-      var element,
-        len = _this.size();
+      var element = void 0;
+      var len = _this.size();
       for (var _i = 0; _i < len; _i++) {
         element = _this.get(_i);
         if (TOOL_fn().hasAttr(element, "class", className) === true) {
@@ -669,10 +666,10 @@
     };
 
     modules.prop = function(_this, propertyName, propertyValue) {
-      var element,
-        len = _this.size();
+      var element = void 0;
+      var len = _this.size();
+      if (len < 1) return undefined;
       if (TOOL_fn().isObject(propertyName)) {
-        if (len < 1) return undefined;
         for (var _i = 0; _i < len; _i++) {
           var propertyObj = Object.keys(propertyName);
           if (propertyObj.length < 1) return _this;
@@ -684,14 +681,12 @@
       } else if (TOOL_fn().isUndefined(propertyValue)) {
         return _this.get(0)[propertyName];
       } else if (TOOL_fn().isFunction(propertyValue) === false) {
-        if (len < 1) return undefined;
         for (var _i = 0; _i < len; _i++) {
           element = _this.get(_i);
           element[propertyName] = propertyValue;
         }
         return _this;
       } else if (TOOL_fn().isFunction(propertyValue)) {
-        if (len < 1) return undefined;
         for (var _i = 0; _i < len; _i++) {
           element = _this.get(_i);
           chiQuery(element).prop(propertyName, propertyValue.call(element, _i, chiQuery(element).prop(propertyName)));
@@ -702,8 +697,8 @@
     };
 
     modules.removeAttr = function(_this, attrName) {
-      var element,
-        len = _this.size();
+      var element = void 0;
+      var len = _this.size();
       for (var _i = 0; _i < len; _i++) {
         element = _this.get(_i);
         element.removeAttribute(attrName);
@@ -712,17 +707,16 @@
     };
 
     modules.removeClass = function(_this, className) {
-      var element,
-        len = _this.size();
+      var element = void 0;
+      var len = _this.size();
+      if (len < 1) return _this;
       if (TOOL_fn().isString(className)) {
-        if (len < 1) return _this;
         for (var _i = 0; _i < len; _i++) {
           element = _this.get(_i);
-          var regex = new RegExp("(\\s|^)" + className + "(\\s|$)");
+          var regex = new RegExp('(\\s|^)' + className + '(\\s|$)');
           chiQuery(element).attr("class", chiQuery(element).attr("class").replace(regex, " ").trim());
         }
       } else if (TOOL_fn().isFunction(className)) {
-        if (len < 1) return _this;
         for (var _i = 0; _i < len; _i++) {
           element = _this.get(_i);
           chiQuery(element).removeClass(className.call(element, _i, chiQuery(element).attr("class")));
@@ -732,8 +726,8 @@
     };
 
     modules.removeProp = function(_this, propertyName) {
-      var element,
-        len = _this.size();
+      var element = void 0;
+      var len = _this.size();
       if (len < 1) return undefined;
       for (var _i = 0; _i < len; _i++) {
         element = _this.get(_i);
@@ -744,10 +738,10 @@
     };
 
     modules.toggleClass = function(_this, className, status) {
-      var element,
-        len = _this.size();
+      var element = void 0;
+      var len = _this.size();
+      if (len < 1) return _this;
       if (TOOL_fn().isString(className)) {
-        if (len < 1) return _this;
         if (TOOL_fn().isBoolean(status)) {
           if (status === true) {
             chiQuery(element).addClass(className);
@@ -765,7 +759,6 @@
           }
         }
       } else if (TOOL_fn().isFunction(className)) {
-        if (len < 1) return _this;
         for (var _i = 0; _i < len; _i++) {
           element = _this.get(_i);
           chiQuery(element).toggleClass(className.call(element, _i, chiQuery(element).attr("class")));
@@ -790,10 +783,6 @@
 
     var modules = {};
 
-    modules.text = function(_this, text) {
-      _this.get(0).innerText = text;
-      return _this;
-    };
 
     return modules;
   }
