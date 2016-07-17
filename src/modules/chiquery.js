@@ -15,121 +15,121 @@ import FEATURE_dom from './feature/dom.js';
 import FEATURE_event from './feature/event.js';
 import FEATURE_style from './feature/style.js';
 
-var chiQueryInit = function(selector, context) {
+const chiQueryInit = function chiQueryInit(selector, context) {
 	return new chiQueryComponent(selector, context);
 };
 
-var chiQueryComponent = function(selector, context) {
+var chiQueryComponent = function chiQueryComponent(selector, context) {
 	return CORE_selector(this, selector, context);
 };
 
 chiQueryInit.fn = chiQueryComponent.prototype = {
-	_changeStack: function(elements, name, args) {
+	_changeStack: function _changeStack(elements, name, args) {
 		return INTERNAL_stack().changeStack(this, elements, name, args);
 	},
-	add: function(selector, context) {
+	add: function add(selector, context) {
 		return FEATURE_nav().add(this, selector, context);
 	},
-	addClass: function(className) {
+	addClass: function addClass(className) {
 		return FEATURE_attr().addClass(this, className);
 	},
-	attr: function(attrName, attrValue) {
+	attr: function attr(attrName, attrValue) {
 		return FEATURE_attr().attr(this, attrName, attrValue);
 	},
-	children: function(target) {
+	children: function children(target) {
 		return FEATURE_nav().children(this, target);
 	},
-	closest: function(target, context) {
+	closest: function closest(target, context) {
 		return FEATURE_nav().closest(this, target, context);
 	},
-	each: function(callback) {
+	each: function each(callback) {
 		return FEATURE_misc().each(this, callback);
 	},
-	end: function() {
+	end: function end() {
 		return FEATURE_nav().end(this);
 	},
-	eq: function(idx) {
+	eq: function eq(idx) {
 		return FEATURE_nav().eq(this, idx);
 	},
-	filter: function(target) {
+	filter: function filter(target) {
 		return FEATURE_nav().filter(this, target);
 	},
-	find: function(selector) {
+	find: function find(selector) {
 		return FEATURE_nav().find(this, selector);
 	},
-	first: function() {
+	first: function first() {
 		return FEATURE_nav().first(this);
 	},
-	get: function(idx) {
+	get: function get(idx) {
 		return FEATURE_misc().get(this, idx);
 	},
-	has: function(selector) {
+	has: function has(selector) {
 		return FEATURE_nav().has(this, selector);
 	},
-	hasClass: function(className) {
+	hasClass: function hasClass(className) {
 		return FEATURE_attr().hasClass(this, className);
 	},
-	index: function(element) {
+	index: function index(element) {
 		return FEATURE_misc().index(this, element);
 	},
-	is: function(target) {
+	is: function is(target) {
 		return FEATURE_nav().is(this, target);
 	},
-	last: function() {
+	last: function last() {
 		return FEATURE_nav().last(this);
 	},
-	map: function(callback) {
+	map: function map(callback) {
 		return FEATURE_misc().map(this, callback);
 	},
-	next: function(target) {
+	next: function next(target) {
 		return FEATURE_nav().next(this, target);
 	},
-	nextAll: function(target) {
+	nextAll: function nextAll(target) {
 		return FEATURE_nav().nextAll(this, target);
 	},
-	not: function(target) {
+	not: function not(target) {
 		return FEATURE_nav().not(this, target);
 	},
-	parent: function(target) {
+	parent: function parent(target) {
 		return FEATURE_nav().parent(this, target);
 	},
-	parents: function(target) {
+	parents: function parents(target) {
 		return FEATURE_nav().parents(this, target);
 	},
-	prev: function(target) {
+	prev: function prev(target) {
 		return FEATURE_nav().prev(this, target);
 	},
-	prevAll: function(target) {
+	prevAll: function prevAll(target) {
 		return FEATURE_nav().prevAll(this, target);
 	},
-	prop: function(propertyName, propertyValue) {
+	prop: function prop(propertyName, propertyValue) {
 		return FEATURE_attr().prop(this, propertyName, propertyValue);
 	},
-	removeAttr: function(attrName) {
+	removeAttr: function removeAttr(attrName) {
 		return FEATURE_attr().removeAttr(this, attrName);
 	},
-	removeClass: function(className) {
+	removeClass: function removeClass(className) {
 		return FEATURE_attr().removeClass(this, className);
 	},
-	removeProp: function(propertyName) {
+	removeProp: function removeProp(propertyName) {
 		return FEATURE_attr().removeProp(this, propertyName);
 	},
-	siblings: function(target) {
+	siblings: function siblings(target) {
 		return FEATURE_nav().siblings(this, target);
 	},
-	size: function() {
+	size: function size() {
 		return FEATURE_misc().size(this);
 	},
-	slice: function(start, end) {
+	slice: function slice(start, end) {
 		return FEATURE_nav().slice(this, start, end);
 	},
-	text: function(text) {
-		return FEATURE_dom().text(this, text);
+	text: function text(_text) {
+		return FEATURE_dom().text(this, _text);
 	},
-	toggleClass: function(className, status) {
+	toggleClass: function toggleClass(className, status) {
 		return FEATURE_attr().toggleClass(this, className, status);
 	},
-	val: function() {
+	val: function val() {
 		return FEATURE_attr().val(this);
 	}
 };

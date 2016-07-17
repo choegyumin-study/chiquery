@@ -15,20 +15,6 @@
 - Opera: Current
 - Safari: Current
 
-## Installation
-
-You do need to have a couple of other things installed first:
-
-- <a href="http://nodejs.org/" target="_blank" rel="external">Node.js</a>
-- <a href="http://git-scm.com/" target="_blank" rel="external">Git</a>
-
-If your computer already has these, congratulations! Just install Node modules with npm:
-
-```shell
-npm install -g gulp-cli
-npm install --save-dev
-```
-
 ## API
 
 ### Core
@@ -129,3 +115,28 @@ npm install --save-dev
 #### Stack
 
 - changeStack
+
+## Installation
+
+당신은 시작하기 전 다른 몇가지를 먼저 설치해야 합니다:
+
+- <a href="http://nodejs.org/" target="_blank" rel="external">Node.js</a>
+- <a href="http://git-scm.com/" target="_blank" rel="external">Git</a>
+
+설치가 완료되었다면, npm을 이용하여 Node 모듈들을 설치합니다:
+
+```shell
+npm install -g gulp-cli
+npm install --save-dev
+```
+
+## Conventions
+
+### Branches
+
+브랜치명은 슬래시(`/`)를 사용하지 않는다.
+
+```text
+feature/160715-example (X)
+feature-160715-example (O)
+```

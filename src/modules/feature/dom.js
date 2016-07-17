@@ -3,9 +3,9 @@ import TOOL_fn from '../tool/fn.js';
 
 export default function() {
 
-	var modules = {};
+	const modules = {};
 
-	modules.text = function(_this, text) {
+	modules.text = (_this, text) => {
 		_this.get(0).innerText = text;
 		return _this;
 	};

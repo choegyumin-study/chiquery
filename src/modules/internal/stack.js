@@ -3,10 +3,10 @@ import TOOL_fn from '../tool/fn.js';
 
 export default function() {
 
-	var modules = {};
+	const modules = {};
 
-	modules.changeStack = function(_this, elements, context) {
-		var ret = chiQuery(elements, context);
+	modules.changeStack = (_this, elements, context) => {
+		const ret = chiQuery(elements, context);
 		ret.history = _this;
 		return ret;
 	};
