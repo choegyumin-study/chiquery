@@ -5,10 +5,10 @@ export default function() {
 
 	const modules = {};
 
-	modules.text = (_this, text) => {
-		_this.get(0).innerText = text;
-		return _this;
-	};
+	// modules.text = (_this, text) => {
+	// 	_this.get(0).innerText = text;
+	// 	return _this;
+	// };
 
 	return modules;
 

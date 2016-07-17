@@ -61,7 +61,9 @@ export default function() {
 		return arr;
 	};
 
-	modules.size = _this => _this.length;
+	modules.size = _this => {
+		return _this.length;
+	};
 
 	return modules;
 

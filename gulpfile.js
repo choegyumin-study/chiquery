@@ -145,7 +145,9 @@ gulp.task('build', gulpsync.sync([
 		.pipe(gulp.dest('dist/'));
 });
 
-gulp.task('deploy', function() {
+gulp.task('deploy', gulpsync.sync([
+	'build'
+]), function() {
 	return gulp.src('dist/**/*')
 		.on('end', function() {
 			console.log('Push commits to origin:prod');
@@ -155,10 +157,6 @@ gulp.task('deploy', function() {
 			branch: 'prod'
 		}));
 });
-
-gulp.task('deploy:build', gulpsync.sync([
-	'build', 'deploy'
-]));
 
 gulp.task('clean', gulpsync.sync([
 	'scripts:clean'

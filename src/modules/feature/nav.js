@@ -37,7 +37,9 @@ export default function() {
 		return _this._changeStack(nodes);
 	};
 
-	modules.end = _this => _this.history;
+	modules.end = _this => {
+		return _this.history;
+	};
 
 	modules.eq = (_this, idx) => {
 		const len = _this.size();
@@ -64,9 +66,13 @@ export default function() {
 		return _this._changeStack(nodes);
 	};
 
-	modules.find = (_this, selector) => _this._changeStack(selector, _this);
+	modules.find = (_this, selector) => {
+		return _this._changeStack(selector, _this);
+	};
 
-	modules.first = _this => _this._changeStack(_this.get(0));
+	modules.first = _this => {
+		return _this._changeStack(_this.get(0));
+	};
 
 	modules.has = (_this, selector) => {
 		const nodes = [];
@@ -105,7 +111,9 @@ export default function() {
 		}
 	};
 
-	modules.last = _this => _this._changeStack(_this.get(-1));
+	modules.last = _this => {
+		return _this._changeStack(_this.get(-1));
+	};
 
 	modules.next = (_this, target) => {
 		const nodes = TOOL_fn().getSiblingNodesArray(_this, 'next', target, 1);

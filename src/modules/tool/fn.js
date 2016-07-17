@@ -75,31 +75,57 @@ export default function() {
 		return false;
 	};
 
-	modules.isArray = obj => Object.prototype.toString.call(obj) === '[object Array]';
+	modules.isArray = obj => {
+		return Object.prototype.toString.call(obj) === '[object Array]';
+	};
 
-	modules.isBoolean = obj => typeof obj === 'boolean';
+	modules.isBoolean = obj => {
+		return typeof obj === 'boolean';
+	};
 
-	modules.ischiQueryComponent = obj => typeof obj === 'object' && obj.isChiQuery;
+	modules.ischiQueryComponent = obj => {
+		return typeof obj === 'object' && obj.isChiQuery;
+	};
 
-	modules.isElementNodeItem = obj => modules.isNodeItem(obj) && obj.nodeType === 1;
+	modules.isElementNodeItem = obj => {
+		return modules.isNodeItem(obj) && obj.nodeType === 1;
+	};
 
-	modules.isFunction = obj => typeof obj === 'function';
+	modules.isFunction = obj => {
+		return typeof obj === 'function';
+	};
 
-	modules.isNodeItem = obj => typeof obj === 'object' && typeof obj.nodeName === 'string' && typeof obj.nodeType === 'number';
+	modules.isNodeItem = obj => {
+		return typeof obj === 'object' && typeof obj.nodeName === 'string' && typeof obj.nodeType === 'number';
+	};
 
-	modules.isNull = obj => obj === null;
+	modules.isNull = obj => {
+		return obj === null;
+	};
 
-	modules.isNumber = obj => typeof obj === 'number';
+	modules.isNumber = obj => {
+		return typeof obj === 'number';
+	};
 
-	modules.isNodeList = obj => typeof obj === 'object' && /^\[object (HTMLCollection|NodeList|Object)\]$/.test(Object.prototype.toString.call(obj)) && (typeof obj.length === 'number') && (obj.length === 0 || (typeof obj[0] === 'object' && obj[0].nodeType > 0));
+	modules.isNodeList = obj => {
+		return typeof obj === 'object' && /^\[object (HTMLCollection|NodeList|Object)\]$/.test(Object.prototype.toString.call(obj)) && (typeof obj.length === 'number') && (obj.length === 0 || (typeof obj[0] === 'object' && obj[0].nodeType > 0));
+	};
 
-	modules.isObject = obj => typeof obj === 'object';
+	modules.isObject = obj => {
+		return typeof obj === 'object';
+	};
 
-	modules.isObjectWithoutArray = obj => typeof obj === 'object' && Object.prototype.toString.call(obj) !== '[object Array]';
+	modules.isObjectWithoutArray = obj => {
+		return typeof obj === 'object' && Object.prototype.toString.call(obj) !== '[object Array]';
+	};
 
-	modules.isString = obj => typeof obj === 'string';
+	modules.isString = obj => {
+		return typeof obj === 'string';
+	};
 
-	modules.isUndefined = obj => typeof obj === 'undefined';
+	modules.isUndefined = obj => {
+		return typeof obj === 'undefined';
+	};
 
 	modules.negativeNumberWithinLength = (idx, len) => {
 		if (idx < 0) idx = len + idx;
@@ -186,7 +212,9 @@ export default function() {
 		return nodesArr;
 	};
 
-	modules.regexDetectString = (obj, value, regexValue) => new RegExp(`(\\s|^)${regexValue}(\\s|$)`).test(value);
+	modules.regexDetectString = (obj, value, regexValue) => {
+		return new RegExp(`(\\s|^)${regexValue}(\\s|$)`).test(value);
+	};
 
 	return modules;
 
