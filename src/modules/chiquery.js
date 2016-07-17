@@ -15,9 +15,7 @@ import FEATURE_dom from './feature/dom.js';
 import FEATURE_event from './feature/event.js';
 import FEATURE_style from './feature/style.js';
 
-const chiQueryInit = function(selector, context) {
-	return new chiQueryComponent(selector, context);
-};
+const chiQueryInit = (selector, context) => new chiQueryComponent(selector, context);
 
 var chiQueryComponent = function(selector, context) {
 	return CORE_selector(this, selector, context);
