@@ -12,6 +12,7 @@ var fs = require('fs'),
 	deploy = require('gulp-gh-pages'),
 	jsdoc = require('gulp-jsdoc3'),
 	rollup = require('gulp-rollup'),
+	plumber = require('gulp-plumber'),
 	sourcemaps = require('gulp-sourcemaps'),
 	strip = require('gulp-strip-comments'),
 	gulpsync = require('gulp-sync')(gulp),
@@ -63,8 +64,9 @@ var packageJson = JSON.parse(fs.readFileSync('package.json'));
 // 	}, timer);
 // };
 
-gulp.task('scripts', function() { // 수정필요
+gulp.task('scripts', function() {
 	return gulp.src('src/modules/**/*.js')
+		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(rollup({
 			entry: 'src/modules/chiquery.js',

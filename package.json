@@ -13,6 +13,7 @@
     "gulp-eslint": "^2.0.0",
     "gulp-gh-pages": "^0.5.4",
     "gulp-jsdoc3": "^0.3.0",
+    "gulp-plumber": "^1.1.0",
     "gulp-rollup": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-strip-comments": "^2.4.3",
