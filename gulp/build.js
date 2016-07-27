@@ -13,7 +13,9 @@ var fs = require('fs'),
 gulp.task('build', gulpsync.sync([
 	'clean', 'scripts', 'report'
 ]), function() {
-	return gulp.src('src/chiquery.js')
+	gulp.src(G.dirPath.src + '/README.md')
+		.pipe(gulp.dest(G.dirPath.dist));
+	return gulp.src(G.dirPath.js + '/' + G.appName + '.js')
 		.pipe(strip())
 		.pipe(beautify({
 			indent_size: 2,
@@ -23,11 +25,11 @@ gulp.task('build', gulpsync.sync([
 			indent_with_tabs: false,
 			end_with_newline: true
 		}))
-		.pipe(concat('chiquery.js'))
-		.pipe(gulp.dest('dist/'))
+		.pipe(concat(G.appName + '.js'))
+		.pipe(gulp.dest(G.dirPath.dist))
 		.pipe(uglify({
 			preserveComments: 'license'
 		}))
-		.pipe(concat('chiquery.min.js'))
-		.pipe(gulp.dest('dist/'));
+		.pipe(concat(G.appName + '.min.js'))
+		.pipe(gulp.dest(G.dirPath.dist));
 });

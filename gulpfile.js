@@ -9,9 +9,11 @@ var fs = require('fs'),
 
 global.G = {};
 
-global.G.packageJson = JSON.parse(fs.readFileSync('package.json'));
+G.packageJson = JSON.parse(fs.readFileSync('package.json'));
 
-global.G.dirPath = {
+G.appName = 'chiquery';
+
+G.dirPath = {
 	dist: './dist',
 	report: './report',
 	doc: './report/doc',
@@ -23,7 +25,7 @@ global.G.dirPath = {
 	modules: './src/modules'
 };
 
-// global.G.setDelayAfterTask = function(callback, timer, ret) {
+// G.setDelayAfterTask = function(callback, timer, ret) {
 // 	if (timer === undefined) timer = 2500;
 // 	setTimeout(function() {
 // 		callback();
@@ -31,7 +33,7 @@ global.G.dirPath = {
 // 	}, timer);
 // };
 
-// global.G.fileExistsChecker = function(callback, array, timer, ret) {
+// G.fileExistsChecker = function(callback, array, timer, ret) {
 // 	if (timer === undefined) timer = 250;
 // 	var interval = setInterval(function() {
 // 		array.forEach(function(_key) {

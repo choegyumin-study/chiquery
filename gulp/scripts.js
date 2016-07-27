@@ -8,25 +8,29 @@ var fs = require('fs'),
 	del = require('del'),
 	plumber = require('gulp-plumber'),
 	rollup = require('gulp-rollup'),
-	babel = require('rollup-plugin-babel');
+	sourcemaps = require('gulp-sourcemaps'),
+	rollupBabel = require('rollup-plugin-babel'),
+	rollupSourcemaps = require('rollup-plugin-sourcemaps');
 
 gulp.task('scripts', function() {
-	return gulp.src('src/modules/**/*.js')
+	return gulp.src(G.dirPath.modules + '/**/*.js')
 		.pipe(plumber())
+		.pipe(sourcemaps.init())
 		.pipe(rollup({
 			// intro: 'var chiQuery; (function() { "use strict";\r\n',
 			// outro: '\r\n}());',
-			entry: G.dirPath.modules + '/*.js',
+			entry: G.dirPath.modules + '/' + G.appName + '.js',
 			format: 'iife',
 			indent: false,
 			plugins: [
-				babel({
+				rollupBabel({
 					presets: 'es2015-rollup'
-				})
-			],
-			sourceMap: true
+				}),
+				rollupSourcemaps()
+			]
 		}))
-		.pipe(gulp.dest('src/js/'));
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(G.dirPath.js));
 });
 
 gulp.task('scripts:watch', function() {
@@ -34,5 +38,5 @@ gulp.task('scripts:watch', function() {
 });
 
 gulp.task('scripts:clean', function() {
-	return del(['src/chiquery.js', 'src/chiquery.js.map']);
+	return del([G.dirPath.js + '/' + G.appName + '.js', G.dirPath.js + '/' + G.appName + '.js.map']);
 });

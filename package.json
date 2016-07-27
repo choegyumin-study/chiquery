@@ -15,12 +15,15 @@
     "gulp-jsdoc3": "^0.3.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rollup": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
     "gulp-strip-comments": "^2.4.3",
     "gulp-sync": "^0.1.4",
     "gulp-uglify": "^1.5.4",
     "gulp-util": "^3.0.7",
     "require-dir": "^0.3.0",
-    "rollup-plugin-babel": "^2.6.1"
+    "rollup": "^0.34.1",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-sourcemaps": "^0.3.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
