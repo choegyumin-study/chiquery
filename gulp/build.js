@@ -37,6 +37,14 @@ gulp.task('buildjs', function () {
   gulp.src('./src/js/app.js')
     .pipe(jspm({
       selfExecutingBundle: true,
+      minify: false,
+      skipSourceMaps: true
+    }))
+    .pipe(rename('app.js'))
+    .pipe(gulp.dest(global.paths.dist));
+  gulp.src('./src/js/app.js')
+    .pipe(jspm({
+      selfExecutingBundle: true,
       minify: true,
       skipSourceMaps: true
     }))
