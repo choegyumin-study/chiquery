@@ -9,7 +9,7 @@ var fs = require('fs'),
 	jsdoc = require('gulp-jsdoc3');
 
 gulp.task('lint', function() {
-	gulp.src(G.dirPath.modules + '/**/*.js')
+	return gulp.src(G.dirPath.modules + '/**/*.js')
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(eslint.format('html', function(results) {
@@ -27,9 +27,9 @@ gulp.task('lint', function() {
 });
 
 gulp.task('doc', function() {
-	gulp.src(G.dirPath.modules + '/**/*.js', {
-		read: false
-	})
+	return gulp.src(G.dirPath.modules + '/**/*.js', {
+			read: false
+		})
 		.pipe(jsdoc({
 			opts: {
 				destination: G.dirPath.doc

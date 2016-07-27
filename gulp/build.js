@@ -15,7 +15,7 @@ gulp.task('build', gulpsync.sync([
 ]), function() {
 	gulp.src(G.dirPath.src + '/README.md')
 		.pipe(gulp.dest(G.dirPath.dist));
-	gulp.src(G.dirPath.js + '/' + G.appName + '.js')
+	return gulp.src(G.dirPath.js + '/' + G.appName + '.js')
 		.pipe(strip())
 		.pipe(beautify({
 			indent_size: 2,

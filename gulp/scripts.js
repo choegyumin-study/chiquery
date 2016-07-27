@@ -13,7 +13,7 @@ var fs = require('fs'),
 	rollupSourcemaps = require('rollup-plugin-sourcemaps');
 
 gulp.task('scripts', function() {
-	gulp.src(G.dirPath.modules + '/**/*.js')
+	return gulp.src(G.dirPath.modules + '/**/*.js')
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(rollup({
