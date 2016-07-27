@@ -10,5 +10,5 @@ var fs = require('fs'),
 gulp.task('clean', gulpsync.sync([
 	'scripts:clean'
 ]), function() {
-	return del(['.publish/', G.dirPath.dist, G.dirPath.report]);
+	del(['.publish/', G.dirPath.dist, G.dirPath.report]);
 });

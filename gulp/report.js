@@ -9,10 +9,13 @@ var fs = require('fs'),
 	jsdoc = require('gulp-jsdoc3');
 
 gulp.task('lint', function() {
-	return gulp.src(G.dirPath.modules + '/**/*.js')
+	gulp.src(G.dirPath.modules + '/**/*.js')
 		.pipe(eslint())
 		.pipe(eslint.format())
-		.pipe(eslint.format('html', function(results) { // 수정필요
+		.pipe(eslint.format('html', function(results) {
+			/*
+			 * @Todo Optimization
+			 */
 			fs.access(G.dirPath.report, fs.R_OK | fs.W_OK, function(err) {
 				if (err) fs.mkdir(G.dirPath.report);
 				fs.access(G.dirPath.lint, fs.R_OK | fs.W_OK, function(err) {
@@ -24,7 +27,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('doc', function() {
-	return gulp.src(G.dirPath.modules + '/**/*.js', {
+	gulp.src(G.dirPath.modules + '/**/*.js', {
 		read: false
 	})
 		.pipe(jsdoc({

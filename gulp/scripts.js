@@ -13,7 +13,7 @@ var fs = require('fs'),
 	rollupSourcemaps = require('rollup-plugin-sourcemaps');
 
 gulp.task('scripts', function() {
-	return gulp.src(G.dirPath.modules + '/**/*.js')
+	gulp.src(G.dirPath.modules + '/**/*.js')
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(rollup({
@@ -34,9 +34,9 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('scripts:watch', function() {
-	return gulp.watch([G.dirPath.modules + '/**/*.js'], ['scripts']);
+	gulp.watch([G.dirPath.modules + '/**/*.js'], ['scripts']);
 });
 
 gulp.task('scripts:clean', function() {
-	return del([G.dirPath.js + '/' + G.appName + '.js', G.dirPath.js + '/' + G.appName + '.js.map']);
+	del([G.dirPath.js + '/' + G.appName + '.js', G.dirPath.js + '/' + G.appName + '.js.map']);
 });
