@@ -38,5 +38,5 @@ gulp.task('scripts:watch', function() {
 });
 
 gulp.task('scripts:clean', function() {
-	del([G.dirPath.js + '/' + G.appName + '.js', G.dirPath.js + '/' + G.appName + '.js.map']);
+	return del([G.dirPath.js + '/' + G.appName + '.js', G.dirPath.js + '/' + G.appName + '.js.map']);
 });
