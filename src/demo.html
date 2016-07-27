@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 	<meta charset="utf-8">
@@ -7,240 +8,226 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
 	<title>chiQuery</title>
 	<meta name="format-detection" content="telephone=no,address=no,email=no">
-
-	<style type="text/css">
-		* {
-			margin: 0;
-			padding: 0;
-		}
-		body {
-			padding: 5px;
-		}
-		body > div {
-			padding: 10px;
-			margin: 10px;
-			background: gray;
-			color: white;
-		}
-	</style>
-
-	<script src="chiquery.js"></script>
+	<script src="./css/demo.css"></script>
+	<script src="./js/chiquery.js"></script>
 
 </head>
+
 <body>
 
-<div>
-	<h1>Open the drawer console!</h1>
-</div>
-
-<div class="foo idx0">
-	<p class="baz idx0">div.foo.idx0 > p.baz.idx0</p>
-	div.foo.idx0
-	<p class="baz idx1">div.foo.idx0 > p.baz.idx1</p>
-	<span></span>
-	<span></span>
-</div>
-<div class="foo idx1">
-	<div class="baz idx2">
-		div.foo.idx1 > div.baz.idx2
-		<p class="foobar">div.foo.idx1 > div.baz.idx2 > p.foobar</p>
+	<div>
+		<h1>Open the drawer console!</h1>
 	</div>
-	div.foo.idx1
-	<div class="baz idx3">
-		div.foo.idx1 > div.baz.idx3
-		<p class="foobar">div.foo.idx1 > div.baz.idx3 > p.foobar</p>
+
+	<div class="foo idx0">
+		<p class="baz idx0">div.foo.idx0 > p.baz.idx0</p>
+		div.foo.idx0
+		<p class="baz idx1">div.foo.idx0 > p.baz.idx1</p>
+		<span></span>
+		<span></span>
 	</div>
-</div>
-<div class="foo idx2">
-	<p class="baz idx4">div.foo.idx2 > p.baz.idx4</p>
-	div.foo.idx2
-	<p class="baz idx5">div.foo.idx2 > p.baz.idx5</p>
-</div>
-<div class="foo idx3">
-	<p class="baz idx6">div.foo.idx3 > p.baz.idx6</p>
-	div.foo.idx3
-	<p class="baz idx7">div.foo.idx3 > p.baz.idx7</p>
-</div>
-<div class="bar idx0">
-	<p class="baz idx8">div.bar.idx0 > p.baz.idx8</p>
-	div.bar.idx0
-	<p class="baz idx9">div.bar.idx0 > p.baz.idx9</p>
-</div>
+	<div class="foo idx1">
+		<div class="baz idx2">
+			div.foo.idx1 > div.baz.idx2
+			<p class="foobar">div.foo.idx1 > div.baz.idx2 > p.foobar</p>
+		</div>
+		div.foo.idx1
+		<div class="baz idx3">
+			div.foo.idx1 > div.baz.idx3
+			<p class="foobar">div.foo.idx1 > div.baz.idx3 > p.foobar</p>
+		</div>
+	</div>
+	<div class="foo idx2">
+		<p class="baz idx4">div.foo.idx2 > p.baz.idx4</p>
+		div.foo.idx2
+		<p class="baz idx5">div.foo.idx2 > p.baz.idx5</p>
+	</div>
+	<div class="foo idx3">
+		<p class="baz idx6">div.foo.idx3 > p.baz.idx6</p>
+		div.foo.idx3
+		<p class="baz idx7">div.foo.idx3 > p.baz.idx7</p>
+	</div>
+	<div class="bar idx0">
+		<p class="baz idx8">div.bar.idx0 > p.baz.idx8</p>
+		div.bar.idx0
+		<p class="baz idx9">div.bar.idx0 > p.baz.idx9</p>
+	</div>
 
-<div class="foo undefined">div.foo.undefined</div>
-<div class="foo undefined">div.foo.undefined</div>
-<div class="bar undefined">div.bar.undefined</div>
+	<div class="foo undefined">div.foo.undefined</div>
+	<div class="foo undefined">div.foo.undefined</div>
+	<div class="bar undefined">div.bar.undefined</div>
 
-<script>
-	var foo = $('.foo'),
-		bar = $('.bar'),
-		baz = $('.baz'),
-		foobar = $('.foobar');
-	console.log('\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n');
+	<script>
+		var foo = $('.foo'),
+			bar = $('.bar'),
+			baz = $('.baz'),
+			foobar = $('.foobar');
+		console.log('\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n');
 
-	console.log('\r\n%c.$()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log($(document.querySelectorAll('.foo')));
-	console.log($(document));
-	console.log($('.foo'));
-	console.log($($('.foo')));
-	console.log(foo);
-	console.log($('<p class="test"></p>'));
+		console.log('\r\n%c.$()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log($(document.querySelectorAll('.foo')));
+		console.log($(document));
+		console.log($('.foo'));
+		console.log($($('.foo')));
+		console.log(foo);
+		console.log($('<p class="test"></p>'));
 
-	console.log('\r\n%c.add()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(foo.add('.bar', 'body'));
-	console.log(foo.add('.bar', '.baz'));
-	console.log(foo.add('<p class="test"></p>'));
+		console.log('\r\n%c.add()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(foo.add('.bar', 'body'));
+		console.log(foo.add('.bar', '.baz'));
+		console.log(foo.add('<p class="test"></p>'));
 
-	console.log('\r\n%c.children()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(foo.children());
-	console.log(foo.children('.idx1'));
-	console.log(bar.children('.baz'));
+		console.log('\r\n%c.children()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(foo.children());
+		console.log(foo.children('.idx1'));
+		console.log(bar.children('.baz'));
 
-	console.log('\r\n%c.closest()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(foobar.closest('.foobar', '.baz'));
-	console.log(foobar.closest('.foo'));
-	console.log(foobar.closest('.foo', $('body')));
-	console.log(baz.closest('.foo'));
-	console.log(baz.closest('.bar'));
-	console.log(baz.closest('.baz'));
+		console.log('\r\n%c.closest()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(foobar.closest('.foobar', '.baz'));
+		console.log(foobar.closest('.foo'));
+		console.log(foobar.closest('.foo', $('body')));
+		console.log(baz.closest('.foo'));
+		console.log(baz.closest('.bar'));
+		console.log(baz.closest('.baz'));
 
-	console.log('\r\n%c.each()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(foo.each(function(idx) {
-		console.log(idx, this);
-	}));
+		console.log('\r\n%c.each()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(foo.each(function(idx) {
+			console.log(idx, this);
+		}));
 
-	console.log('\r\n%c.end()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(foo);
-	console.log(foo.find('.idx1'));
-	console.log(foo.find('.idx1').end());
-	console.log(foo.find('.idx1').end().eq(0));
+		console.log('\r\n%c.end()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(foo);
+		console.log(foo.find('.idx1'));
+		console.log(foo.find('.idx1').end());
+		console.log(foo.find('.idx1').end().eq(0));
 
-	console.log('\r\n%c.eq()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(foo.eq(2));
-	console.log(foo.eq(-1));
+		console.log('\r\n%c.eq()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(foo.eq(2));
+		console.log(foo.eq(-1));
 
-	console.log('\r\n%c.get()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(foo.get());
-	console.log(foo.get(0));
-	console.log(foo.get(-1));
+		console.log('\r\n%c.get()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(foo.get());
+		console.log(foo.get(0));
+		console.log(foo.get(-1));
 
-	console.log('\r\n%c.filter()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(foo.filter('.idx1, .undefined'));
-	console.log(baz.filter('.foo'));
-	console.log(bar.filter(function() {
-		return $(this).hasClass('bar');
-	}));
-	console.log(bar.filter(function() {
-		return $(this).hasClass('undefined');
-	}));
-	console.log(bar.filter(function() {
-		return $(this).hasClass('abcd');
-	}))
+		console.log('\r\n%c.filter()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(foo.filter('.idx1, .undefined'));
+		console.log(baz.filter('.foo'));
+		console.log(bar.filter(function() {
+			return $(this).hasClass('bar');
+		}));
+		console.log(bar.filter(function() {
+			return $(this).hasClass('undefined');
+		}));
+		console.log(bar.filter(function() {
+			return $(this).hasClass('abcd');
+		}))
 
-	console.log('\r\n%c.find()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(foo.find('.baz'));
-	console.log(foo.eq(2).find('.baz'));
-	console.log(baz.find('.foo'));
+		console.log('\r\n%c.find()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(foo.find('.baz'));
+		console.log(foo.eq(2).find('.baz'));
+		console.log(baz.find('.foo'));
 
-	console.log('\r\n%c.first()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(foo.first());
+		console.log('\r\n%c.first()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(foo.first());
 
-	console.log('\r\n%c.has()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(foo.has('.baz'));
-	console.log(bar.has('.baz'));
+		console.log('\r\n%c.has()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(foo.has('.baz'));
+		console.log(bar.has('.baz'));
 
-	console.log('\r\n%c.index()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(foo.index(foo.get(0)));
-	console.log(foo.index(foo.get(2)));
-	console.log(foo.index(foo.get(-1)));
-	console.log($('.foo.idx3').index());
+		console.log('\r\n%c.index()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(foo.index(foo.get(0)));
+		console.log(foo.index(foo.get(2)));
+		console.log(foo.index(foo.get(-1)));
+		console.log($('.foo.idx3').index());
 
-	console.log('\r\n%c.is()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(foo.is('.foo'));
-	console.log(foo.is('abcd'));
-	console.log(foo.is(function() {
-		return $('.baz', this).length === 1;
-	}));
+		console.log('\r\n%c.is()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(foo.is('.foo'));
+		console.log(foo.is('abcd'));
+		console.log(foo.is(function() {
+			return $('.baz', this).length === 1;
+		}));
 
-	console.log('\r\n%c.last()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(bar.last());
+		console.log('\r\n%c.last()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(bar.last());
 
-	console.log('\r\n%c.map()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(foo.map(function() {
-		return this.className;
-	}));
-	console.log(foo.map(function() {
-		return false;
-	}));
-	console.log(foo.map(function() {
-		return null;
-	}));
-	console.log(foo.map(function() {
-		return undefined;
-	}));
+		console.log('\r\n%c.map()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(foo.map(function() {
+			return this.className;
+		}));
+		console.log(foo.map(function() {
+			return false;
+		}));
+		console.log(foo.map(function() {
+			return null;
+		}));
+		console.log(foo.map(function() {
+			return undefined;
+		}));
 
-	console.log('\r\n%c.next()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(baz.next());
-	console.log(baz.next(baz));
-	console.log(baz.next('.idx3'));
-	console.log(baz.next($('.idx3')));
+		console.log('\r\n%c.next()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(baz.next());
+		console.log(baz.next(baz));
+		console.log(baz.next('.idx3'));
+		console.log(baz.next($('.idx3')));
 
-	console.log('\r\n%c.nextAll()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(baz.nextAll());
-	console.log(baz.nextAll('.idx3'));
+		console.log('\r\n%c.nextAll()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(baz.nextAll());
+		console.log(baz.nextAll('.idx3'));
 
-	console.log('\r\n%c.not()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(foo.not('.idx1, .undefined'));
-	console.log(baz.not('.foo'));
-	console.log(bar.not(function() {
-		return $(this).hasClass('bar');
-	}));
-	console.log(bar.not(function() {
-		return $(this).hasClass('undefined');
-	}));
-	console.log(bar.not(function() {
-		return $(this).hasClass('abcd');
-	}));
+		console.log('\r\n%c.not()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(foo.not('.idx1, .undefined'));
+		console.log(baz.not('.foo'));
+		console.log(bar.not(function() {
+			return $(this).hasClass('bar');
+		}));
+		console.log(bar.not(function() {
+			return $(this).hasClass('undefined');
+		}));
+		console.log(bar.not(function() {
+			return $(this).hasClass('abcd');
+		}));
 
-	console.log('\r\n%c.parent()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(baz.parent());
-	console.log(baz.parent('.foo'));
-	console.log(baz.parent('.bar'));
-	console.log(baz.parent($('.foo')));
-	console.log(baz.parent(foo));
+		console.log('\r\n%c.parent()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(baz.parent());
+		console.log(baz.parent('.foo'));
+		console.log(baz.parent('.bar'));
+		console.log(baz.parent($('.foo')));
+		console.log(baz.parent(foo));
 
-	console.log('\r\n%c.parents()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(baz.parents());
-	console.log(baz.parents('.foo'));
-	console.log(baz.parents('.bar'));
-	console.log(baz.parents($('.foo')));
-	console.log(baz.parents(foo));
+		console.log('\r\n%c.parents()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(baz.parents());
+		console.log(baz.parents('.foo'));
+		console.log(baz.parents('.bar'));
+		console.log(baz.parents($('.foo')));
+		console.log(baz.parents(foo));
 
-	console.log('\r\n%c.prev()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(baz.prev());
-	console.log(baz.prev(baz));
-	console.log(baz.prev('.idx2'));
-	console.log(baz.prev($('.idx2')));
+		console.log('\r\n%c.prev()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(baz.prev());
+		console.log(baz.prev(baz));
+		console.log(baz.prev('.idx2'));
+		console.log(baz.prev($('.idx2')));
 
-	console.log('\r\n%c.prevAll()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(baz.prevAll());
-	console.log(baz.prevAll('.idx2'));
+		console.log('\r\n%c.prevAll()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(baz.prevAll());
+		console.log(baz.prevAll('.idx2'));
 
-	console.log('\r\n%c.siblings()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(baz.siblings());
-	console.log(baz.siblings('.idx3'));
+		console.log('\r\n%c.siblings()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(baz.siblings());
+		console.log(baz.siblings('.idx3'));
 
-	console.log('\r\n%c.size()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(baz.size());
+		console.log('\r\n%c.size()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(baz.size());
 
-	console.log('\r\n%c.slice()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
-	console.log(foo.slice(2));
-	console.log(foo.slice(0, 2));
-	console.log(foo.slice(3, 5));
-	console.log(foo.slice(-3, 5));
-	console.log(foo.slice(-3, -1));
-	console.log(foo.slice(6));
-</script>
+		console.log('\r\n%c.slice()', 'padding: 3px 0 2px; background: #222; color: #bada55; font-size: 2em;');
+		console.log(foo.slice(2));
+		console.log(foo.slice(0, 2));
+		console.log(foo.slice(3, 5));
+		console.log(foo.slice(-3, 5));
+		console.log(foo.slice(-3, -1));
+		console.log(foo.slice(6));
+	</script>
 
 </body>
+
 </html>

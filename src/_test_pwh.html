@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
+	<title>chiQuery</title>
+	<meta name="format-detection" content="telephone=no,address=no,email=no">
+	<script src="./css/demo.css"></script>
+	<script src="./js/chiquery.js"></script>
+
+</head>
+
+<body>
+
+	<div>
+		<h1>Open the drawer console!</h1>
+	</div>
+
+	<div class="element idx0">.element.idx0</div>
+	<div class="element idx1">.element.idx1</div>
+	<div class="element idx2">.element.idx2</div>
+	<div class="element idx3">.element.idx3</div>
+	<div class="element idx4">.element.idx4</div>
+	<hr>
+	<a href="./test_pwh.html" class="element idx5">.element.idx5</a>
+	<hr>
+	<input type="checkbox" class="element idx6" value="ok" />
+	<hr>
+	<select class="select idx7">
+		<option value="1" class="element idx8" selected>8</option>
+		<option value="2" class="element idx9">9</option>
+	</select>
+
+	<script>
+		/* attr */
+		console.log('%c* attr', 'color:#ae0000;font-size:24px;line-height:50px');
+		console.log($('.element').attr('attr_class', 'element_attr_val'));
+		console.log($('.idx0').attr('attr_class'));
+		console.log($('.element').attr('attr_class', function(idx, attrValue) {
+			console.log(attrValue);
+			return attrValue + '_function_' + idx + ' element_attr_val';
+		}));
+
+		/* removeAttr */
+		console.log('%c* removeAttr', 'color:#ae0000;font-size:24px;line-height:50px');
+		console.log($('.element').removeAttr('attr_class'));
+
+		/* hasClass */
+		console.log('%c* hasClass', 'color:#ae0000;font-size:24px;line-height:50px');
+		console.log($('.element').hasClass('idx0'));
+		console.log($('.element').hasClass('idx1'));
+		console.log($('.element').hasClass('idx_none'));
+
+		/* addClass */
+		console.log('%c* addClass', 'color:#ae0000;font-size:24px;line-height:50px');
+		console.log($('.element').addClass('element_add_all'));
+		console.log($('.element').eq(0).addClass('element_add_0'));
+		console.log($('.element').addClass(function(idx, className) {
+			//console.log(className);
+			return 'element_add_function_' + idx;
+		}));
+
+		/* removeClass */
+		console.log('%c* removeClass', 'color:#ae0000;font-size:24px;line-height:50px');
+		console.log($('.element').removeClass('element_add_all'));
+		console.log($('.element').eq(0).removeClass('element_add_0'));
+		console.log($('.element').removeClass(function(idx, className) {
+			//console.log(className);
+			return 'element_add_function_' + idx;
+		}));
+
+		/* toggleClass */
+		console.log('%c* toggleClass', 'color:#ae0000;font-size:24px;line-height:50px');
+		console.log($('.element').toggleClass('element_toogle'));
+		console.log($('.element').toggleClass('element_toogle'));
+		console.log($('.element').toggleClass('element_toogle', true));
+		console.log($('.element').toggleClass('element_toogle', false));
+		console.log($('.element').toggleClass(function(idx, className) {
+			//console.log(className);
+			if (idx % 2 == 0) {
+				return 'even';
+			} else {
+				return 'odd';
+			}
+		}));
+		console.log($('.element').toggleClass(function(idx, className) {
+			//console.log(className);
+			if (idx % 2 == 0) {
+				return 'even';
+			} else {
+				return 'odd';
+			}
+		}));
+
+		/* Prop */
+		console.log('%c* prop', 'color:#ae0000;font-size:24px;line-height:50px');
+		console.log($('.idx6').prop('checked'));
+		console.log($('.idx6').prop('checked', true));
+		console.log($('.idx6').prop('checked', false));
+		console.log($('.idx6').prop('checked', true));
+		console.log($('.idx6').prop('checked', function(idx, propertyValue) {
+			return !propertyValue;
+		}));
+		console.log($('.idx5').prop('href'));
+		console.log($('.idx6').prop({
+			checked: true,
+			disabled: true
+		}));
+
+		/* removeProp */
+		console.log('%c* removeProp', 'color:#ae0000;font-size:24px;line-height:50px');
+		console.log($('.idx6').removeProp('disabled'));
+		console.log($('.idx6').removeProp('checked'));
+
+		/* val */
+		console.log('%c* val', 'color:#ae0000;font-size:24px;line-height:50px');
+		console.log($("body").val());
+		console.log($(".idx6").val());
+		console.log($(".idx7").val());
+
+		/* text */
+		console.log($("body").text('<div class="element">.element</div>'));
+	</script>
+
+</body>
+
+</html>

@@ -1,8 +1,8 @@
 {
   "name": "chiquery",
   "version": "0.1.0",
-  "description": " 제이쿼리 만들기 프로젝트",
-  "main": "index.js",
+  "description": "제이쿼리 만들기 프로젝트",
+  "main": "dist/index.html",
   "devDependencies": {
     "babel-preset-es2015-rollup": "^1.1.1",
     "del": "^2.2.1",
@@ -15,11 +15,11 @@
     "gulp-jsdoc3": "^0.3.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rollup": "^2.1.0",
-    "gulp-sourcemaps": "^1.6.0",
     "gulp-strip-comments": "^2.4.3",
     "gulp-sync": "^0.1.4",
     "gulp-uglify": "^1.5.4",
     "gulp-util": "^3.0.7",
+    "require-dir": "^0.3.0",
     "rollup-plugin-babel": "^2.6.1"
   },
   "scripts": {
@@ -29,10 +29,33 @@
     "type": "git",
     "url": "https://github.com/choi4450-study/chiquery.git"
   },
-  "author": "",
+  "author": {
+    "name": "Gyumin Choi",
+    "email": "choegyumin@gmail.com",
+    "url": "http://www.choigyumin.com"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/choi4450-study/chiquery/issues"
   },
-  "homepage": "https://github.com/choi4450-study/chiquery#readme"
+  "homepage": "https://github.com/choi4450-study/chiquery#readme",
+  "keywords": [
+    "chiQuery",
+    "jQuery"
+  ],
+  "directories": {
+    "doc": "docs",
+    "test": "test",
+    "baseURL": "src",
+    "packages": "src/lib"
+  },
+  "maintainers": [
+    {
+      "name": "Gyumin Choi",
+      "email": "choegyumin@gmail.com"
+    },
+    {
+      "name": "Wanho Park"
+    }
+  ]
 }
