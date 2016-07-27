@@ -56,7 +56,7 @@ G.dirPath = {
 requireDir('./gulp', { recurse: false });
 
 gulp.task('serve', gulpsync.sync([
-	'build', ['connect', 'watch']
+	'clean', 'scripts', 'report', ['connect', 'watch']
 ]));
 
 gulp.task('default', gulpsync.sync([
