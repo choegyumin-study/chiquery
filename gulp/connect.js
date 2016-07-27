@@ -10,6 +10,6 @@ var fs = require('fs'),
 gulp.task('connect', function() {
 	connect.server({
 		port: 1337,
-		root: [G.dirPath.src + '/']
+		root: [G.dirPath.src]
 	});
 });

@@ -10,7 +10,7 @@ var fs = require('fs'),
 gulp.task('deploy', gulpsync.sync([
 	'build'
 ]), function() {
-	return gulp.src(G.dirPath + '/**/*')
+	return gulp.src(G.dirPath.dist + '/**/*')
 		.on('end', function() {
 			console.log('Push commits to origin:prod');
 		})
