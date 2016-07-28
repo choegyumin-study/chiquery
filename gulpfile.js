@@ -34,8 +34,9 @@ G.dirPath = {
 // };
 
 // G.fileExistsChecker = function(callback, array, timer, ret) {
-// 	if (timer === undefined) timer = 250;
+// 	if (timer === undefined) timer = 500;
 // 	var interval = setInterval(function() {
+// 		console.log('Check if file exists');
 // 		array.forEach(function(_key) {
 // 			fs.stat(_key, function(err) {
 // 				if (err == null) {
@@ -48,7 +49,8 @@ G.dirPath = {
 // 		});
 // 		if (!array.length) {
 // 			clearInterval(interval);
-// 			setDelayAfterTask(callback, 0, ret);
+// 			console.log('Exists!');
+// 			G.setDelayAfterTask(callback, 0, ret);
 // 		}
 // 	}, timer);
 // };
