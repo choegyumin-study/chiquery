@@ -12,7 +12,7 @@
 
 ## Download
 
-[https://github.com/choi4450-study/chiquery/tree/prod](https://github.com/choi4450-study/chiquery/tree/prod)
+[https://github.com/choegyumin-study/chiquery/tree/prod](https://github.com/choegyumin-study/chiquery/tree/prod)
 
 ## Browser Support
 
